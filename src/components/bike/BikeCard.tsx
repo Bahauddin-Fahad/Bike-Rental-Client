@@ -1,0 +1,58 @@
+import { useNavigate } from "react-router-dom";
+import { TBike } from "../../types";
+// import { PhotoProvider, PhotoView } from "react-photo-view";
+// import RatingInput from "./RatingInput";
+
+type Props = {
+  bike: TBike;
+};
+const BikeCard = ({ bike }: Props) => {
+  const navigate = useNavigate();
+  return (
+    <div
+      data-aos="zoom-in"
+      className="card bg-secondary shadow-md border border-black shadow-black text-white rounded-2xl h-full"
+    >
+      <figure className="rounded-lg mb-3 m-7">
+        {/* <PhotoProvider>
+          <PhotoView src={product.image}> */}
+        <img
+          src={bike.image}
+          alt="Post"
+          className="w-full object-contain hover:scale-110 duration-500"
+        />
+        {/* </PhotoView>
+        </PhotoProvider> */}
+      </figure>
+      <div className="card-body px-5">
+        <h2 className="card-title">{bike?.name}</h2>
+        <p>{bike?.description}</p>
+        <p>Price: ${bike?.pricePerHour}</p>
+
+        <p>cc: {bike?.cc}</p>
+        <p>Year: {bike?.year}</p>
+        <p>Model: {bike?.model}</p>
+        <p>Brand: {bike?.brand}</p>
+
+        <p className="flex justify-start items-center gap-2">
+          <span>Rating:</span>
+          {/* <RatingInput
+            name="rating"
+            defaultValue={product?.rating}
+            readOnly={true}
+          /> */}
+        </p>
+        <div className="card-actions justify-end items-end mt-5">
+          <button
+            onClick={() => navigate(`/product/${bike._id}`)}
+            className="btn btn-accent text-primary w-full font-bold hover:scale-105 duration-500"
+          >
+            View Details
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default BikeCard;

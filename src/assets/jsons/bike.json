@@ -1,0 +1,222 @@
+[
+  {
+    "name": "Yamaha MT-07",
+    "description": "The Yamaha MT-07 is a highly popular middleweight motorcycle known for its nimble handling, lightweight chassis, and responsive parallel-twin engine. With a 689cc engine, it delivers a perfect balance of power and control, making it ideal for both urban commuting and spirited weekend rides. Its aggressive styling and comfortable ergonomics add to its appeal.",
+    "pricePerHour": 20,
+    "cc": 689,
+    "year": 2022,
+    "model": "MT-07",
+    "brand": "Yamaha",
+    "isAvailable": true,
+    "image": "https://i.ibb.co/L5qtj8R/Yamaha-MT-07.png"
+  },
+  {
+    "name": "Honda CBR650R",
+    "description": "The Honda CBR650R is a sport-touring motorcycle that blends performance with everyday usability. It features a 649cc inline-four engine, offering smooth power delivery and exhilarating performance. The bike's aggressive design is inspired by its larger CBR siblings, with a fully-faired body, LED lighting, and a comfortable riding position suited for both short rides and long-distance touring.",
+    "pricePerHour": 30,
+    "cc": 649,
+    "year": 2023,
+    "model": "CBR650R",
+    "brand": "Honda",
+    "isAvailable": true,
+    "image": "https://i.ibb.co/HncMfPT/Honda-CBR650-R.png.jpg"
+  },
+  {
+    "name": "Kawasaki Ninja 400",
+    "description": "The Kawasaki Ninja 400 is a versatile and lightweight sportbike, perfect for both beginners and experienced riders. It is powered by a 399cc parallel-twin engine that delivers a blend of smooth, predictable power and thrilling performance. The Ninja 400's lightweight chassis and aggressive styling make it a standout choice in the entry-level sportbike segment.",
+    "pricePerHour": 18,
+    "cc": 399,
+    "year": 2023,
+    "model": "Ninja 400",
+    "brand": "Kawasaki",
+    "isAvailable": true,
+    "image": "https://i.ibb.co/chgtbF0/Kawasaki-Ninja-400.png"
+  },
+  {
+    "name": "Ducati Multistrada V4",
+    "description": "The Ducati Multistrada V4 is a top-tier adventure touring motorcycle, offering unparalleled versatility and advanced technology. It is equipped with a powerful 1158cc V4 Granturismo engine, providing smooth and responsive power across all rev ranges. The bike features advanced electronics, including adaptive cruise control, cornering ABS, and a fully adjustable suspension, making it ideal for long-distance touring and off-road adventures.",
+    "pricePerHour": 40,
+    "cc": 1158,
+    "year": 2023,
+    "model": "Multistrada V4",
+    "brand": "Ducati",
+    "isAvailable": true,
+    "image": "https://i.ibb.co/ZGRMd6g/Ducati-Multistrada-V4.png"
+  },
+  {
+    "name": "BMW S1000RR",
+    "description": "The BMW S1000RR is a high-performance superbike that has set new standards in the sportbike segment. Powered by a 999cc inline-four engine, the S1000RR offers breathtaking acceleration and top-end speed. The bike is loaded with advanced features, including dynamic traction control, ABS Pro, and multiple riding modes, making it one of the most sophisticated and capable machines on the market.",
+    "pricePerHour": 50,
+    "cc": 999,
+    "year": 2023,
+    "model": "S1000RR",
+    "brand": "BMW",
+    "isAvailable": true,
+    "image": "https://i.ibb.co/yFfLpqy/BMW-S1000-RR.png"
+  },
+  {
+    "name": "Suzuki GSX-R1000",
+    "description": "The Suzuki GSX-R1000 is a legendary superbike known for its track-bred performance and cutting-edge technology. Featuring a 999cc inline-four engine, the GSX-R1000 delivers immense power and razor-sharp handling. The bike's advanced electronics package, including traction control, launch control, and quick-shifter, ensures optimal performance on both the track and the road.",
+    "pricePerHour": 35,
+    "cc": 999,
+    "year": 2022,
+    "model": "GSX-R1000",
+    "brand": "Suzuki",
+    "isAvailable": true,
+    "image": "https://i.ibb.co/wwz2FKz/Suzuki-GSX-R1000.png"
+  },
+  {
+    "name": "KTM 390 Duke",
+    "description": "The KTM 390 Duke is a lightweight and agile streetfighter, perfect for urban environments and twisty roads. It is powered by a 373cc single-cylinder engine, delivering punchy performance in a compact package. The 390 Duke is known for its sharp handling, aggressive styling, and a host of premium features, including a TFT display, LED lighting, and a trellis frame.",
+    "pricePerHour": 15,
+    "cc": 373,
+    "year": 2023,
+    "model": "390 Duke",
+    "brand": "KTM",
+    "isAvailable": true,
+    "image": "https://i.ibb.co/p2wyR7t/KTM-390-Duke.png"
+  },
+  {
+    "name": "Harley Davidson Iron 883",
+    "description": "The Harley-Davidson Iron 883 is a classic cruiser with a rebellious spirit. Powered by an 883cc Evolution V-twin engine, the Iron 883 offers a visceral riding experience with plenty of low-end torque. Its blacked-out styling, low seat height, and minimalist design make it a favorite among those who value both form and function.",
+    "pricePerHour": 25,
+    "cc": 883,
+    "year": 2023,
+    "model": "Iron 883",
+    "brand": "Harley-Davidson",
+    "isAvailable": true,
+    "image": "https://i.ibb.co/5R0krrr/Harley-Davidson-Iron-883.png"
+  },
+  {
+    "name": "Triumph Bonneville T120",
+    "description": "The Triumph Bonneville T120 is a retro-modern motorcycle that combines classic British style with modern performance. Its 1200cc parallel-twin engine provides a smooth and torquey ride, while the bike's timeless design, featuring chrome accents and a traditional tank shape, evokes the golden age of motorcycling. The T120 is equipped with modern conveniences such as ABS, traction control, and ride-by-wire throttle.",
+    "pricePerHour": 28,
+    "cc": 1200,
+    "year": 2022,
+    "model": "Bonneville T120",
+    "brand": "Triumph",
+    "isAvailable": true,
+    "image": "https://i.ibb.co/YRXwDtt/Triumph-Bonneville-T120.png"
+  },
+  {
+    "name": "Royal Enfield Interceptor 650",
+    "description": "The Royal Enfield Interceptor 650 is a versatile roadster that combines classic styling with modern engineering. Powered by a 648cc parallel-twin engine, the Interceptor offers smooth, reliable power delivery, making it perfect for both city riding and long-distance journeys. Its retro design, comfortable ergonomics, and excellent build quality have made it a favorite among enthusiasts worldwide.",
+    "pricePerHour": 22,
+    "cc": 648,
+    "year": 2023,
+    "model": "Interceptor 650",
+    "brand": "Royal Enfield",
+    "isAvailable": true,
+    "image": "https://i.ibb.co/D797k4M/Royal-Enfield-Interceptor-650.png"
+  },
+  {
+    "name": "Honda Africa Twin",
+    "description": "The Honda Africa Twin is a legendary adventure bike built for both on-road and off-road exploration. It features a powerful 1084cc parallel-twin engine, capable of tackling the most challenging terrains. With long-travel suspension, a robust frame, and advanced electronics like selectable torque control and ABS, the Africa Twin is designed for riders who seek adventure beyond the pavement.",
+    "pricePerHour": 32,
+    "cc": 1084,
+    "year": 2023,
+    "model": "Africa Twin",
+    "brand": "Honda",
+    "isAvailable": true,
+    "image": "https://i.ibb.co/KK4vvVf/Honda-Africa-Twin.png"
+  },
+  {
+    "name": "Yamaha YZF-R3",
+    "description": "The Yamaha YZF-R3 is a lightweight and nimble sportbike, designed to deliver thrilling performance in a compact package. Its 321cc twin-cylinder engine provides a perfect balance of power and efficiency, making it an excellent choice for both new riders and experienced enthusiasts. The R3's sharp styling, inspired by its R-series siblings, and agile handling make it a standout in the entry-level sportbike category.",
+    "pricePerHour": 20,
+    "cc": 321,
+    "year": 2022,
+    "model": "YZF-R3",
+    "brand": "Yamaha",
+    "isAvailable": true,
+    "image": "https://i.ibb.co/prJ0KLB/Yamaha-YZF-R3.png"
+  },
+  {
+    "name": "Kawasaki Z650",
+    "description": "The Kawasaki Z650 is a middleweight naked bike that offers a perfect blend of performance, style, and value. Powered by a 649cc parallel-twin engine, the Z650 delivers smooth and responsive power across the rev range. Its lightweight chassis and aggressive Z family styling make it a popular choice for riders looking for a versatile and fun motorcycle that excels in both urban and highway environments.",
+    "pricePerHour": 24,
+    "cc": 649,
+    "year": 2023,
+    "model": "Z650",
+    "brand": "Kawasaki",
+    "isAvailable": true,
+    "image": "https://i.ibb.co/gPdjTzN/Kawasaki-Z650.png"
+  },
+  {
+    "name": "Ducati Scrambler Icon",
+    "description": "The Ducati Scrambler Icon is a stylish bike that combines vintage aesthetics with modern technology. It features an 803cc L-twin engine, providing a responsive and enjoyable ride. The Scrambler Icon is known for its comfortable ergonomics, simple yet effective controls, and a retro design that appeals to a wide range of riders.",
+    "pricePerHour": 28,
+    "cc": 803,
+    "year": 2022,
+    "model": "Scrambler Icon",
+    "brand": "Ducati",
+    "isAvailable": true,
+    "image": "https://i.ibb.co/pW26btm/Ducati-Scrambler-Icon.png"
+  },
+  {
+    "name": "BMW R NineT",
+    "description": "The BMW R NineT is a custom bike that blends classic design with modern performance. With its 1170cc air/oil-cooled boxer engine, the R NineT delivers smooth and torquey power, making it a joy to ride on both highways and twisty roads. The bike's timeless design, with its exposed engine and minimalist bodywork, is a nod to BMW's heritage, while offering plenty of opportunities for personalization.",
+    "pricePerHour": 34,
+    "cc": 1170,
+    "year": 2023,
+    "model": "R NineT",
+    "brand": "BMW",
+    "isAvailable": true,
+    "image": "https://i.ibb.co/C10XQZv/BMW-R-Nine-T.png"
+  },
+  {
+    "name": "Suzuki V-Strom 650XT",
+    "description": "The Suzuki V-Strom 650XT is an adventure bike that is well-regarded for its versatility, comfort, and reliability. Its 645cc V-twin engine offers a smooth and predictable power delivery, making it ideal for both long-distance touring and everyday commuting. The V-Strom 650XT's robust build, long-travel suspension, and comfortable ergonomics make it a perfect companion for exploring both paved roads and rough trails.",
+    "pricePerHour": 26,
+    "cc": 645,
+    "year": 2023,
+    "model": "V-Strom 650XT",
+    "brand": "Suzuki",
+    "isAvailable": true,
+    "image": "https://i.ibb.co/0mD58QP/Suzuki-V-Strom-650-XT.png"
+  },
+  {
+    "name": "Triumph Tiger 900",
+    "description": "The Triumph Tiger 900 is a middleweight adventure bike that excels in both on-road and off-road conditions. Powered by an 888cc inline-three engine, the Tiger 900 offers a unique blend of torque and responsiveness. Its long-travel suspension, advanced electronics, and rugged design make it an excellent choice for riders seeking adventure in any terrain.",
+    "pricePerHour": 30,
+    "cc": 888,
+    "year": 2023,
+    "model": "Tiger 900",
+    "brand": "Triumph",
+    "isAvailable": true,
+    "image": "https://i.ibb.co/VH7BzqS/Triumph-Tiger-900.png"
+  },
+  {
+    "name": "Harley Davidson Fat Boy",
+    "description": "The Harley-Davidson Fat Boy is a classic cruiser that embodies the iconic American motorcycle experience. Featuring a 1745cc Milwaukee-Eight V-twin engine, the Fat Boy delivers plenty of low-end torque and a smooth ride. Its bold design, with a wide front fork, solid-disc wheels, and a massive front tire, makes a powerful statement on the road.",
+    "pricePerHour": 40,
+    "cc": 1745,
+    "year": 2022,
+    "model": "Fat Boy",
+    "brand": "Harley-Davidson",
+    "isAvailable": true,
+    "image": "https://i.ibb.co/m0nVDJg/Harley-Davidson-Fat-Boy.png"
+  },
+  {
+    "name": "Yamaha XSR700",
+    "description": "The Yamaha XSR700 is a retro-inspired bike that offers a perfect blend of style and performance. With a 689cc parallel-twin engine, the XSR700 delivers strong and linear power, making it fun and engaging to ride. Its design pays homage to Yamaha's heritage, with classic lines and modern features like a full LCD display and LED lighting.",
+    "pricePerHour": 22,
+    "cc": 689,
+    "year": 2022,
+    "model": "XSR700",
+    "brand": "Yamaha",
+    "isAvailable": true,
+    "image": "https://i.ibb.co/ctW0czS/Yamaha-XSR700.png"
+  },
+  {
+    "name": "KTM 790 Adventure",
+    "description": "The KTM 790 Adventure is an adventure bike designed to tackle the most challenging terrains. Powered by a 799cc parallel-twin engine, the 790 Adventure offers a perfect balance of power and agility. Its off-road capabilities are enhanced by long-travel suspension, lightweight construction, and advanced electronics, making it a favorite among adventure riders.",
+    "pricePerHour": 35,
+    "cc": 799,
+    "year": 2023,
+    "model": "790 Adventure",
+    "brand": "KTM",
+    "isAvailable": true,
+    "image": "https://i.ibb.co/V94GgNj/KTM-790-Adventure.png"
+  }
+]

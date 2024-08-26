@@ -4,12 +4,7 @@ import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
 
-type TButtonName =
-  | "all-products"
-  | "manage-products"
-  | "cart"
-  | "about"
-  | string;
+type TButtonName = "about" | string;
 
 const Navbar = ({ toggleTheme }: any) => {
   const params = useLocation().pathname;
@@ -20,40 +15,36 @@ const Navbar = ({ toggleTheme }: any) => {
   }, [params]);
 
   return (
-    <div className="navbar bg-secondary  font-semibold h-24 shadow-lg shadow-black sticky top-0 z-20">
-      <div className="navbar-start">
-        <Link
-          to={"/"}
-          className="btn btn-ghost text-2xl text-white"
-          onClick={() => setButtonName("")}
-        >
-          <span>Ultimate</span>
-          <span className="text-accent">MotoRide</span>
+    <div className="custom-padding navbar bg-primary font-semibold h-14 xl:h-28 sticky top-0 z-20 text-white">
+      <div className="navbar-start xl:relative">
+        <Link to={"/"} className="text-2xl space-x-2">
+          <span className="text-[#6E923C]">RideOn</span>
+          <span>Rentals</span>
         </Link>
       </div>
 
-      <div className="navbar-center hidden lg:flex">
-        <ul className="flex gap-5 text-lg text-white">
-          <li
-            className={`pb-2 ${
-              buttonName === "about"
-                ? "border-b-2 border-b-accent"
-                : "hover:scale-110 duration-300"
-            }`}
-          >
-            <Link to={"/about"} onClick={() => setButtonName("about")}>
-              About Us
-            </Link>
+      <div className="navbar-center hidden lg:flex font-vietnam">
+        <ul className="flex gap-10 text-[16px]">
+          <li className={``} onClick={() => setButtonName("about")}>
+            <Link to={"/about"}>ABOUT US</Link>
           </li>
         </ul>
       </div>
-      <div className="navbar-end">
+      <div className="navbar-end space-x-4">
+        <div className="relative">
+          <button className="w-[80px] h-[25px] xl:w-[120px] xl:h-[40px] bg-accent text-white text-[8px] xl:text-[16px] rounded-sm xl:rounded-[5px] font-vietnam-bold">
+            Login
+          </button>
+        </div>
         <input
           onChange={toggleTheme}
           type="checkbox"
           className="toggle toggle-xs xs:toggle-sm md:toggle-md toggle-primary"
           checked={localStorage.getItem("theme") === "light" ? false : true}
         />
+      </div>
+
+      <div className="navbar-end lg:hidden">
         <div className="dropdown dropdown-left">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
             <GiHamburgerMenu className="text-accent text-3xl" />
@@ -64,12 +55,12 @@ const Navbar = ({ toggleTheme }: any) => {
           >
             <li
               className={`py-1 rounded-md ${
-                buttonName === "about" && "bg-accent"
+                buttonName === "about"
+                  ? "border-b-2 border-b-accent"
+                  : "hover:scale-110 duration-300"
               }`}
             >
-              <Link to={"/about"} onClick={() => setButtonName("about")}>
-                About Us
-              </Link>
+              <Link to={"/about"}>ABOUT US</Link>
             </li>
           </ul>
         </div>

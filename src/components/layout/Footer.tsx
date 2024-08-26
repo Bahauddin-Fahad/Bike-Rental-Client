@@ -3,18 +3,15 @@ import { FaFacebook, FaYoutube, FaTwitter } from "react-icons/fa";
 import { BsInstagram } from "react-icons/bs";
 const Footer = () => {
   return (
-    <footer className="footer p-4 sm:p-8 md:px-16 bg-secondary text-white text-xs sm:text-base grid grid-cols-12">
+    <footer className="footer p-4 sm:p-8 md:px-16 bg-primary text-white text-xs sm:text-base grid grid-cols-12">
       <div className="my-auto col-span-12 sm:col-span-3">
-        <Link
-          to={"/"}
-          className="btn btn-ghost text-md sm:text-2xl text-white w-full sm:w-auto"
-        >
-          <span>Ultimate</span>
-          <span className="text-accent">MotoRide</span>
+        <Link to={"/"} className="text-2xl space-x-2">
+          <span className="text-[#6E923C]">RideOn</span>
+          <span>Rentals</span>
         </Link>
         <p className="text-center sm:text-start">
-          An ultimate destination for high-quality sports equipment, catering to
-          athletes of all levels
+          An ultimate destination for high-quality bike rentals, catering to
+          riders of all levels.
         </p>
       </div>
       <div className="mx-auto col-span-6 sm:col-span-3">
@@ -78,7 +75,7 @@ const Footer = () => {
         </div>
 
         <p className="text-base text-body-color dark:text-dark-6">
-          &copy; Umtimate MotoRide
+          &copy; RideOn Rentals
         </p>
       </div>
     </footer>

@@ -7,7 +7,8 @@ const bikeApi = baseApi.injectEndpoints({
     getBikes: builder.query({
       query: (queryObj) => {
         const params = new URLSearchParams();
-        const { searchTerm, sort, page, limit } = queryObj || {};
+        const { searchTerm, sort, page, limit, isAvailable } = queryObj || {};
+        console.log(isAvailable);
 
         if (searchTerm) {
           params.append("searchTerm", searchTerm);
@@ -22,12 +23,22 @@ const bikeApi = baseApi.injectEndpoints({
         if (limit) {
           params.append("limit", limit);
         }
+        if (isAvailable) {
+          params.append("isAvailable", isAvailable);
+        }
 
         return { url: "/bikes", method: "GET", params };
       },
       providesTags: ["bikes"],
     }),
+    getSingleBike: builder.query({
+      query: (id) => ({
+        url: `/bikes/${id}`,
+        method: "GET",
+      }),
+      providesTags: ["bikes"],
+    }),
   }),
 });
 
-export const { useGetBikesQuery } = bikeApi;
+export const { useGetBikesQuery, useGetSingleBikeQuery } = bikeApi;

@@ -1,8 +1,6 @@
 import { useEffect } from "react";
 import "./Home.css";
 import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import { getBannerImages } from "../../assets/jsons/banner";
 // import bannerJSON from "../../assets/jsons/banners.json";
 import { TBanner } from "../../types";

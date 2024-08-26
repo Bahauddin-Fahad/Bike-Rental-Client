@@ -1,0 +1,24 @@
+import Staffs from "./Staffs";
+import "./aboutUs.css";
+import Contact from "./Contact";
+import Header from "./Header";
+import Missions from "./Missions";
+import { useEffect } from "react";
+import JourneyAchievements from "./JourneyAchievements";
+
+const AboutUs = () => {
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  });
+  return (
+    <div className="max-w-6xl mx-auto space-y-20 my-10">
+      <Header />
+      <Missions />
+      <Staffs />
+      <Contact />
+      <JourneyAchievements />
+    </div>
+  );
+};
+
+export default AboutUs;

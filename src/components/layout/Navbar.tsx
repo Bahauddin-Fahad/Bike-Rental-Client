@@ -18,7 +18,7 @@ const Navbar = ({ toggleTheme }: any) => {
     <div className="custom-padding navbar bg-primary font-semibold h-14 xl:h-28 sticky top-0 z-20 text-white">
       <div className="navbar-start xl:relative">
         <Link to={"/"} className="text-2xl space-x-2">
-          <span className="text-[#6E923C]">RideOn</span>
+          <span className="text-[#27ae60]">RideOn</span>
           <span>Rentals</span>
         </Link>
       </div>

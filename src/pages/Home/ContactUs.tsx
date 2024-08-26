@@ -22,13 +22,13 @@ const ContactUs = () => {
               RideOn Rentals
             </h2>
           </div>
-          <div className="flex flex-col items-center gap-2 p-3 xl:p-5 rounded-xl xl:rounded-2xl bg-accent xl:bg-[#6E923C] border-2 border-white xl:rounded-tl-[35px] xl:rounded-br-[35px] xl:rounded-tr-[10px] xl:rounded-bl-[10px]">
+          <div className="flex flex-col items-center gap-2 p-3 xl:p-5 rounded-xl xl:rounded-2xl bg-accent xl:bg-[#27ae60] border-2 border-white xl:rounded-tl-[35px] xl:rounded-br-[35px] xl:rounded-tr-[10px] xl:rounded-bl-[10px]">
             <BsTelephoneFill className="size-5 xl:size-8" />
             <h2 className="font-satoshi font-semibold text-xs xl:text-md">
               +880 1812345678
             </h2>
           </div>
-          <div className="flex flex-col items-center gap-2 p-3 xl:p-5 rounded-xl xl:rounded-2xl bg-accent xl:bg-[#6E923C] border-2 border-white xl:rounded-tl-[35px] xl:rounded-br-[35px] xl:rounded-tr-[10px] xl:rounded-bl-[10px]">
+          <div className="flex flex-col items-center gap-2 p-3 xl:p-5 rounded-xl xl:rounded-2xl bg-accent xl:bg-[#27ae60] border-2 border-white xl:rounded-tl-[35px] xl:rounded-br-[35px] xl:rounded-tr-[10px] xl:rounded-bl-[10px]">
             <MdEmail className="size-5 xl:size-8" />
             <h2 className="font-satoshi font-semibold text-xs xl:text-md">
               rideon.rentals@gmail.com

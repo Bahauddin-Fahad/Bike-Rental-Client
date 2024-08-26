@@ -18,7 +18,7 @@ const HomeBikes = () => {
     <div className="custom-padding flex flex-col space-y-5 lg:space-y-10">
       <div className="max-w-lg mx-auto">
         <h1 className="font-vietnam text-accent text-[20px] xl:text-[40px] 2xl:text-[55px] text-center tracking-tight ">
-          Explore Our <span className="text-[#6E923C]">Premium Bikes</span> for
+          Explore Our <span className="text-[#27ae60]">Premium Bikes</span> for
           Every Adventure
         </h1>
       </div>

@@ -4,7 +4,7 @@ const Form = () => {
       <div className="space-y-3">
         <div className="form-control w-full">
           <input
-            className="input input-bordered border-[#6E923C] font-satoshi"
+            className="input input-bordered border-[#27ae60] font-satoshi"
             type="text"
             placeholder="Name"
             name="name"
@@ -12,7 +12,7 @@ const Form = () => {
         </div>
         <div className="form-control w-full">
           <input
-            className="input input-bordered border-[#6E923C] font-satoshi"
+            className="input input-bordered border-[#27ae60] font-satoshi"
             type="text"
             placeholder="Email Address"
             name="mail"
@@ -20,7 +20,7 @@ const Form = () => {
         </div>
         <div className="form-control w-full">
           <input
-            className="input input-bordered border-[#6E923C] font-satoshi"
+            className="input input-bordered border-[#27ae60] font-satoshi"
             type="text"
             placeholder="Subject"
             name="subject"
@@ -28,7 +28,7 @@ const Form = () => {
         </div>
         <div className="form-control w-full">
           <textarea
-            className="input input-bordered border-[#6E923C] h-20 xl:h-24 pt-2 font-satoshi"
+            className="input input-bordered border-[#27ae60] h-20 xl:h-24 pt-2 font-satoshi"
             placeholder="Your Message"
             name="message"
           />
@@ -36,7 +36,7 @@ const Form = () => {
       </div>
       <div className="form-control mt-2 relative">
         <button
-          className="flex justify-center items-center gap-1 xl:gap-[10px] bg-[#6E923C] h-[35px] xl:h-[40px] text-white text-[8px] xl:text-[16px] rounded-md font-vietnam-bold"
+          className="flex justify-center items-center gap-1 xl:gap-[10px] bg-[#27ae60] h-[35px] xl:h-[40px] text-white text-[8px] xl:text-[16px] rounded-md font-vietnam-bold"
           type="submit"
           value="submit"
         >

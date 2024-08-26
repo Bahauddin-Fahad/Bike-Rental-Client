@@ -22,7 +22,7 @@ const Testimonial = () => {
         <div className="space-y-4 xl:space-y-[30px] flex flex-col items-center max-w-2xl text-center mx-auto px-2">
           <h1 className="font-vietnam text-[20px] xl:text-[40px] tracking-tight leading-[25px] xl:leading-[48px]">
             Hear What Our Clients Have to Say{" "}
-            <span className="text-[#6E923C]">About Their Journey</span>
+            <span className="text-[#27ae60]">About Their Journey</span>
           </h1>
           <p className="font-shatoshi text-xs xl:text-base 2xl:text-xl">
             With our top-quality bikes and exceptional service, our clients'
@@ -37,7 +37,7 @@ const Testimonial = () => {
               className="flex flex-col items-center justify-between space-y-10"
             >
               <p className="flex justify-center">
-                <FaQuoteRight className="text-6xl text-[#6E923C]" />
+                <FaQuoteRight className="text-6xl text-[#27ae60]" />
               </p>
               <p className="mx-10 text-justify font-satoshi text-xl h-[180px]">
                 “{testimonial.review}”

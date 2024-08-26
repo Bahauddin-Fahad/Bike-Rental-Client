@@ -1,19 +1,25 @@
-import { FaMotorcycle } from "react-icons/fa";
+import {
+  FaMotorcycle,
+  FaThumbsUp,
+  FaUserFriends,
+  FaLeaf,
+} from "react-icons/fa";
 import { GiFullMotorcycleHelmet } from "react-icons/gi";
 import { BiKey } from "react-icons/bi";
+
 const Missions = () => {
   return (
     <div className="space-y-5">
       <div className="max-w-xl mx-auto">
         <h1 className="font-vietnam-bold text-accent text-[20px] xl:text-[40px] 2xl:text-[55px] text-center tracking-tight ">
-          Our <span className="text-[#6E923C]">Mission</span> &{" "}
-          <span className="text-[#6E923C]">Vision</span>
+          Our <span className="text-[#27ae60]">Mission</span> &{" "}
+          <span className="text-[#27ae60]">Vision</span>
         </h1>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 grow-[2] w-full">
-        <div className="h-[230px] border border-black dark:border-white flex gap-y-3 flex-col justify-center items-center bg-secondary dark:bg-transparent">
-          <FaMotorcycle className="text-5xl text-accent" />
+        <div className="h-[230px] border border-[#27ae60] dark:border-white flex gap-y-3 flex-col justify-center items-center bg-secondary dark:bg-transparent">
+          <FaMotorcycle className="text-5xl text-[#27ae60]" />
           <div className="space-y-2">
             <p className="text-center font-bold">Empower Every Ride</p>
             <p className="text-center text-sm max-w-xs">
@@ -22,8 +28,8 @@ const Missions = () => {
             </p>
           </div>
         </div>
-        <div className="h-[230px] border border-black dark:border-white flex gap-y-3 flex-col justify-center items-center bg-secondary dark:bg-transparent">
-          <GiFullMotorcycleHelmet className="text-5xl text-accent" />
+        <div className="h-[230px] border border-[#27ae60] dark:border-white flex gap-y-3 flex-col justify-center items-center bg-secondary dark:bg-transparent">
+          <GiFullMotorcycleHelmet className="text-5xl text-[#27ae60]" />
           <div className="space-y-2">
             <p className="text-center font-bold">Sustainable Mobility</p>
             <p className="text-center text-sm max-w-xs">
@@ -33,8 +39,8 @@ const Missions = () => {
             </p>
           </div>
         </div>
-        <div className="h-[230px] border border-black dark:border-white flex gap-y-3 flex-col justify-center items-center bg-secondary dark:bg-transparent">
-          <BiKey className="text-5xl text-accent" />
+        <div className="h-[230px] border border-[#27ae60] dark:border-white flex gap-y-3 flex-col justify-center items-center bg-secondary dark:bg-transparent">
+          <FaThumbsUp className="text-5xl text-[#27ae60]" />
           <div className="space-y-2">
             <p className="text-center font-bold">Customer-Centric Service</p>
             <p className="text-center text-sm max-w-xs">
@@ -43,8 +49,8 @@ const Missions = () => {
             </p>
           </div>
         </div>
-        <div className="h-[230px] border border-black dark:border-white flex gap-y-3 flex-col justify-center items-center bg-secondary dark:bg-transparent">
-          <FaMotorcycle className="text-5xl text-accent" />
+        <div className="h-[230px] border border-[#27ae60] dark:border-white flex gap-y-3 flex-col justify-center items-center bg-secondary dark:bg-transparent">
+          <FaUserFriends className="text-5xl text-[#27ae60]" />
           <div className="space-y-2">
             <p className="text-center font-bold">Leader in Bike Rentals</p>
             <p className="text-center text-sm max-w-xs">
@@ -53,8 +59,8 @@ const Missions = () => {
             </p>
           </div>
         </div>
-        <div className="h-[230px] border border-black dark:border-white flex gap-y-3 flex-col justify-center items-center bg-secondary dark:bg-transparent">
-          <GiFullMotorcycleHelmet className="text-5xl text-accent" />
+        <div className="h-[230px] border border-[#27ae60] dark:border-white flex gap-y-3 flex-col justify-center items-center bg-secondary dark:bg-transparent">
+          <FaLeaf className="text-5xl text-[#27ae60]" />
           <div className="space-y-2">
             <p className="text-center font-bold">Eco-Friendly Impact</p>
             <p className="text-center text-sm max-w-xs">
@@ -64,8 +70,8 @@ const Missions = () => {
             </p>
           </div>
         </div>
-        <div className="h-[230px] border border-black dark:border-white flex gap-y-3 flex-col justify-center items-center bg-secondary dark:bg-transparent">
-          <BiKey className="text-5xl text-accent" />
+        <div className="h-[230px] border border-[#27ae60] dark:border-white flex gap-y-3 flex-col justify-center items-center bg-secondary dark:bg-transparent">
+          <BiKey className="text-5xl text-[#27ae60]" />
           <div className="space-y-2">
             <p className="text-center font-bold">Top-Notch Experience</p>
             <p className="text-center text-sm max-w-xs">

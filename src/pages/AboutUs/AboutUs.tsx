@@ -7,9 +7,9 @@ import { useEffect } from "react";
 import JourneyAchievements from "./JourneyAchievements";
 
 const AboutUs = () => {
-  useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-  });
+  // useEffect(() => {
+  //   window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  // });
   return (
     <div className="max-w-6xl mx-auto space-y-20 my-10">
       <Header />

@@ -7,7 +7,7 @@ const Header = () => {
       </h1>
       <h1 className="font-vietnam-bold text-accent text-[20px] xl:text-4xl my-4">
         A Platform For <br />
-        <span className="text-[#6E923C]">Bike Rentals</span>
+        <span className="text-[#27ae60]">Bike Rentals</span>
       </h1>
       <h1 className="">
         <br />

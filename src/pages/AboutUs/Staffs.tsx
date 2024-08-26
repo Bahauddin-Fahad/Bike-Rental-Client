@@ -22,7 +22,7 @@ const Staffs = () => {
     <div className="space-y-5">
       <div className="max-w-lg mx-auto">
         <h1 className="font-vietnam-bold text-accent text-[20px] xl:text-[40px] 2xl:text-[55px] text-center tracking-tight ">
-          Our <span className="text-[#6E923C]">Staffs</span>
+          Our <span className="text-[#27ae60]">Staffs</span>
         </h1>
       </div>
       <div className={`glass bg-secondary dark:bg-primary pt-5`}>

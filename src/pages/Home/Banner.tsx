@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import "./Home.css";
 import Slider from "react-slick";
 import { getBannerImages } from "../../assets/jsons/banner";
@@ -6,10 +5,6 @@ import { getBannerImages } from "../../assets/jsons/banner";
 import { TBanner } from "../../types";
 
 const Banner = () => {
-  useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-  });
-
   const settings = {
     dots: true,
     arrows: false,

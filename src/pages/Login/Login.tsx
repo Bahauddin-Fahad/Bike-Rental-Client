@@ -1,84 +1,66 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useEffect } from "react";
-import { Link } from "react-router-dom";
-// import SocialLogin from "./SocialLogin";
 
-import { FieldValues, useForm } from "react-hook-form";
-
-// import { toast } from "react-toastify";
-// import { RiEyeFill, RiEyeCloseFill } from "react-icons/ri";
-// import Loading from "../Shared/Loading";
+import { Link, useNavigate } from "react-router-dom";
+import { FieldError, FieldValues, useForm } from "react-hook-form";
+import { useLoginMutation } from "../../redux/features/auth/authApi";
+import { verifyToken } from "../../utils/verifyToken";
+import { setUser, TUser } from "../../redux/features/auth/authSlice";
+import { useAppDispatch } from "../../redux/hooks";
+import { toast } from "react-toastify";
+import { useState } from "react";
+import { RiEyeFill, RiEyeCloseFill } from "react-icons/ri";
 
 const Login = () => {
-  useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-  });
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const [seePassowrd, setSeePassword] = useState(false);
 
-  const { register, handleSubmit } = useForm<FieldValues>();
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm<FieldValues>();
 
-  let signInError;
-  if (signInError) {
-    signInError = (
-      <p className="text-[red] my-2 text-base font-[inter] font-semibold">
-        User is not registered, please Sign up to register
-      </p>
-    );
-  }
-
+  const [login] = useLoginMutation();
   // Login Form Submit Function
-  const onSubmit = async () => {
-    // setLoading(true);
-    // const email = data.email;
-    // const password = data.password;
-    // const userInfo = { email, password };
-    // const config = {
-    //   headers: {
-    //     "Content-type": "application/json",
-    //   },
-    // };
-    // await axios
-    //   .post(`${process.env.REACT_APP_ENDPOINT}/user/signin`, userInfo, config)
-    //   .then((data) => {
-    //     if (data.status === 200) {
-    //       ReactGA.event({
-    //         category: "Login",
-    //         action: "Click",
-    //         label: "Login Button Clicked",
-    //       });
-    //       if (data.data.image) {
-    //         localStorage.setItem("user-image", data?.data?.image);
-    //       }
-    //       localStorage.setItem("user-id", data?.data?.id);
-    //       localStorage.setItem("token", data?.data?.token);
-    //       localStorage.setItem("user-planType", data?.data?.planType);
-    //       navigate("/");
-    //       toast.success(`Successfully Logged in as ${email || user?.email}`, {
-    //         theme: "colored",
-    //         toastId: "login",
-    //       });
-    //     }
-    //   })
-    //   .finally(() => setLoading(false));
+  const onSubmit = async (data: any) => {
+    try {
+      const userInfo = {
+        id: data.userId,
+        password: data.password,
+      };
+
+      const res = await login(userInfo).unwrap();
+      const user = verifyToken(res.data.accessToken) as TUser;
+
+      toast.success("Successfully Logged In", {
+        theme: "colored",
+        toastId: "login",
+      });
+      dispatch(setUser({ user: user, token: res.data.accessToken }));
+
+      navigate(`/`);
+    } catch (error) {
+      toast.error("Something went Wrong", { toastId: "login" });
+    }
   };
 
   // if (loading || sending) {
   //   return <Loading />;
   // }
   return (
-    <div className="grid grid-cols-1 xs:grid-cols-2 bg-white h-full">
-      <div className="text-white font-[inter] italic text-[5.27vw] hidden xs:flex justify-center items-center h-[calc(100vh-70px)] w-full bg-black p-5 md:p-10">
-        VIPWare
+    <div className="grid grid-cols-1 xs:grid-cols-2 bg-white h-screen">
+      <div className="text-white font-vietnam-bold text-[5.27vw] hidden xs:flex justify-center items-center w-full bg-accent p-5 md:p-10">
+        RideOn
       </div>
-      {/* <div className="m-auto hidden lg:block">
-    <img src={Logo} alt="logo" className="h-12" />
-  </div> */}
-      <div className="bg-white h-full text-black text-xl font-[roboto] flex justify-center items-center px-3 py-5 md:px-10 md:py-9">
+
+      <div className="bg-white h-full text-accent font-satoshi text-xl font-[roboto] flex justify-center items-center px-3 py-5 md:px-10 md:py-9">
         <div className="w-full xs:w-auto max-w-lg space-y-4">
           <p>Sign in with</p>
           {/* <SocialLogin /> */}
-          <div className="divider">or</div>
+          {/* <div className="divider">or</div> */}
           <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="flex flex-col gap-5 md:gap-10">
+            <div className="flex flex-col gap-5">
               <div>
                 <input
                   type="text"
@@ -94,24 +76,23 @@ const Login = () => {
                       message: "Provide A Valid Email",
                     },
                   })}
-                  // onChange={(e) => setEmail(e.target.value)}
                 />
-                {/* <label className="label">
+                <label className="label">
                   {errors.email?.type === "required" && (
                     <span className="label-text-alt text-[red]">
-                      {errors.email.message}
+                      {(errors.email as FieldError).message}
                     </span>
                   )}
                   {errors.email?.type === "pattern" && (
                     <span className="label-text-alt text-[red]">
-                      {errors.email.message}
+                      {(errors.email as FieldError).message}
                     </span>
                   )}
-                </label> */}
+                </label>
               </div>
               <div className="relative">
                 <input
-                  // type={seePassowrd ? "text" : "password"}
+                  type={seePassowrd ? "text" : "password"}
                   placeholder={"Password"}
                   className="input input-bordered w-full max-w-lg bg-[#F6F6F6] "
                   {...register("password", {
@@ -128,43 +109,40 @@ const Login = () => {
                 />
                 <button
                   type="button"
-                  // onClick={() => setSeePassword(!seePassowrd)}
+                  onClick={() => setSeePassword(!seePassowrd)}
                   className="absolute right-5 top-[14px]"
                 >
-                  {/* {seePassowrd ? (
+                  {seePassowrd ? (
                     <RiEyeCloseFill className="text-gray-500" />
                   ) : (
                     <RiEyeFill className="text-gray-500" />
-                  )} */}
+                  )}
                 </button>
-                {/* <label className="label">
+                <label className="label">
                   {errors.password?.type === "required" && (
                     <span className="label-text-alt text-[red]">
-                      {errors.password.message}
+                      {(errors.password as FieldError).message}
                     </span>
                   )}
                   {errors.password?.type === "pattern" && (
                     <span className="label-text-alt text-[red]">
-                      {errors.password.message}
+                      {(errors.password as FieldError).message}
                     </span>
                   )}
-                </label> */}
+                </label>
               </div>
             </div>
 
-            {signInError}
+            {/* {signInError} */}
             <input
               type="submit"
-              className="btn btn-primary w-full text-white text-base md:text-xl normal-case"
+              className="btn btn-accent w-full text-white text-base md:text-xl normal-case"
               value={"Log in"}
             />
           </form>
           <div className="flex gap-2 justify-center text-sm md:text-lg">
             <p>{"Don't have an account?"}</p>
-            <Link
-              className="decoration-transparent text-accent font-semibold"
-              to="/signup"
-            >
+            <Link className="text-accent font-semibold" to="/signup">
               {"Sign up"}
             </Link>
           </div>

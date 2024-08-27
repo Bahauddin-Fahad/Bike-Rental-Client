@@ -9,7 +9,8 @@ const ContactUs = () => {
     >
       <div className="space-y-4 xl:space-y-[20px] max-w-md">
         <h1 className="font-vietnam text-[20px] xl:text-[30px] 2xl:text-[40px] xl:leading-[48px] tracking-tight">
-          Contact Us for any kind of Query
+          <span className="text-[#27ae60]">Contact Us</span> for any kind of
+          Query
         </h1>
         <p className="font-satoshi text-xs xl:text-base xl:leading-[28px]">
           We&apos;d love to hear from you! Reach out to us with any questions,

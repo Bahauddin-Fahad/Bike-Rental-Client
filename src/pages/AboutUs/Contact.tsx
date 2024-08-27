@@ -7,7 +7,8 @@ const Contact = () => {
     <div className="grid grid-cols-1 xl:grid-cols-2 items-center justify-between gap-5 xl:gap-12 bg-secondary dark:bg-primary rounded-2xl xl:rounded-[40px] p-8 xl:p-[80px] shadow">
       <div className="space-y-4 xl:space-y-[20px] max-w-md">
         <h1 className="font-vietnam text-[20px] xl:text-[30px] 2xl:text-[40px] xl:leading-[48px] tracking-tight">
-          Contact Us for any kind of Query
+          <span className="text-[#27ae60]">Contact Us</span> for any kind of
+          Query
         </h1>
         <p className="font-satoshi text-xs xl:text-base xl:leading-[28px]">
           We&apos;d love to hear from you! Reach out to us with any questions,

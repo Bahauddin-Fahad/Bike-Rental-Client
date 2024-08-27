@@ -30,10 +30,10 @@ const JourneyAchievements = () => {
               >
                 <FaCheckCircle className="text-2xl text-[#27ae60]" />
                 <div className="flex flex-col">
-                  <h3 className="text-xl text-accent font-vietnam">
+                  <h3 className="text-sm xl:text-xl text-accent font-vietnam">
                     {milestone.year}
                   </h3>
-                  <p className="text-sm text-black font-satoshi">
+                  <p className="text-xs xl:text-sm text-black font-satoshi">
                     {milestone.event}
                   </p>
                 </div>
@@ -53,10 +53,10 @@ const JourneyAchievements = () => {
               >
                 <FaTrophy className="text-2xl text-[#27ae60]" />
                 <div className="flex flex-col">
-                  <h3 className="text-xl text-accent font-vietnam">
+                  <h3 className="text-sm xl:text-xl text-accent font-vietnam">
                     {achievement.title}
                   </h3>
-                  <p className="text-sm text-black font-satoshi">
+                  <p className="text-xs xl:text-sm text-black font-satoshi">
                     {achievement.description}
                   </p>
                 </div>

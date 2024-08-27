@@ -4,7 +4,7 @@ import { useEffect } from "react";
 // import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 // import { toast } from "react-toastify";
 import { TBike } from "../../types";
-import { useGetSingleBikeQuery } from "../../redux/features/bikeApi";
+import { useGetSingleBikeQuery } from "../../redux/features/bike/bikeApi";
 
 const BikeDetails = () => {
   useEffect(() => {
@@ -56,7 +56,7 @@ const BikeDetails = () => {
           <span className="font-normal tracking-wide dark:text-[#bdbdbd9e]">
             {bikeDetails?.name.split(" ")[0]}
           </span>
-          <span className="text-accent">
+          <span className="text-[#27ae60]">
             {bikeDetails?.name.split(" ").slice(1).join(" ")}
           </span>
         </p>

@@ -19,7 +19,6 @@ function App() {
     }
   };
   useEffect(() => {
-    // setTheme(localStorage.getItem("theme"));
     document.body.className = theme;
   }, [theme]);
   return (

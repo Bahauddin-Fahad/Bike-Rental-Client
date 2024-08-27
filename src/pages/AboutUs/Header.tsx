@@ -2,7 +2,7 @@ const Header = () => {
   return (
     <div data-aos="zoom-in">
       <div className="border-t-2 w-[60px] border-accent" />
-      <h1 className="uppercase my-5 text-[20px] tracking-[10px]">
+      <h1 className="uppercase my-5 xl:text-[20px] tracking-[10px]">
         We are RideOn Rentals
       </h1>
       <h1 className="font-vietnam-bold text-accent text-[20px] xl:text-4xl my-4">
@@ -12,7 +12,7 @@ const Header = () => {
       <h1 className="">
         <br />
       </h1>
-      <p className="text-lg">
+      <p className="text-sm xl:text-lg">
         RideOn Rentals is your ultimate platform for high-quality bike rentals,
         catering to riders of all levels. Whether you're planning a leisurely
         ride, an adventurous trail, or a daily commute, RideOn Rentals offers a

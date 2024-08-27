@@ -3,9 +3,7 @@ body.dark {
     color: White !important;
   }
 }
-/* .slick-slide > div {
-    height: auto !important;
-  } */
+
 .slick-slide > div > div {
   outline: none !important;
 }

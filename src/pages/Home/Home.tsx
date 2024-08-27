@@ -1,5 +1,6 @@
 import Banner from "./Banner";
 import ContactUs from "./ContactUs";
+
 import HomeBikes from "./HomeBikes";
 import Testimonial from "./Testimonial";
 import WhyChooseUs from "./WhyChooseUs";
@@ -15,6 +16,7 @@ const Home = () => {
       <Testimonial />
       <ContactUs />
       <WhyChooseUs />
+      {/* <Coupon /> */}
     </div>
   );
 };

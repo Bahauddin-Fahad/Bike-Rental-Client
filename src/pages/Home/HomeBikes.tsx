@@ -1,15 +1,14 @@
 import { TBike } from "../../types";
 
-import { useGetBikesQuery } from "../../redux/features/bikeApi";
 import Loading from "../../components/ui/Loading";
 import BikeCard from "../../components/bike/BikeCard";
+import { useGetBikesQuery } from "../../redux/features/bike/bikeApi";
 
 const HomeBikes = () => {
   const queryObj = { isAvailable: true };
 
   const { data: bikeData, isLoading } = useGetBikesQuery(queryObj);
   const bikes: TBike[] = bikeData?.data?.result;
-  console.log(bikes);
 
   if (isLoading) {
     return <Loading />;

@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // import { Control, FieldValues } from "react-hook-form";
+import { BaseQueryApi } from "@reduxjs/toolkit/query";
 
 export type TBanner = {
   name: string;
@@ -19,6 +20,15 @@ export type TBike = {
   isAvailable: boolean;
 };
 
+export type TResponse<T> = {
+  data?: T;
+  statusCode: number;
+  success: boolean;
+  message: string;
+  averageRating?: number;
+};
+
+export type TResponseRedux<T> = TResponse<T> & BaseQueryApi;
 // export type RatingProps = {
 //   initialRating?: number;
 //   onChange?: (rate: number) => void;

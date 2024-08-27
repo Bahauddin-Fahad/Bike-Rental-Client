@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
-import { baseApi } from "../api/baseApi";
+import { baseApi } from "../../api/baseApi";
 
 const bikeApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
@@ -8,7 +8,6 @@ const bikeApi = baseApi.injectEndpoints({
       query: (queryObj) => {
         const params = new URLSearchParams();
         const { searchTerm, sort, page, limit, isAvailable } = queryObj || {};
-        console.log(isAvailable);
 
         if (searchTerm) {
           params.append("searchTerm", searchTerm);

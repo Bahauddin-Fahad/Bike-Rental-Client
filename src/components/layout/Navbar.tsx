@@ -1,24 +1,35 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { logout, useCurrentUser } from "../../redux/features/auth/authSlice";
+import toast from "react-hot-toast";
 
 type TButtonName = "about" | string;
 
 const Navbar = ({ toggleTheme }: any) => {
   const params = useLocation().pathname;
   const [buttonName, setButtonName] = useState<TButtonName>(params.slice(1));
+  const dispatch = useAppDispatch();
+  const user = useAppSelector(useCurrentUser);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setButtonName(params.slice(1));
   }, [params]);
 
+  const handleLogOut = () => {
+    dispatch(logout());
+    toast.success("Logged out successfully", { duration: 4000 });
+  };
+
   return (
-    <div className="custom-padding navbar bg-primary font-semibold h-14 xl:h-28 sticky top-0 z-20 text-white">
+    <div className="custom-padding navbar bg-white dark:bg-primary font-semibold h-14 xl:h-28 sticky top-0 z-20 text-black dark:text-white shadow-md">
       <div className="navbar-start xl:relative">
         <Link to={"/"} className="xl:text-2xl space-x-2">
-          <span className="text-[#27ae60]">RideOn</span>
+          <span className="text-[#27ae60] font-semibold">RideOn</span>
           <span>Rentals</span>
         </Link>
       </div>
@@ -48,11 +59,22 @@ const Navbar = ({ toggleTheme }: any) => {
         </ul>
       </div>
       <div className="navbar-end xl:space-x-4">
-        <div className="relative">
-          <button className="w-[80px] h-[25px] xl:w-[120px] xl:h-[40px] bg-accent text-white text-[8px] xl:text-[16px] rounded-sm xl:rounded-[5px] font-vietnam-bold">
+        {user ? (
+          <button
+            onClick={handleLogOut}
+            className="w-[80px] h-[25px] xl:w-[120px] xl:h-[40px] bg-accent text-white text-[8px] xl:text-[16px] rounded-sm xl:rounded-[5px] font-vietnam-bold"
+          >
+            Logout
+          </button>
+        ) : (
+          <button
+            onClick={() => navigate("/login")}
+            className="font-vietnam-bold"
+          >
             Login
           </button>
-        </div>
+        )}
+
         <input
           onChange={toggleTheme}
           type="checkbox"

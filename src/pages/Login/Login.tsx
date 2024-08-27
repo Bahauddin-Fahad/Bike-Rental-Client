@@ -6,9 +6,9 @@ import { useLoginMutation } from "../../redux/features/auth/authApi";
 import { verifyToken } from "../../utils/verifyToken";
 import { setUser, TUser } from "../../redux/features/auth/authSlice";
 import { useAppDispatch } from "../../redux/hooks";
-import { toast } from "react-toastify";
 import { useState } from "react";
 import { RiEyeFill, RiEyeCloseFill } from "react-icons/ri";
+import toast from "react-hot-toast";
 
 const Login = () => {
   const dispatch = useAppDispatch();
@@ -19,48 +19,40 @@ const Login = () => {
     register,
     formState: { errors },
     handleSubmit,
-  } = useForm<FieldValues>();
+  } = useForm<FieldValues>({
+    defaultValues: { email: "kabir@example.com", password: "password123" },
+  });
 
   const [login] = useLoginMutation();
-  // Login Form Submit Function
+
   const onSubmit = async (data: any) => {
     try {
       const userInfo = {
-        id: data.userId,
+        email: data.email,
         password: data.password,
       };
 
       const res = await login(userInfo).unwrap();
-      const user = verifyToken(res.data.accessToken) as TUser;
+      const user = verifyToken(res.token) as TUser;
 
-      toast.success("Successfully Logged In", {
-        theme: "colored",
-        toastId: "login",
-      });
-      dispatch(setUser({ user: user, token: res.data.accessToken }));
-
-      navigate(`/`);
-    } catch (error) {
-      toast.error("Something went Wrong", { toastId: "login" });
+      toast.success("Successfully Logged In", { duration: 4000 });
+      dispatch(setUser({ user: user, token: res.token }));
+      navigate(`/dashboard`);
+    } catch (error: any) {
+      toast.error(error?.data?.message, { duration: 4000 });
     }
   };
 
-  // if (loading || sending) {
-  //   return <Loading />;
-  // }
   return (
     <div className="grid grid-cols-1 xs:grid-cols-2 bg-white h-screen">
-      <div className="text-white font-vietnam-bold text-[5.27vw] hidden xs:flex justify-center items-center w-full bg-accent p-5 md:p-10">
+      <h1 className="text-white font-vietnam-bold text-[6.27vw] hidden xs:flex justify-center items-center w-full bg-accent p-5 md:p-10">
         RideOn
-      </div>
-
+      </h1>
       <div className="bg-white h-full text-accent font-satoshi text-xl font-[roboto] flex justify-center items-center px-3 py-5 md:px-10 md:py-9">
-        <div className="w-full xs:w-auto max-w-lg space-y-4">
-          <p>Sign in with</p>
-          {/* <SocialLogin /> */}
-          {/* <div className="divider">or</div> */}
+        <div className="w-full xs:w-1/2 max-w-lg space-y-4">
+          <p className="font-vietnam-bold">Sign in with</p>
           <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="flex flex-col gap-5">
+            <div className="flex flex-col">
               <div>
                 <input
                   type="text"
@@ -100,16 +92,13 @@ const Login = () => {
                       value: true,
                       message: "Password is required",
                     },
-                    pattern: {
-                      value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/,
-                      message:
-                        "Must Contain 8 Characters including 1 Uppercase & 1 Lowercase Letter",
-                    },
                   })}
                 />
                 <button
                   type="button"
-                  onClick={() => setSeePassword(!seePassowrd)}
+                  onClick={(e) => {
+                    e.preventDefault(), setSeePassword(!seePassowrd);
+                  }}
                   className="absolute right-5 top-[14px]"
                 >
                   {seePassowrd ? (
@@ -124,20 +113,14 @@ const Login = () => {
                       {(errors.password as FieldError).message}
                     </span>
                   )}
-                  {errors.password?.type === "pattern" && (
-                    <span className="label-text-alt text-[red]">
-                      {(errors.password as FieldError).message}
-                    </span>
-                  )}
                 </label>
               </div>
             </div>
 
-            {/* {signInError} */}
             <input
               type="submit"
               className="btn btn-accent w-full text-white text-base md:text-xl normal-case"
-              value={"Log in"}
+              value={"Login"}
             />
           </form>
           <div className="flex gap-2 justify-center text-sm md:text-lg">

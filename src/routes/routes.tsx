@@ -6,6 +6,7 @@ import Home from "../pages/Home/Home";
 import BikeDetails from "../pages/bikes/BikeDetails";
 import AboutUs from "../pages/AboutUs/AboutUs";
 import Dashboard from "../pages/Dashboard/Dashboard";
+import ProtectedRoute from "../components/layout/ProtectedRoute";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,14 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/signup",
+        element: <Signup />,
+      },
+      {
         path: "bikes/:id",
         element: <BikeDetails />,
       },
@@ -26,17 +35,13 @@ const router = createBrowserRouter([
       },
       {
         path: "dashboard",
-        element: <Dashboard />,
+        element: (
+          <ProtectedRoute role="user">
+            <Dashboard />
+          </ProtectedRoute>
+        ),
       },
     ],
-  },
-  {
-    path: "/login",
-    element: <Login />,
-  },
-  {
-    path: "/signup",
-    element: <Signup />,
   },
 ]);
 

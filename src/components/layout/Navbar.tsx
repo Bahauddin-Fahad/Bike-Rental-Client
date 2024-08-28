@@ -7,7 +7,7 @@ import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { logout, useCurrentUser } from "../../redux/features/auth/authSlice";
 import toast from "react-hot-toast";
 
-type TButtonName = "about" | string;
+type TButtonName = "about" | "dashboard" | string;
 
 const Navbar = ({ toggleTheme }: any) => {
   const params = useLocation().pathname;

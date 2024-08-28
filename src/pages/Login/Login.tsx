@@ -20,7 +20,7 @@ const Login = () => {
     formState: { errors },
     handleSubmit,
   } = useForm<FieldValues>({
-    defaultValues: { email: "kabir@example.com", password: "password123" },
+    defaultValues: { email: "user@gmail.com", password: "user123" },
   });
 
   const [login] = useLoginMutation();

@@ -7,10 +7,13 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Toaster } from "react-hot-toast";
 import { useLocation } from "react-router-dom";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 function App() {
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "dark");
   const location = useLocation();
+  const pathnames = ["/login", "/signup", "/dashboard", "/dashboard/bikes"];
 
   const toggleTheme = () => {
     if (theme === "light") {
@@ -25,15 +28,18 @@ function App() {
     document.body.className = theme;
   }, [theme]);
 
+  useEffect(() => {
+    AOS.init({
+      duration: 1200, // Animation duration
+    });
+  }, []);
   return (
     <>
-      {location.pathname !== ("/login" || "/signup") && (
+      {!pathnames.includes(location.pathname) && (
         <Navbar toggleTheme={toggleTheme} />
       )}
       <MainLayout />
-
-      {location.pathname !== ("/login" || "/signup") && <Footer />}
-
+      {!pathnames.includes(location.pathname) && <Footer />}
       <Toaster />
     </>
   );

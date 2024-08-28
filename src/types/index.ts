@@ -19,6 +19,17 @@ export type TBike = {
   image: string;
   isAvailable: boolean;
 };
+export type TLoadedUser = {
+  _id: string;
+  name: string;
+  email: string;
+  phone: string;
+  address: string;
+  role: string;
+  image?: string;
+  createdAt: string;
+  updatedAt: string;
+};
 
 export type TResponse<T> = {
   data?: T;

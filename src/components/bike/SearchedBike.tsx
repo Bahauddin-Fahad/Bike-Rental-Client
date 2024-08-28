@@ -11,11 +11,11 @@ const SearchedBike = ({ searchBike }: { searchBike: string }) => {
   const navigate = useNavigate();
   const { data: bikesData, isLoading } = useGetBikesQuery(queryObj);
   const bikes: TBike[] = bikesData?.data?.result;
-  console.log(bikes);
 
   if (isLoading) {
     return <Loading />;
   }
+
   return (
     <div className="bg-primary dark:bg-secondary w-full shadow-xl mt-2 p-2 relative">
       {bikes?.length > 0 ? (

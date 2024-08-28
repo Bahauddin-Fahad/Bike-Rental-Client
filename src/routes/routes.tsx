@@ -10,6 +10,7 @@ import CompareBikes from "../pages/CompareBikes/CompareBikes";
 import Dashboard from "../pages/Dashboard/Dashboard";
 import Profile from "../pages/Dashboard/Profile";
 import AllBikes from "../pages/Bikes/AllBikes";
+import BookingList from "../pages/Dashboard/UserDashboard/BookingList";
 
 const router = createBrowserRouter([
   {
@@ -47,14 +48,30 @@ const router = createBrowserRouter([
             path: "bikes",
             element: <AllBikes />,
           },
-          // {
-          //   path: "service-management",
-          //   element: (
-          //     <AdminRoute>
-          //       <ServiceManagement />{" "}
-          //     </AdminRoute>
-          //   ),
-          // },
+          {
+            path: "/dashboard/rentals/unpaid",
+            element: (
+              <ProtectedRoute role="user">
+                <BookingList />
+              </ProtectedRoute>
+            ),
+          },
+          {
+            path: "/dashboard/rentals/unpaid",
+            element: (
+              <ProtectedRoute role="user">
+                <BookingList />
+              </ProtectedRoute>
+            ),
+          },
+          {
+            path: "/dashboard/rentals/paid",
+            element: (
+              <ProtectedRoute role="user">
+                <BookingList />
+              </ProtectedRoute>
+            ),
+          },
           // {
           //   path: "slot-management",
           //   element: (

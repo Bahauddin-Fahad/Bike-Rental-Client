@@ -23,7 +23,6 @@ const UpdateProfile = ({ loadedUser }: Tprops) => {
       image: loadedUser?.image,
     },
   });
-  console.log(loadedUser);
 
   useEffect(() => {
     if (loadedUser) {

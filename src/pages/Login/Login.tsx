@@ -14,13 +14,14 @@ const Login = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const [seePassowrd, setSeePassword] = useState(false);
-
+  const userDefault = { email: "user@gmail.com", password: "user123" };
+  // const adminDefault = { email: "admin@gmail.com", password: "admin123" };
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm<FieldValues>({
-    defaultValues: { email: "user@gmail.com", password: "user123" },
+    defaultValues: userDefault,
   });
 
   const [login] = useLoginMutation();

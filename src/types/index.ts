@@ -30,6 +30,16 @@ export type TLoadedUser = {
   createdAt: string;
   updatedAt: string;
 };
+export type TBooking = {
+  _id: string;
+  user: TLoadedUser;
+  bike: TBike;
+  startTime: string;
+  returnTime: string;
+  totalCost: number;
+  status: string;
+  transactionId: string;
+};
 
 export type TResponse<T> = {
   data?: T;

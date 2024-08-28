@@ -2,7 +2,12 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { MdOutlineLogout, MdPaid } from "react-icons/md";
 import { CgProfile } from "react-icons/cg";
-import { FaMotorcycle, FaHandHoldingUsd } from "react-icons/fa";
+import {
+  FaMotorcycle,
+  FaHandHoldingUsd,
+  FaChevronDown,
+  FaUsersCog,
+} from "react-icons/fa";
 import { TbLayoutSidebarLeftExpandFilled } from "react-icons/tb";
 import { useAppDispatch } from "../../redux/hooks";
 import { logout } from "../../redux/features/auth/authSlice";
@@ -10,24 +15,24 @@ import useUserDetails from "../../customHooks/useUserDetails";
 import Loading from "../ui/Loading";
 import { useState } from "react";
 type TButtonName = string;
+
 const DashboardSidebar = () => {
   const navigate = useNavigate();
-
   const pathname = useLocation().pathname;
   const [buttonName, setButtonName] = useState<TButtonName>(pathname);
+  const [isOpen, setIsOpen] = useState(false);
+  const dispatch = useAppDispatch();
 
   const { loadedUser, isLoading } = useUserDetails();
-
-  const dispatch = useAppDispatch();
 
   const handleLogOut = () => {
     dispatch(logout());
     toast.success("Logged out successfully", { duration: 3000 });
     navigate("/");
   };
-  // useEffect(() => {
-  //   setButtonName(pathname);
-  // }, [buttonName, pathname]);
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
 
   if (isLoading) {
     return <Loading />;
@@ -105,7 +110,7 @@ const DashboardSidebar = () => {
                     <Link
                       onClick={() => setButtonName("/dashboard/bikes")}
                       to="/dashboard/bikes"
-                      className={`text-sm font-medium flex gap-3 p-2 hover:bg-[#27ae60] text-primary dark:text-white`}
+                      className={`text-sm font-medium flex gap-3 item-center p-2 hover:bg-[#27ae60] text-primary dark:text-white`}
                     >
                       <FaMotorcycle className="text-xl mr-1" />
                       <span className="">All Bikes</span>
@@ -118,7 +123,7 @@ const DashboardSidebar = () => {
                     }`}>
                         <Link
                           to="/dashboard/adminHome"
-                           className={`text-sm font-medium flex gap-3 p-2 hover:bg-[#27ae60] text-primary dark:text-white`}
+                           className={`text-sm font-medium flex gap-3 item-center p-2 hover:bg-[#27ae60] text-primary dark:text-white`}
                         >
                           <IoHome className="text-xl mr-1" />
                           <span className="mt-2">Admin Home</span>
@@ -129,7 +134,7 @@ const DashboardSidebar = () => {
                     }`}>
                         <Link
                           to="/dashboard/user-management"
-                          className={`text-sm font-medium flex gap-3 p-2 hover:bg-[#27ae60] text-primary dark:text-white`}
+                          className={`text-sm font-medium flex gap-3 item-center p-2 hover:bg-[#27ae60] text-primary dark:text-white`}
                         >
                           <FaUsersCog className="text-xl mr-1" />
                           <span className="">Users Management</span>
@@ -138,42 +143,62 @@ const DashboardSidebar = () => {
                     </>
                   ) : (
                     <>
-                      <li
-                        className={`rounded-md ${
-                          buttonName === "/dashboard/rentals/paid"
-                            ? "bg-[#27ae60]"
-                            : ""
-                        }`}
-                      >
-                        <Link
-                          onClick={() =>
-                            setButtonName("/dashboard/rentals/paid")
-                          }
-                          to="/dashboard/rentals/paid"
-                          className={`text-sm font-medium flex gap-3 p-2 hover:bg-[#27ae60] text-primary dark:text-white`}
+                      <li>
+                        <button
+                          onClick={toggleDropdown}
+                          className={`text-sm font-medium flex items-center justify-between p-2 hover:bg-[#27ae60] text-primary dark:text-white`}
                         >
-                          <MdPaid className="text-xl mr-1" />
-                          <span className="">Paid Rentals</span>
-                        </Link>
+                          <div className="flex gap-3 item-center items-center">
+                            <FaUsersCog className="text-xl" />
+                            <span className="">Rental Management</span>
+                          </div>
+                          <FaChevronDown
+                            className={`text-sm transition-transform ${
+                              isOpen ? "rotate-180" : ""
+                            }`}
+                          />
+                        </button>
                       </li>
-                      <li
-                        className={`rounded-md ${
-                          buttonName === "/dashboard/rentals/unpaid"
-                            ? "bg-[#27ae60]"
-                            : ""
-                        }`}
-                      >
-                        <Link
-                          onClick={() =>
-                            setButtonName("/dashboard/rentals/unpaid")
-                          }
-                          to="/dashboard/rentals/unpaid"
-                          className={`text-sm font-medium flex gap-3 p-2 hover:bg-[#27ae60] text-primary dark:text-white`}
-                        >
-                          <FaHandHoldingUsd className="text-xl mr-1" />
-                          <span className="">Unpaid Rentals</span>
-                        </Link>
-                      </li>
+                      {isOpen && (
+                        <>
+                          <li
+                            className={`rounded-md ${
+                              buttonName === "/dashboard/rentals/unpaid"
+                                ? "bg-[#27ae60]"
+                                : ""
+                            }`}
+                          >
+                            <Link
+                              onClick={() =>
+                                setButtonName("/dashboard/rentals/unpaid")
+                              }
+                              to="/dashboard/rentals/unpaid"
+                              className={`text-sm font-medium flex gap-3 item-center p-2 hover:bg-[#27ae60] text-primary dark:text-white`}
+                            >
+                              <FaHandHoldingUsd className="text-xl" />
+                              <span className="">Unpaid Rentals</span>
+                            </Link>
+                          </li>
+                          <li
+                            className={`rounded-md ${
+                              buttonName === "/dashboard/rentals/paid"
+                                ? "bg-[#27ae60]"
+                                : ""
+                            }`}
+                          >
+                            <Link
+                              onClick={() =>
+                                setButtonName("/dashboard/rentals/paid")
+                              }
+                              to="/dashboard/rentals/paid"
+                              className={`text-sm font-medium flex gap-3 item-center p-2 hover:bg-[#27ae60] text-primary dark:text-white`}
+                            >
+                              <MdPaid className="text-xl" />
+                              <span className="">Paid Rentals</span>
+                            </Link>
+                          </li>
+                        </>
+                      )}
                     </>
                   )}
                 </div>
@@ -187,7 +212,7 @@ const DashboardSidebar = () => {
                     <Link
                       onClick={() => setButtonName("/dashboard")}
                       to="/dashboard"
-                      className={`text-sm font-medium flex gap-3 p-2 hover:bg-[#27ae60] text-primary dark:text-white`}
+                      className={`text-sm font-medium flex gap-3 item-center p-2 hover:bg-[#27ae60] text-primary dark:text-white`}
                     >
                       <CgProfile className="text-xl" />
                       <span className="">Profile</span>
@@ -196,7 +221,7 @@ const DashboardSidebar = () => {
                   <li className="">
                     <a
                       onClick={handleLogOut}
-                      className={`text-sm font-medium flex gap-3 p-2 hover:bg-[#27ae60] text-primary dark:text-white`}
+                      className={`text-sm font-medium flex gap-3 item-center p-2 hover:bg-[#27ae60] text-primary dark:text-white`}
                     >
                       <MdOutlineLogout className="text-lg" />{" "}
                       <span className="">Logout</span>

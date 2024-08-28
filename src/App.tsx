@@ -13,7 +13,14 @@ import "aos/dist/aos.css";
 function App() {
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "dark");
   const location = useLocation();
-  const pathnames = ["/login", "/signup", "/dashboard", "/dashboard/bikes"];
+  const pathnames = [
+    "/login",
+    "/signup",
+    "/dashboard",
+    "/dashboard/bikes",
+    "/dashboard/rentals/unpaid",
+    "/dashboard/rentals/paid",
+  ];
 
   const toggleTheme = () => {
     if (theme === "light") {

@@ -1,51 +1,19 @@
 import { useParams } from "react-router-dom";
-import { useEffect } from "react";
-
-// import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-// import { toast } from "react-toastify";
 import { TBike } from "../../types";
 import { useGetSingleBikeQuery } from "../../redux/features/bike/bikeApi";
+import BookingModal from "../../components/modals/bookingModal";
+import { useState } from "react";
 
 const BikeDetails = () => {
-  useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-  }, []);
+  // useEffect(() => {
+  //   window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  // }, []);
 
+  const [modalType, setModalType] = useState<string>("");
   const { id } = useParams();
   const { data } = useGetSingleBikeQuery(id);
   const bikeDetails: TBike = data?.data;
 
-  //   const dispatch = useAppDispatch();
-
-  //   const { products } = useAppSelector((state) => state.products);
-
-  //   const handleAddToCart = () => {
-  //     const existingProduct = products.find(
-  //       (product) => product.id === bikeDetails?._id
-  //     );
-
-  //     if (existingProduct) {
-  //       // Product already exists in the cart
-  //       toast.error("This product is already in your cart.", {
-  //         theme: "colored",
-  //       });
-  //     } else {
-  //       // Product does not exist in the cart, proceed with dispatching
-  //       const productInfo = {
-  //         id: bikeDetails?._id,
-  //         name: bikeDetails?.name,
-  //         price: bikeDetails?.price,
-  //         quantity,
-  //         image: bikeDetails?.image,
-  //         inStock,
-  //       };
-
-  //       dispatch(addProduct(productInfo));
-  //       toast.success("Product added to cart successfully.", {
-  //         theme: "colored",
-  //       });
-  //     }
-  //   };
   return (
     <div className="custom-padding mx-auto my-10">
       <div
@@ -61,21 +29,17 @@ const BikeDetails = () => {
           </span>
         </p>
       </div>
-      <div className="card shadow-xl mt-6 bg-secondary dark:bg-primary p-10 space-y-10">
+      <div className="card shadow-xl mt-6 bg-secondary dark:bg-primary p-10 space-y-10 max-w-4xl mx-auto">
         <div className="relative glass bg-[#272727]">
           <div className="max-w-xl mx-auto h-[200px] sm:h-[250px] md:h-[365px] cursor-pointer">
-            {/* <PhotoProvider>
-              <PhotoView src={bikeDetails?.image}> */}
             <img
               src={bikeDetails?.image}
               alt="Post"
               className="h-[200px] sm:h-[250px] md:h-[365px] mx-auto object-contain xs:object-cover"
             />
-            {/* </PhotoView>
-            </PhotoProvider> */}
           </div>
         </div>
-        <div className="card-body p-0">
+        <div className="card-body p-0 space-y-2">
           <h2 className="text-base xs:text-2xl font-semibold">
             {bikeDetails?.name}
           </h2>
@@ -132,38 +96,28 @@ const BikeDetails = () => {
               </p>
             </div>
           </div>
-
-          <div className="flex justify-between items-center">
-            {/* <div className="flex items-center gap-3">
-              <div className="grow">
-                <h1 className="text-left text-[10px] xs:text-xs sm:text-lg text-[#8A8A8A]">
-                  Select quantity
-                </h1>
-              </div>
-              <QuantitySelector
-                quantity={quantity}
-                handleIncrement={handleIncrement}
-                handleDecrement={handleDecrement}
-                inStock={inStock}
-              />
-            </div> */}
-            {/* <div className="card-actions justify-end items-end">
-              <button
-                // onClick={handleAddToCart}
-                className={`h-[30px] w-[100px] xs:h-[50px] xs:w-[177px] rounded-lg xs:rounded-xl text-sm xs:text-lg font-semibold text-black ${
-                  inStock && quantity
-                    ? "bg-accent hover:scale-110 duration-500"
-                    : "cursor-not-allowed bg-gray-300 text-gray-500"
-                }`}
-                // disabled={productDetails?.stockQuantity <= 0 ? true : false}
-                disabled={isDisabled ? true : false}
-              >
-                {bikeDetails?.stockQuantity ? "Add to Cart" : "Sold Out"}
-              </button>
-            </div> */}
-          </div>
+        </div>
+        <div className="card-actions">
+          <label
+            htmlFor="booking-modal"
+            onClick={() => {
+              setModalType("book");
+            }}
+            className={`btn h-[30px] xs:h-[70px] w-8/12 mx-auto rounded-lg xs:rounded-xl text-sm xs:text-lg font-semibold font-vietnam-bold ${
+              bikeDetails?.isAvailable
+                ? "hover:scale-105 duration-500 bg-[#27ae60] hover:bg-[#27ae60] text-white"
+                : "bg-secondary text-primary"
+            }`}
+            // disabled={productDetails?.stockQuantity <= 0 ? true : false}
+            // disabled={bikeDetails?.isAvailable ? false : true}
+          >
+            {bikeDetails?.isAvailable ? "Book Now" : "Unavailable"}
+          </label>
         </div>
       </div>
+      {modalType && bikeDetails?.isAvailable && (
+        <BookingModal bikeDetails={bikeDetails} setModalType={setModalType} />
+      )}
     </div>
   );
 };

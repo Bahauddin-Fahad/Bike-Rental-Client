@@ -57,13 +57,21 @@ const bikeApi = baseApi.injectEndpoints({
       },
       invalidatesTags: ["bookings", "bikes"],
     }),
-
     calculateTotalCost: builder.mutation({
       query: (options) => {
         return {
           url: `/rentals/${options.id}/calculate`,
           method: "PUT",
           body: options.data,
+        };
+      },
+      invalidatesTags: ["bookings", "bikes"],
+    }),
+    payBookingCost: builder.mutation({
+      query: (id) => {
+        return {
+          url: `/rentals/${id}/pay`,
+          method: "PUT",
         };
       },
       invalidatesTags: ["bookings", "bikes"],
@@ -76,4 +84,5 @@ export const {
   useGetAllBookingsQuery,
   useCreateBookingMutation,
   useCalculateTotalCostMutation,
+  usePayBookingCostMutation,
 } = bikeApi;

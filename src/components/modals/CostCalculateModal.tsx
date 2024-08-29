@@ -19,7 +19,7 @@ const CostCalculateModal = ({
     },
   });
 
-  const onSubmit = async (details: any) => {
+  const handleCalculateCost = async (details: any) => {
     const options = {
       id: bookingToCalculate?._id,
       data: { returnTime: details?.returnTime },
@@ -29,6 +29,7 @@ const CostCalculateModal = ({
       loading: "Calculating Cost...",
       success: (res) => {
         if (res.success) {
+          setBookingToCalculate(null);
           return "Cost Calculated successfully";
         } else {
           throw new Error(res.message);
@@ -37,19 +38,6 @@ const CostCalculateModal = ({
       error: "Failed to Calculate Cost",
     });
   };
-  //   const handleCreateBooking = async (details: any) => {
-  //     try {
-  //       const response = await createBooking(details).unwrap();
-
-  //       if (response?.statusCode === 200) {
-  //         toast.success(response?.message, { duration: 3000 });
-  //         window.location.href = response.data.payment_url;
-  //       }
-  //     } catch (error) {
-  //       console.log(error);
-  //       toast.error((error as TErrorResponse)?.data?.message);
-  //     }
-  //   };
 
   return (
     <div>
@@ -57,7 +45,7 @@ const CostCalculateModal = ({
       <div className="modal">
         <div className="modal-box max-w-lg !important space-y-4">
           <h3 className="font-bold text-lg xl:text-xl text-center text-primary">{`Would You Like to Calculate the Cost?`}</h3>
-          <form onSubmit={handleSubmit(onSubmit)} className="">
+          <form onSubmit={handleSubmit(handleCalculateCost)} className="">
             <div className="form-control max-w-xs mx-auto">
               <label className="label">
                 <span className="label-text font-semibold">Return Time *</span>
@@ -87,10 +75,10 @@ const CostCalculateModal = ({
                 className="btn btn-md btn-accent font-bold"
               />
               <label
+                htmlFor="calculate-modal"
                 onClick={() => {
                   setBookingToCalculate(null);
                 }}
-                htmlFor="calculate-modal"
                 className="btn btn-md font-bold"
               >
                 Cancel

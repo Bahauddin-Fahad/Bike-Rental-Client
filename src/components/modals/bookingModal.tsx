@@ -15,12 +15,8 @@ const BookingModal = ({ bikeDetails, setModalType }: any) => {
     defaultValues: {},
   });
 
-  const onSubmit = async (data: any) => {
+  const handleCreateBooking = async (data: any) => {
     const details = { bike: bikeDetails?._id, startTime: data?.startTime };
-
-    handleCreateBooking(details);
-  };
-  const handleCreateBooking = async (details: any) => {
     try {
       const response = await createBooking(details).unwrap();
 
@@ -40,7 +36,7 @@ const BookingModal = ({ bikeDetails, setModalType }: any) => {
       <div className="modal">
         <div className="modal-box max-w-lg !important space-y-4">
           <h3 className="font-bold text-lg xl:text-xl text-center text-primary">{`Would You Like to Book ${bikeDetails?.name}?`}</h3>
-          <form onSubmit={handleSubmit(onSubmit)} className="">
+          <form onSubmit={handleSubmit(handleCreateBooking)} className="">
             <div className="form-control max-w-xs mx-auto">
               <label className="label">
                 <span className="label-text font-semibold">Start Time *</span>

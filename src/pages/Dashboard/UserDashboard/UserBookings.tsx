@@ -4,10 +4,12 @@ import Loading from "../../../components/ui/Loading";
 import { TBooking } from "../../../types";
 import moment from "moment";
 import { useLocation } from "react-router-dom";
+import PayBookingModal from "../../../components/modals/PayBookingModal";
 
-// type TBookingState = TBooking | object | null;
+type TBookingState = TBooking | object | null;
 
 const UserBookings = () => {
+  const [bookingToPay, setBookingToPay] = useState<TBookingState>();
   const pathname = useLocation().pathname;
   const routeName = pathname.split("/").reverse()[0];
   const [currentPage, setCurrentPage] = useState(1);
@@ -20,6 +22,7 @@ const UserBookings = () => {
   };
 
   const { data, isLoading, refetch } = useGetUserBookingsQuery(queryObj);
+  console.log(data);
 
   const bookings = data?.data?.result as TBooking[];
   const meta = data?.data?.meta;
@@ -85,8 +88,9 @@ const UserBookings = () => {
                     <div className="flex gap-2 items-center">
                       {booking?.totalCost && booking?.returnTime && (
                         <label
+                          htmlFor="pay-booking-modal"
                           onClick={() => {
-                            // handleCalculateCost(booking?._id);
+                            setBookingToPay(booking);
                           }}
                           className="btn btn-sm btn-error cursor-pointer w-[80px]"
                         >
@@ -114,6 +118,12 @@ const UserBookings = () => {
             </button>
           ))}
       </div>
+      {bookingToPay && (
+        <PayBookingModal
+          bookingToPay={bookingToPay}
+          setBookingToPay={setBookingToPay}
+        />
+      )}
     </div>
   );
 };

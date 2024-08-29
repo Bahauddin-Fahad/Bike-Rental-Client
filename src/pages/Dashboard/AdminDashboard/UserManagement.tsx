@@ -175,16 +175,6 @@ const UserList = () => {
             </button>
           ))}
       </div>
-      {/* {(modalType === "add" ||
-      (modalType === "edit" &&
-        product &&
-        Object.keys(product)?.length > 0)) && (
-      <ProductModal
-        product={product}
-        setProduct={setProduct}
-        setModalType={setModalType}
-      />
-    )} */}
 
       {userToDelete && (
         <DeleteUserModal

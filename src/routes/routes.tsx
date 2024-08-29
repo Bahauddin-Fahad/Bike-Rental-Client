@@ -5,17 +5,21 @@ import Signup from "../pages/Signup/Signup";
 import Home from "../pages/Home/Home";
 import BikeDetails from "../pages/Bikes/BikeDetails";
 import AboutUs from "../pages/AboutUs/AboutUs";
-import ProtectedRoute from "../components/layout/ProtectedRoute";
 import CompareBikes from "../pages/CompareBikes/CompareBikes";
 import Dashboard from "../pages/Dashboard/Dashboard";
 import Profile from "../pages/Dashboard/Profile";
 import AllBikes from "../pages/Bikes/AllBikes";
 import BookingList from "../pages/Dashboard/UserDashboard/BookingList";
+import UserManagement from "../pages/Dashboard/AdminDashboard/UserManagement";
+import AdminRoute from "./AdminRoute";
+import ProtectedRoute from "./ProtectedRoute";
+import ErrorPage from "../pages/Error/ErrorPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <ErrorPage />,
     children: [
       {
         index: true,
@@ -38,7 +42,7 @@ const router = createBrowserRouter([
       {
         path: "/dashboard",
         element: (
-          <ProtectedRoute role="user">
+          <ProtectedRoute>
             <Dashboard />
           </ProtectedRoute>
         ),
@@ -51,7 +55,7 @@ const router = createBrowserRouter([
           {
             path: "/dashboard/rentals/unpaid",
             element: (
-              <ProtectedRoute role="user">
+              <ProtectedRoute>
                 <BookingList />
               </ProtectedRoute>
             ),
@@ -59,7 +63,7 @@ const router = createBrowserRouter([
           {
             path: "/dashboard/rentals/unpaid",
             element: (
-              <ProtectedRoute role="user">
+              <ProtectedRoute>
                 <BookingList />
               </ProtectedRoute>
             ),
@@ -67,9 +71,17 @@ const router = createBrowserRouter([
           {
             path: "/dashboard/rentals/paid",
             element: (
-              <ProtectedRoute role="user">
+              <ProtectedRoute>
                 <BookingList />
               </ProtectedRoute>
+            ),
+          },
+          {
+            path: "/dashboard/users",
+            element: (
+              <AdminRoute>
+                <UserManagement />
+              </AdminRoute>
             ),
           },
           // {
@@ -103,15 +115,15 @@ const router = createBrowserRouter([
           // {
         ],
       },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/signup",
+        element: <Signup />,
+      },
     ],
-  },
-  {
-    path: "/login",
-    element: <Login />,
-  },
-  {
-    path: "/signup",
-    element: <Signup />,
   },
 ]);
 

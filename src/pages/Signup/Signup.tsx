@@ -6,6 +6,7 @@ import { RiEyeFill, RiEyeCloseFill } from "react-icons/ri";
 import { useSignUpMutation } from "../../redux/features/auth/authApi";
 
 import toast from "react-hot-toast";
+import { TErrorResponse } from "../../types";
 
 const Signup = () => {
   const [seePassowrd, setSeePassword] = useState(false);
@@ -35,8 +36,7 @@ const Signup = () => {
       reset();
     } catch (error: any) {
       console.log(error);
-
-      toast.error(error?.data?.message, { duration: 4000 });
+      toast.error((error as TErrorResponse)?.data?.message, { duration: 4000 });
     }
   };
 

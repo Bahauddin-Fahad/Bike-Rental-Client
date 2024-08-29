@@ -8,7 +8,9 @@ const useUserDetails = () => {
   const { data, isLoading } = useGetAllUsersQuery({
     email: user?.email,
   });
-  const loadedUser = data?.[0];
+
+  const loadedUser = data?.data?.result?.[0];
+
   if (!user) {
     return { loadedUser: null };
   }

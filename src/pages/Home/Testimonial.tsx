@@ -13,7 +13,7 @@ const Testimonial = () => {
     slidesToShow: 3,
     dots: false,
     arrows: false,
-    autoplay: false,
+    autoplay: true,
     autoplaySpeed: 3000,
   };
   return (

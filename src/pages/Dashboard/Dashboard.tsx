@@ -6,7 +6,7 @@ const Dashboard = () => {
     <div className="lg:flex">
       <DashboardSidebar />
       <div className="flex-1">
-        <div className="h-screen">
+        <div className="min-h-screen">
           <Outlet />
         </div>
       </div>

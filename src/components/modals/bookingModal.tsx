@@ -3,6 +3,7 @@
 import { FieldError, FieldValues, useForm } from "react-hook-form";
 import { useCreateBookingMutation } from "../../redux/features/booking/bookingApi";
 import toast from "react-hot-toast";
+import { TErrorResponse } from "../../types";
 
 const BookingModal = ({ bikeDetails, setModalType }: any) => {
   const [createBooking] = useCreateBookingMutation();
@@ -32,6 +33,7 @@ const BookingModal = ({ bikeDetails, setModalType }: any) => {
       }
     } catch (error) {
       console.log(error);
+      toast.error((error as TErrorResponse)?.data?.message);
     }
   };
   //   if (addedData?.status === 200) {

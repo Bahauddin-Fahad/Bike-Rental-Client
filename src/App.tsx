@@ -20,6 +20,7 @@ function App() {
     "/dashboard/bikes",
     "/dashboard/rentals/unpaid",
     "/dashboard/rentals/paid",
+    "/dashboard/users",
   ];
 
   const toggleTheme = () => {

@@ -19,8 +19,9 @@ const BookingList = () => {
   };
 
   const { data, isLoading, refetch } = useGetAllbookingsQuery(queryObj);
+  console.log(data);
 
-  const bookings = data?.data.result as TBooking[];
+  const bookings = data?.result as TBooking[];
   const meta = data?.meta;
   const totalPagesArray = [...Array(meta?.totalPage).keys()];
 

@@ -49,17 +49,18 @@ export type TResponse<T> = {
 };
 
 export type TResponseRedux<T> = TResponse<T> & BaseQueryApi;
-// export type RatingProps = {
-//   initialRating?: number;
-//   onChange?: (rate: number) => void;
-//   readonly?: boolean;
-//   emptySymbol?: React.ReactNode | string;
-//   fullSymbol?: React.ReactNode | string;
-// };
 
-// export type RatingInputProps = {
-//   name: string;
-//   control?: Control<FieldValues>;
-//   defaultValue?: number;
-//   readOnly?: boolean;
-// };
+export type TErrorSources = {
+  path: string | number;
+  message: string;
+}[];
+
+// type for return value of handle error functions
+export type TErrorResponse = {
+  statusCode: number;
+  data: {
+    success: boolean;
+    message: string;
+    errorSources: TErrorSources;
+  };
+};

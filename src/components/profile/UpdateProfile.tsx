@@ -1,8 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { FieldValues, useForm } from "react-hook-form";
-import { TLoadedUser } from "../../types";
+import { TErrorResponse, TLoadedUser } from "../../types";
 import { useUpdateUserMutation } from "../../redux/features/users/userApi";
 import { useEffect } from "react";
+import toast from "react-hot-toast";
 type Tprops = {
   loadedUser: TLoadedUser;
 };
@@ -45,9 +46,10 @@ const UpdateProfile = ({ loadedUser }: Tprops) => {
 
     try {
       const res = await updateUser(userInfo);
-      console.log(res);
+
+      toast.success(res?.data?.message, { duration: 4000 });
     } catch (error) {
-      console.log(error);
+      toast.error((error as TErrorResponse)?.data?.message, { duration: 4000 });
     }
   };
   return (

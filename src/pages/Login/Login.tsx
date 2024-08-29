@@ -9,19 +9,20 @@ import { useAppDispatch } from "../../redux/hooks";
 import { useState } from "react";
 import { RiEyeFill, RiEyeCloseFill } from "react-icons/ri";
 import toast from "react-hot-toast";
+import { TErrorResponse } from "../../types";
 
 const Login = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const [seePassowrd, setSeePassword] = useState(false);
-  const userDefault = { email: "user@gmail.com", password: "user123" };
-  // const adminDefault = { email: "admin@gmail.com", password: "admin123" };
+  // const defaultValues = { email: "user@gmail.com", password: "user123" };
+  const defaultValues = { email: "admin@gmail.com", password: "admin123" };
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm<FieldValues>({
-    defaultValues: userDefault,
+    defaultValues,
   });
 
   const [login] = useLoginMutation();
@@ -40,7 +41,7 @@ const Login = () => {
       dispatch(setUser({ user: user, token: res.token }));
       navigate(`/dashboard`);
     } catch (error: any) {
-      toast.error(error?.data?.message, { duration: 4000 });
+      toast.error((error as TErrorResponse)?.data?.message, { duration: 4000 });
     }
   };
 

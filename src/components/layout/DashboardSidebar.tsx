@@ -1,6 +1,6 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import { MdOutlineLogout, MdPaid } from "react-icons/md";
+import { MdOutlineLogout, MdPaid, MdCarRental } from "react-icons/md";
 import { CgProfile } from "react-icons/cg";
 import {
   FaMotorcycle,
@@ -118,28 +118,23 @@ const DashboardSidebar = () => {
                   </li>
                   {loadedUser?.role === "admin" ? (
                     <>
-                      {/* <li  className={`rounded-md ${
-                      buttonName === "/dashboard/bikes" ? "bg-[#27ae60]" : ""
-                    }`}>
+                      <li
+                        className={`rounded-md ${
+                          buttonName === "/dashboard/users"
+                            ? "bg-[#27ae60]"
+                            : ""
+                        }`}
+                      >
                         <Link
-                          to="/dashboard/adminHome"
-                           className={`text-sm font-medium flex gap-3 item-center p-2 hover:bg-[#27ae60] text-primary dark:text-white`}
-                        >
-                          <IoHome className="text-xl mr-1" />
-                          <span className="mt-2">Admin Home</span>
-                        </Link>
-                      </li>
-                      <li  className={`rounded-md ${
-                      buttonName === "/dashboard/bikes" ? "bg-[#27ae60]" : ""
-                    }`}>
-                        <Link
-                          to="/dashboard/user-management"
+                          onClick={() => setButtonName("/dashboard/users")}
+                          to="/dashboard/users"
                           className={`text-sm font-medium flex gap-3 item-center p-2 hover:bg-[#27ae60] text-primary dark:text-white`}
                         >
-                          <FaUsersCog className="text-xl mr-1" />
-                          <span className="">Users Management</span>
+                          <FaUsersCog className="text-xl" />
+                          <span className="">User Management</span>
                         </Link>
-                      </li> */}
+                      </li>
+                      {/* {isOpen && <></>} */}
                     </>
                   ) : (
                     <>
@@ -149,7 +144,7 @@ const DashboardSidebar = () => {
                           className={`text-sm font-medium flex items-center justify-between p-2 hover:bg-[#27ae60] text-primary dark:text-white`}
                         >
                           <div className="flex gap-3 item-center items-center">
-                            <FaUsersCog className="text-xl" />
+                            <MdCarRental className="text-xl" />
                             <span className="">Rental Management</span>
                           </div>
                           <FaChevronDown

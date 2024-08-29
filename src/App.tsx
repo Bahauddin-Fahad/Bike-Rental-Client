@@ -17,11 +17,12 @@ function App() {
     "/login",
     "/signup",
     "/dashboard",
-    "/dashboard/bikes",
-    "/dashboard/rentals/unpaid",
-    "/dashboard/rentals/paid",
-    "/dashboard/users",
+    "/dashboard/user/bikes",
+    "/dashboard/user/rentals/unpaid",
+    "/dashboard/user/rentals/paid",
+    "/dashboard/admin/users",
     "/dashboard/admin/bikes",
+    "/dashboard/admin/rentals",
   ];
 
   const toggleTheme = () => {

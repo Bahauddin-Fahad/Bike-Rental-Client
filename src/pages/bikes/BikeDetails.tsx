@@ -2,13 +2,13 @@ import { useParams } from "react-router-dom";
 import { TBike } from "../../types";
 import { useGetSingleBikeQuery } from "../../redux/features/bike/bikeApi";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import BookingModal from "../../components/modals/bookingModal";
 
 const BikeDetails = () => {
-  // useEffect(() => {
-  //   window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-  // }, []);
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  }, []);
 
   const [modalType, setModalType] = useState<string>("");
   const { id } = useParams();

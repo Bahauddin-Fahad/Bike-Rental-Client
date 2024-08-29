@@ -17,7 +17,7 @@ const SearchedBike = ({ searchBike }: { searchBike: string }) => {
   }
 
   return (
-    <div className="bg-primary dark:bg-secondary w-full shadow-xl mt-2 p-2 relative">
+    <div className="bg-secondary w-full shadow-xl mt-2 p-2 relative">
       {bikes?.length > 0 ? (
         <div
           id="searched-item-div"
@@ -53,8 +53,8 @@ const SearchedBike = ({ searchBike }: { searchBike: string }) => {
         </div>
       ) : (
         <div className="w-full h-48 sm:h-52 flex justify-center items-center">
-          <p className="text-center font-satoshi xs:text-lg w-full text-black dark:text-white">
-            No result found for {searchBike}
+          <p className="text-center font-satoshi xs:text-md lg:text-2xl w-full text-black">
+            No bike found for {searchBike}
           </p>
         </div>
       )}

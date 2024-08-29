@@ -1,0 +1,106 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+import { FieldError, FieldValues, useForm } from "react-hook-form";
+import { useCalculateTotalCostMutation } from "../../redux/features/booking/bookingApi";
+import toast from "react-hot-toast";
+
+const CostCalculateModal = ({
+  bookingToCalculate,
+  setBookingToCalculate,
+}: any) => {
+  const [calculateTotalCost] = useCalculateTotalCostMutation();
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm<FieldValues>({
+    defaultValues: {
+      returnTime: new Date(),
+    },
+  });
+
+  const onSubmit = async (details: any) => {
+    const options = {
+      id: bookingToCalculate?._id,
+      data: { returnTime: details?.returnTime },
+    };
+
+    await toast.promise(calculateTotalCost(options).unwrap(), {
+      loading: "Calculating Cost...",
+      success: (res) => {
+        if (res.success) {
+          return "Cost Calculated successfully";
+        } else {
+          throw new Error(res.message);
+        }
+      },
+      error: "Failed to Calculate Cost",
+    });
+  };
+  //   const handleCreateBooking = async (details: any) => {
+  //     try {
+  //       const response = await createBooking(details).unwrap();
+
+  //       if (response?.statusCode === 200) {
+  //         toast.success(response?.message, { duration: 3000 });
+  //         window.location.href = response.data.payment_url;
+  //       }
+  //     } catch (error) {
+  //       console.log(error);
+  //       toast.error((error as TErrorResponse)?.data?.message);
+  //     }
+  //   };
+
+  return (
+    <div>
+      <input type="checkbox" id="calculate-modal" className="modal-toggle" />
+      <div className="modal">
+        <div className="modal-box max-w-lg !important space-y-4">
+          <h3 className="font-bold text-lg xl:text-xl text-center text-primary">{`Would You Like to Calculate the Cost?`}</h3>
+          <form onSubmit={handleSubmit(onSubmit)} className="">
+            <div className="form-control max-w-xs mx-auto">
+              <label className="label">
+                <span className="label-text font-semibold">Return Time *</span>
+              </label>
+              <input
+                type="datetime-local"
+                className="input input-bordered bg-secondary text-primary"
+                {...register("returnTime", {
+                  required: {
+                    value: true,
+                    message: "Return Time is required",
+                  },
+                })}
+              />
+              <label className="label">
+                {errors.returnTime?.type === "required" && (
+                  <span className="label-text-alt text-red-600 text-sm">
+                    {(errors.returnTime as FieldError).message}
+                  </span>
+                )}
+              </label>
+            </div>
+            <div className="flex gap-2 justify-end">
+              <input
+                type="submit"
+                value="Submit"
+                className="btn btn-md btn-accent font-bold"
+              />
+              <label
+                onClick={() => {
+                  setBookingToCalculate(null);
+                }}
+                htmlFor="calculate-modal"
+                className="btn btn-md font-bold"
+              >
+                Cancel
+              </label>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default CostCalculateModal;

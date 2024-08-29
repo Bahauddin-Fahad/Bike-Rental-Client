@@ -4,7 +4,7 @@ import { baseApi } from "../../api/baseApi";
 
 const bikeApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
-    getAllbookings: builder.query({
+    getUserBookings: builder.query({
       query: (queryObj) => {
         const params = new URLSearchParams();
         const { sort, page, limit, status } = queryObj || {};
@@ -27,6 +27,26 @@ const bikeApi = baseApi.injectEndpoints({
       },
       providesTags: ["bikes"],
     }),
+    getAllBookings: builder.query({
+      query: (queryObj) => {
+        const params = new URLSearchParams();
+        const { sort, page, limit } = queryObj || {};
+
+        if (sort) {
+          const sortValue = sort === "descending" ? "-price" : "price";
+          params.append("sort", sortValue);
+        }
+        if (page) {
+          params.append("page", page);
+        }
+        if (limit) {
+          params.append("limit", limit);
+        }
+
+        return { url: "/rentals", method: "GET", params };
+      },
+      providesTags: ["bikes"],
+    }),
     createBooking: builder.mutation({
       query: (data) => {
         return {
@@ -37,7 +57,23 @@ const bikeApi = baseApi.injectEndpoints({
       },
       invalidatesTags: ["bookings", "bikes"],
     }),
+
+    calculateTotalCost: builder.mutation({
+      query: (options) => {
+        return {
+          url: `/rentals/${options.id}/calculate`,
+          method: "PUT",
+          body: options.data,
+        };
+      },
+      invalidatesTags: ["bookings", "bikes"],
+    }),
   }),
 });
 
-export const { useGetAllbookingsQuery, useCreateBookingMutation } = bikeApi;
+export const {
+  useGetUserBookingsQuery,
+  useGetAllBookingsQuery,
+  useCreateBookingMutation,
+  useCalculateTotalCostMutation,
+} = bikeApi;

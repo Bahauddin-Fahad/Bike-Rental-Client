@@ -15,8 +15,8 @@ const Login = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const [seePassowrd, setSeePassword] = useState(false);
-  // const defaultValues = { email: "user@gmail.com", password: "user123" };
-  const defaultValues = { email: "admin@gmail.com", password: "admin123" };
+  const defaultValues = { email: "user@gmail.com", password: "user123" };
+  // const defaultValues = { email: "admin@gmail.com", password: "admin123" };
   const {
     register,
     formState: { errors },

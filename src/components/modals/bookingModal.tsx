@@ -18,9 +18,6 @@ const BookingModal = ({ bikeDetails, setModalType }: any) => {
   const onSubmit = async (data: any) => {
     const details = { bike: bikeDetails?._id, startTime: data?.startTime };
 
-    // Object.keys(product).length <= 0
-    //   ? handleCreateBooking(details)
-    //   : handleUpdateBooking(details);
     handleCreateBooking(details);
   };
   const handleCreateBooking = async (details: any) => {
@@ -36,30 +33,6 @@ const BookingModal = ({ bikeDetails, setModalType }: any) => {
       toast.error((error as TErrorResponse)?.data?.message);
     }
   };
-  // //   if (addedData?.status === 200) {
-  // //     toast.success("Product Added Successfully", {
-  // //       theme: "colored",
-  // //       toastId: "added",
-  // //     });
-  // //     setModalType("");
-  // //     setProduct({});
-  // //   }
-
-  // const handleUpdateBooking = (details: any) => {
-  //   // const options = {
-  //   //   id: product?._id,
-  //   //   data: details,
-  //   // };
-  //   // updateProduct(options);
-  // };
-  // //   if (updatedData?.status === 200) {
-  // //     toast.success("Product Updated Successfully", {
-  // //       theme: "colored",
-  // //       toastId: "updated",
-  // //     });
-  // //     setModalType("");
-  // //     setProduct({});
-  // //   }
 
   return (
     <div>
@@ -83,9 +56,9 @@ const BookingModal = ({ bikeDetails, setModalType }: any) => {
                 })}
               />
               <label className="label">
-                {errors.name?.type === "required" && (
+                {errors.startTime?.type === "required" && (
                   <span className="label-text-alt text-red-600 text-sm">
-                    {(errors.name as FieldError).message}
+                    {(errors.startTime as FieldError).message}
                   </span>
                 )}
               </label>

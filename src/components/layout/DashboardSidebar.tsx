@@ -111,14 +111,16 @@ const DashboardSidebar = () => {
                     <>
                       <li
                         className={`rounded-md ${
-                          buttonName === "/dashboard/users"
+                          buttonName === "/dashboard/admin/users"
                             ? "bg-[#27ae60]"
                             : ""
                         }`}
                       >
                         <Link
-                          onClick={() => setButtonName("/dashboard/users")}
-                          to="/dashboard/users"
+                          onClick={() =>
+                            setButtonName("/dashboard/admin/users")
+                          }
+                          to="/dashboard/admin/users"
                           className={`text-sm font-medium flex gap-3 item-center p-2 hover:bg-[#27ae60] text-primary dark:text-white`}
                         >
                           <FaUsersCog className="text-xl" />
@@ -143,19 +145,37 @@ const DashboardSidebar = () => {
                           <span className="">Bike Management</span>
                         </Link>
                       </li>
-                    </>
-                  ) : (
-                    <>
                       <li
                         className={`rounded-md ${
-                          buttonName === "/dashboard/bikes"
+                          buttonName === "/dashboard/admin/rentals"
                             ? "bg-[#27ae60]"
                             : ""
                         }`}
                       >
                         <Link
-                          onClick={() => setButtonName("/dashboard/bikes")}
-                          to="/dashboard/bikes"
+                          onClick={() =>
+                            setButtonName("/dashboard/admin/rentals")
+                          }
+                          to="/dashboard/admin/rentals"
+                          className={`text-sm font-medium flex gap-3 item-center p-2 hover:bg-[#27ae60] text-primary dark:text-white`}
+                        >
+                          <MdOutlineElectricBike className="text-xl" />
+                          <span className="">Rental Management</span>
+                        </Link>
+                      </li>
+                    </>
+                  ) : (
+                    <>
+                      <li
+                        className={`rounded-md ${
+                          buttonName === "/dashboard/user/bikes"
+                            ? "bg-[#27ae60]"
+                            : ""
+                        }`}
+                      >
+                        <Link
+                          onClick={() => setButtonName("/dashboard/user/bikes")}
+                          to="/dashboard/user/bikes"
                           className={`text-sm font-medium flex gap-3 item-center p-2 hover:bg-[#27ae60] text-primary dark:text-white`}
                         >
                           <FaMotorcycle className="text-xl mr-1" />
@@ -182,16 +202,16 @@ const DashboardSidebar = () => {
                         <>
                           <li
                             className={`rounded-md ${
-                              buttonName === "/dashboard/rentals/unpaid"
+                              buttonName === "/dashboard/user/rentals/unpaid"
                                 ? "bg-[#27ae60]"
                                 : ""
                             }`}
                           >
                             <Link
                               onClick={() =>
-                                setButtonName("/dashboard/rentals/unpaid")
+                                setButtonName("/dashboard/user/rentals/unpaid")
                               }
-                              to="/dashboard/rentals/unpaid"
+                              to="/dashboard/user/rentals/unpaid"
                               className={`text-sm font-medium flex gap-3 item-center p-2 hover:bg-[#27ae60] text-primary dark:text-white`}
                             >
                               <FaHandHoldingUsd className="text-xl" />
@@ -200,16 +220,16 @@ const DashboardSidebar = () => {
                           </li>
                           <li
                             className={`rounded-md ${
-                              buttonName === "/dashboard/rentals/paid"
+                              buttonName === "/dashboard/user/rentals/paid"
                                 ? "bg-[#27ae60]"
                                 : ""
                             }`}
                           >
                             <Link
                               onClick={() =>
-                                setButtonName("/dashboard/rentals/paid")
+                                setButtonName("/dashboard/user/rentals/paid")
                               }
-                              to="/dashboard/rentals/paid"
+                              to="/dashboard/user/rentals/paid"
                               className={`text-sm font-medium flex gap-3 item-center p-2 hover:bg-[#27ae60] text-primary dark:text-white`}
                             >
                               <MdPaid className="text-xl" />

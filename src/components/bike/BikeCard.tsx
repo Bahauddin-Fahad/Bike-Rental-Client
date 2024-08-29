@@ -9,26 +9,19 @@ type Props = {
 const BikeCard = ({ bike }: Props) => {
   const navigate = useNavigate();
   return (
-    <div
-      data-aos="zoom-in"
-      className="card bg-secondary dark:bg-primary shadow-md border dark:border-black dark:shadow-black rounded-2xl h-full"
-    >
-      <figure className="rounded-lg mb-3 m-7">
-        {/* <PhotoProvider>
-          <PhotoView src={product.image}> */}
+    <div className="card bg-secondary dark:bg-primary shadow-md border dark:border-black dark:shadow-black rounded-xl h-full">
+      <figure className="m-4">
         <img
           src={bike.image}
-          alt="Post"
-          className="w-full object-contain hover:scale-110 duration-500"
+          alt="bike"
+          className="object-contain hover:scale-110 duration-500 rounded-lg"
         />
-        {/* </PhotoView>
-        </PhotoProvider> */}
       </figure>
-      <div className="card-body px-5">
-        <h2 className="card-title">{bike?.name}</h2>
+      <div className="card-body px-4 py-2">
+        <h2 className="card-title text-lg">{bike?.name}</h2>
 
         <p>Brand: {bike?.brand}</p>
-        <div className="card-actions justify-end items-end mt-5">
+        <div className="card-actions justify-end items-end my-2">
           <button
             onClick={() => navigate(`/bikes/${bike._id}`)}
             className="btn bg-[#27ae60] text-white w-full font-bold hover:scale-105 duration-500 font-vietnam-bold hover:bg-[#27ae60] border-0"

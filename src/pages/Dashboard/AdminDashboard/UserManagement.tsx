@@ -94,6 +94,7 @@ const UserList = () => {
           <thead className="text-black dark:text-white text-lg">
             <tr>
               <th>No.</th>
+              <th>Image</th>
               <th>Name</th>
               <th>Email</th>
               <th>Phone</th>

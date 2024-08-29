@@ -9,12 +9,13 @@ import CompareBikes from "../pages/CompareBikes/CompareBikes";
 import Dashboard from "../pages/Dashboard/Dashboard";
 import Profile from "../pages/Dashboard/Profile";
 import AllBikes from "../pages/Bikes/AllBikes";
-import BookingList from "../pages/Dashboard/UserDashboard/BookingList";
+import UserBookings from "../pages/Dashboard/UserDashboard/UserBookings";
 import UserManagement from "../pages/Dashboard/AdminDashboard/UserManagement";
 import AdminRoute from "./AdminRoute";
 import ProtectedRoute from "./ProtectedRoute";
 import ErrorPage from "../pages/Error/ErrorPage";
 import BikeManagement from "../pages/Dashboard/AdminDashboard/BikeManagement";
+import BookingManagement from "../pages/Dashboard/AdminDashboard/BookingManagement";
 
 const router = createBrowserRouter([
   {
@@ -26,19 +27,22 @@ const router = createBrowserRouter([
         index: true,
         element: <Home />,
       },
-
       {
         path: "about",
         element: <AboutUs />,
       },
 
       {
-        path: "bikes/:id",
-        element: <BikeDetails />,
-      },
-      {
         path: "compare",
         element: <CompareBikes />,
+      },
+      {
+        path: "bikes/:id",
+        element: (
+          <ProtectedRoute>
+            <BikeDetails />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "/dashboard",
@@ -50,35 +54,32 @@ const router = createBrowserRouter([
         children: [
           { index: true, element: <Profile /> },
           {
-            path: "bikes",
-            element: <AllBikes />,
-          },
-          {
-            path: "/dashboard/rentals/unpaid",
+            path: "user/bikes",
             element: (
               <ProtectedRoute>
-                <BookingList />
+                <AllBikes />
+              </ProtectedRoute>
+            ),
+          },
+
+          {
+            path: "user/rentals/unpaid",
+            element: (
+              <ProtectedRoute>
+                <UserBookings />
               </ProtectedRoute>
             ),
           },
           {
-            path: "/dashboard/rentals/unpaid",
+            path: "user/rentals/paid",
             element: (
               <ProtectedRoute>
-                <BookingList />
+                <UserBookings />
               </ProtectedRoute>
             ),
           },
           {
-            path: "/dashboard/rentals/paid",
-            element: (
-              <ProtectedRoute>
-                <BookingList />
-              </ProtectedRoute>
-            ),
-          },
-          {
-            path: "/dashboard/users",
+            path: "admin/users",
             element: (
               <AdminRoute>
                 <UserManagement />
@@ -86,42 +87,21 @@ const router = createBrowserRouter([
             ),
           },
           {
-            path: "/dashboard/admin/bikes",
+            path: "admin/bikes",
             element: (
               <AdminRoute>
                 <BikeManagement />
               </AdminRoute>
             ),
           },
-          // {
-          //   path: "slot-management",
-          //   element: (
-          //     <AdminRoute>
-          //       <SlotManagement />{" "}
-          //     </AdminRoute>
-          //   ),
-          // },
-          // {
-          //   path: "user-management",
-          //   element: (
-          //     <AdminRoute>
-          //       <UserManagement />{" "}
-          //     </AdminRoute>
-          //   ),
-          // },
-          // {
-          //   path: "userHome",
-          //   element: <UserHome />,
-          // },
-          // {
-          //   path: "past-bookings",
-          //   element: <PastBooking />,
-          // },
-          // {
-          //   path: "upcoming-bookings",
-          //   element: <UpcomingBooking />,
-          // },
-          // {
+          {
+            path: "admin/rentals",
+            element: (
+              <ProtectedRoute>
+                <BookingManagement />
+              </ProtectedRoute>
+            ),
+          },
         ],
       },
       {

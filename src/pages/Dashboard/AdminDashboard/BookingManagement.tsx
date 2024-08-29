@@ -104,10 +104,20 @@ const BookingManagement = () => {
                         >
                           Calculate
                         </label>
-                      ) : (
-                        <div className="w-[100px] text-warning text-md font-vietnam-bold">
+                      ) : booking?.totalCost &&
+                        booking?.returnTime &&
+                        booking?.status !== "paid" ? (
+                        <div className="w-[100px] text-warning text-base font-vietnam-bold">
                           Calculated
                         </div>
+                      ) : (
+                        booking?.totalCost &&
+                        booking?.returnTime &&
+                        booking?.status === "paid" && (
+                          <div className="w-[100px] text-success text-base font-vietnam-bold">
+                            Paid
+                          </div>
+                        )
                       )}
                     </div>
                   </td>

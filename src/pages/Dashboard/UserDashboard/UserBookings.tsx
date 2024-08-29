@@ -86,7 +86,9 @@ const UserBookings = () => {
 
                   <td>
                     <div className="flex gap-2 items-center">
-                      {booking?.totalCost && booking?.returnTime && (
+                      {booking?.totalCost &&
+                      booking?.returnTime &&
+                      booking?.status !== "paid" ? (
                         <label
                           htmlFor="pay-booking-modal"
                           onClick={() => {
@@ -96,6 +98,14 @@ const UserBookings = () => {
                         >
                           Pay
                         </label>
+                      ) : (
+                        booking?.totalCost &&
+                        booking?.returnTime &&
+                        booking?.status === "paid" && (
+                          <div className="w-[100px] text-success text-base font-vietnam-bold">
+                            Paid
+                          </div>
+                        )
                       )}
                     </div>
                   </td>

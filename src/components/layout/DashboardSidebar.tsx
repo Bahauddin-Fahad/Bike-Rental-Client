@@ -1,6 +1,11 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import { MdOutlineLogout, MdPaid, MdCarRental } from "react-icons/md";
+import {
+  MdOutlineLogout,
+  MdPaid,
+  MdCarRental,
+  MdOutlineElectricBike,
+} from "react-icons/md";
 import { CgProfile } from "react-icons/cg";
 import {
   FaMotorcycle,
@@ -102,20 +107,6 @@ const DashboardSidebar = () => {
               <div id="menu" className="flex flex-col">
                 <div className="divider divider-primary dark:divider-secondary"></div>
                 <div className="space-y-2">
-                  <li
-                    className={`rounded-md ${
-                      buttonName === "/dashboard/bikes" ? "bg-[#27ae60]" : ""
-                    }`}
-                  >
-                    <Link
-                      onClick={() => setButtonName("/dashboard/bikes")}
-                      to="/dashboard/bikes"
-                      className={`text-sm font-medium flex gap-3 item-center p-2 hover:bg-[#27ae60] text-primary dark:text-white`}
-                    >
-                      <FaMotorcycle className="text-xl mr-1" />
-                      <span className="">All Bikes</span>
-                    </Link>
-                  </li>
                   {loadedUser?.role === "admin" ? (
                     <>
                       <li
@@ -134,10 +125,43 @@ const DashboardSidebar = () => {
                           <span className="">User Management</span>
                         </Link>
                       </li>
-                      {/* {isOpen && <></>} */}
+                      <li
+                        className={`rounded-md ${
+                          buttonName === "/dashboard/admin/bikes"
+                            ? "bg-[#27ae60]"
+                            : ""
+                        }`}
+                      >
+                        <Link
+                          onClick={() =>
+                            setButtonName("/dashboard/admin/bikes")
+                          }
+                          to="/dashboard/admin/bikes"
+                          className={`text-sm font-medium flex gap-3 item-center p-2 hover:bg-[#27ae60] text-primary dark:text-white`}
+                        >
+                          <MdOutlineElectricBike className="text-xl" />
+                          <span className="">Bike Management</span>
+                        </Link>
+                      </li>
                     </>
                   ) : (
                     <>
+                      <li
+                        className={`rounded-md ${
+                          buttonName === "/dashboard/bikes"
+                            ? "bg-[#27ae60]"
+                            : ""
+                        }`}
+                      >
+                        <Link
+                          onClick={() => setButtonName("/dashboard/bikes")}
+                          to="/dashboard/bikes"
+                          className={`text-sm font-medium flex gap-3 item-center p-2 hover:bg-[#27ae60] text-primary dark:text-white`}
+                        >
+                          <FaMotorcycle className="text-xl mr-1" />
+                          <span className="">All Bikes</span>
+                        </Link>
+                      </li>
                       <li>
                         <button
                           onClick={toggleDropdown}

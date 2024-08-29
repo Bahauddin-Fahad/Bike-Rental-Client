@@ -23,14 +23,8 @@ const DeleteUserModal = ({ userToDelete, setUserToDelete }: any) => {
           throw new Error(res.message);
         }
       },
-      error: "Failed to update role",
+      error: "Failed to delete the user",
     });
-    // if (data?.status === 200) {
-    //   toast.success("Product Deleted Successfully", {
-    //     duration: 4000,
-    //   });
-    //   setUserToDelete(null);
-    // }
   };
   if (isLoading) {
     return <Loading />;
@@ -39,7 +33,7 @@ const DeleteUserModal = ({ userToDelete, setUserToDelete }: any) => {
     <div>
       <input type="checkbox" id="delete-user-modal" className="modal-toggle" />
       <div className="modal">
-        <div className="modal-box bg-secondary">
+        <div className="modal-box bg-white">
           <h3 className="font-bold text-lg text-primary">{`Are you sure You Want to Delete ${userToDelete?.name}?`}</h3>
           <div className="modal-action">
             <button

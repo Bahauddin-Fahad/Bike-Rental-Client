@@ -14,6 +14,7 @@ import UserManagement from "../pages/Dashboard/AdminDashboard/UserManagement";
 import AdminRoute from "./AdminRoute";
 import ProtectedRoute from "./ProtectedRoute";
 import ErrorPage from "../pages/Error/ErrorPage";
+import BikeManagement from "../pages/Dashboard/AdminDashboard/BikeManagement";
 
 const router = createBrowserRouter([
   {
@@ -81,6 +82,14 @@ const router = createBrowserRouter([
             element: (
               <AdminRoute>
                 <UserManagement />
+              </AdminRoute>
+            ),
+          },
+          {
+            path: "/dashboard/admin/bikes",
+            element: (
+              <AdminRoute>
+                <BikeManagement />
               </AdminRoute>
             ),
           },

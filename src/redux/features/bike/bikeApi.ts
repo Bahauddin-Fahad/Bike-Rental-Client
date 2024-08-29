@@ -7,7 +7,8 @@ const bikeApi = baseApi.injectEndpoints({
     getBikes: builder.query({
       query: (queryObj) => {
         const params = new URLSearchParams();
-        const { searchTerm, sort, page, limit, isAvailable } = queryObj || {};
+        const { searchTerm, sort, page, limit, brand, isAvailable } =
+          queryObj || {};
 
         if (searchTerm) {
           params.append("searchTerm", searchTerm);
@@ -22,10 +23,12 @@ const bikeApi = baseApi.injectEndpoints({
         if (limit) {
           params.append("limit", limit);
         }
+        if (brand) {
+          params.append("brand", brand);
+        }
         if (isAvailable) {
           params.append("isAvailable", isAvailable);
         }
-
         return { url: "/bikes", method: "GET", params };
       },
       providesTags: ["bikes"],
@@ -37,7 +40,38 @@ const bikeApi = baseApi.injectEndpoints({
       }),
       providesTags: ["bikes"],
     }),
+    addBike: builder.mutation({
+      query: (data) => {
+        return {
+          url: "/bikes",
+          method: "POST",
+          body: data,
+        };
+      },
+      invalidatesTags: ["bookings", "bikes"],
+    }),
+    updateBike: builder.mutation({
+      query: (options) => ({
+        url: `/bikes/${options.id}`,
+        method: "PUT",
+        body: options.data,
+      }),
+      invalidatesTags: ["bikes"],
+    }),
+    deleteBike: builder.mutation({
+      query: (id) => ({
+        url: `/bikes/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["bikes"],
+    }),
   }),
 });
 
-export const { useGetBikesQuery, useGetSingleBikeQuery } = bikeApi;
+export const {
+  useGetBikesQuery,
+  useGetSingleBikeQuery,
+  useAddBikeMutation,
+  useUpdateBikeMutation,
+  useDeleteBikeMutation,
+} = bikeApi;

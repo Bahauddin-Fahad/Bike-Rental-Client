@@ -75,7 +75,7 @@ const UserList = () => {
     return <Loading />;
   }
   return (
-    <div className="text-white">
+    <div className="py-10 h-screen overflow-y-auto">
       <div
         className="h-[200px] flex flex-col justify-center items-center"
         data-aos="zoom-in"
@@ -84,25 +84,14 @@ const UserList = () => {
           <span className="font-normal tracking-wide text-[#bdbdbd9e]">
             All
           </span>
-          <span className="text-accent">Users</span>
+          <span className="text-[#27ae60]">Users</span>
         </p>
       </div>
-      <div className="flex justify-between p-5">
-        {/* <label
-            htmlFor="product-modal"
-            onClick={() => {
-              setModalType("add");
-              setProduct({});
-            }}
-            className="btn btn-accent font-bold"
-          >
-            Add product
-          </label> */}
-      </div>
+      <div className="flex justify-between p-5"></div>
       <div className="overflow-x-auto m-5 overflow-y-auto max-h-screen">
         <table className="table table-sm">
           {/* head */}
-          <thead className="text-white text-lg">
+          <thead className="text-black dark:text-white text-lg">
             <tr>
               <th>No.</th>
               <th>Name</th>

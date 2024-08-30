@@ -7,6 +7,8 @@ import {
 import { TLoadedUser } from "../../../types";
 import toast from "react-hot-toast";
 import DeleteUserModal from "../../../components/modals/DeleteUserModal";
+import NoDataFound from "../../../components/ui/NoDataFound";
+
 type TUserState = TLoadedUser | null;
 
 const UserList = () => {
@@ -89,77 +91,83 @@ const UserList = () => {
       </div>
 
       <div className="overflow-x-auto m-5 overflow-y-auto max-h-screen">
-        <table className="table table-sm">
-          {/* head */}
-          <thead className="text-black dark:text-white text-lg">
-            <tr>
-              <th>No.</th>
-              <th>Image</th>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Phone</th>
-              <th>Role</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {users &&
-              users?.map((user, index) => (
-                <tr key={index} className="rounded-lg">
-                  <th>{index + 1 + (currentPage - 1) * dataPerPage}</th>
+        {users?.length > 0 ? (
+          <table className="table table-sm">
+            {/* head */}
+            <thead className="text-black dark:text-white text-lg">
+              <tr>
+                <th>No.</th>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Role</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {users &&
+                users?.map((user, index) => (
+                  <tr key={index} className="rounded-lg">
+                    <th>{index + 1 + (currentPage - 1) * dataPerPage}</th>
 
-                  <td className="font-semibold">
-                    <img
-                      src={
-                        user?.image ||
-                        "https://i.ibb.co/pvmWXsv/male-placeholder-image.jpg"
-                      }
-                      alt="user"
-                      className="size-10 rounded-md"
-                    />
-                  </td>
-                  <td className="font-semibold">{user?.name}</td>
-                  <td className="font-semibold">{user?.email}</td>
-                  <td className="font-semibold">{user?.phone}</td>
-                  <td className="font-semibold">{user?.role.toUpperCase()}</td>
+                    <td className="font-semibold">
+                      <img
+                        src={
+                          user?.image ||
+                          "https://i.ibb.co/pvmWXsv/male-placeholder-image.jpg"
+                        }
+                        alt="user"
+                        className="size-10 rounded-md"
+                      />
+                    </td>
+                    <td className="font-semibold">{user?.name}</td>
+                    <td className="font-semibold">{user?.email}</td>
+                    <td className="font-semibold">{user?.phone}</td>
+                    <td className="font-semibold">
+                      {user?.role.toUpperCase()}
+                    </td>
 
-                  <td className="font-semibold">
-                    <div className="flex gap-2 items-center">
-                      {user?.role != "admin" ? (
+                    <td className="font-semibold">
+                      <div className="flex gap-2 items-center">
+                        {user?.role != "admin" ? (
+                          <label
+                            onClick={() => {
+                              handleMakeAdmin(user._id);
+                            }}
+                            className="btn btn-sm btn-accent cursor-pointer w-[125px] text-white"
+                          >
+                            Make Admin
+                          </label>
+                        ) : (
+                          <label
+                            onClick={() => {
+                              handleMakeUser(user._id);
+                            }}
+                            className="btn btn-sm btn-warning cursor-pointer w-[125px] text-white"
+                          >
+                            Remove Admin
+                          </label>
+                        )}
+
                         <label
+                          htmlFor="delete-user-modal"
                           onClick={() => {
-                            handleMakeAdmin(user._id);
+                            setUserToDelete(user);
                           }}
-                          className="btn btn-sm btn-accent cursor-pointer w-[125px]"
+                          className="btn btn-sm btn-error cursor-pointer"
                         >
-                          Make Admin
+                          Delete
                         </label>
-                      ) : (
-                        <label
-                          onClick={() => {
-                            handleMakeUser(user._id);
-                          }}
-                          className="btn btn-sm btn-warning cursor-pointer w-[125px]"
-                        >
-                          Remove Admin
-                        </label>
-                      )}
-
-                      <label
-                        htmlFor="delete-user-modal"
-                        onClick={() => {
-                          setUserToDelete(user);
-                        }}
-                        className="btn btn-sm btn-error cursor-pointer"
-                      >
-                        Delete
-                      </label>
-                    </div>
-                  </td>
-                </tr>
-              ))}
-          </tbody>
-        </table>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+            </tbody>
+          </table>
+        ) : (
+          <NoDataFound />
+        )}
       </div>
       <div className="space-x-3 mt-4 flex justify-center">
         {totalPagesArray?.length > 1 &&

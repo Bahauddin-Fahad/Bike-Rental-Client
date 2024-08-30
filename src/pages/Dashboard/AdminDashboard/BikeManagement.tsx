@@ -5,6 +5,7 @@ import Loading from "../../../components/ui/Loading";
 import BikeModal from "../../../components/modals/BikeModal";
 import DeleteBikeModal from "../../../components/modals/DeleteBikeModal";
 import { getBrandNames } from "../../../assets/jsons/brand";
+import NoDataFound from "../../../components/ui/NoDataFound";
 
 type TBikeState = TBike | object | null;
 
@@ -157,9 +158,7 @@ const BikeManagement = () => {
             </tbody>
           </table>
         ) : (
-          <div className="h-32 xl:h-60 mx-auto bg-secondary text-accent text-2xl xl:text-4xl text-center flex justify-center items-center rounded-lg shadow-lg font-vietnam-bold">
-            <p> No Data Found</p>
-          </div>
+          <NoDataFound />
         )}
       </div>
       <div className="space-x-3 mt-4 flex justify-center">

@@ -4,6 +4,7 @@ import Loading from "../../../components/ui/Loading";
 import { TBooking } from "../../../types";
 import moment from "moment";
 import CostCalculateModal from "../../../components/modals/CostCalculateModal";
+import NoDataFound from "../../../components/ui/NoDataFound";
 
 type TBookingState = TBooking | object | null;
 
@@ -28,19 +29,7 @@ const BookingManagement = () => {
     await setCurrentPage(page + 1);
     await refetch();
   };
-  // const handleCalculateCost = async (id: string) => {
-  //   await toast.promise(calculateTotalCost(id).unwrap(), {
-  //     loading: "Calculating Cost...",
-  //     success: (res) => {
-  //       if (res.success) {
-  //         return "Cost Calculated successfully";
-  //       } else {
-  //         throw new Error(res.message);
-  //       }
-  //     },
-  //     error: "Failed to Calculate Cost",
-  //   });
-  // };
+
   if (isLoading) {
     return <Loading />;
   }
@@ -59,72 +48,76 @@ const BookingManagement = () => {
       </div>
 
       <div className="overflow-x-auto m-5 font-satoshi">
-        <table className="table table-sm">
-          {/* head */}
-          <thead className="text-primary dark:text-white text-lg">
-            <tr>
-              <th>No.</th>
+        {bookings?.length > 0 ? (
+          <table className="table table-sm">
+            {/* head */}
+            <thead className="text-primary dark:text-white text-lg">
+              <tr>
+                <th>No.</th>
 
-              <th>User</th>
-              <th>Bike</th>
-              <th>Star Time</th>
-              <th>Return Time</th>
-              <th>Total Cost</th>
-              <th>Status</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {bookings &&
-              bookings?.map((booking, index) => (
-                <tr key={index} className="rounded-lg">
-                  <th>{index + 1 + (currentPage - 1) * dataPerPage}</th>
-                  <td className="">{booking?.user?.name}</td>
-                  <td className="">{booking?.bike?.name}</td>
-                  <td className="">
-                    {moment(booking?.startTime).format("DD/MM/YYYY hh:mm")}
-                  </td>
-                  <td className="">
-                    {booking?.returnTime
-                      ? moment(booking?.returnTime).format("DD/MM/YYYY hh:mm")
-                      : "Not Returned Yet"}
-                  </td>
-                  <td className="text-center">{booking?.totalCost} ৳</td>
-                  <td className="uppercase">{booking?.status}</td>
+                <th>User</th>
+                <th>Bike</th>
+                <th>Star Time</th>
+                <th>Return Time</th>
+                <th>Total Cost</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {bookings &&
+                bookings?.map((booking, index) => (
+                  <tr key={index} className="rounded-lg">
+                    <th>{index + 1 + (currentPage - 1) * dataPerPage}</th>
+                    <td className="">{booking?.user?.name}</td>
+                    <td className="">{booking?.bike?.name}</td>
+                    <td className="">
+                      {moment(booking?.startTime).format("DD/MM/YYYY hh:mm")}
+                    </td>
+                    <td className="">
+                      {booking?.returnTime
+                        ? moment(booking?.returnTime).format("DD/MM/YYYY hh:mm")
+                        : "Not Returned Yet"}
+                    </td>
+                    <td className="text-center">{booking?.totalCost} ৳</td>
+                    <td className="uppercase">{booking?.status}</td>
 
-                  <td>
-                    <div className="flex gap-2 items-center">
-                      {!booking?.totalCost && !booking?.returnTime ? (
-                        <label
-                          htmlFor="calculate-modal"
-                          onClick={() => {
-                            setBookingToCalculate(booking);
-                          }}
-                          className="btn btn-sm btn-warning cursor-pointer w-[100px]"
-                        >
-                          Calculate
-                        </label>
-                      ) : booking?.totalCost &&
-                        booking?.returnTime &&
-                        booking?.status !== "paid" ? (
-                        <div className="w-[100px] text-warning text-base font-vietnam-bold">
-                          Calculated
-                        </div>
-                      ) : (
-                        booking?.totalCost &&
-                        booking?.returnTime &&
-                        booking?.status === "paid" && (
-                          <div className="w-[100px] text-success text-base font-vietnam-bold">
-                            Paid
+                    <td>
+                      <div className="flex gap-2 items-center">
+                        {!booking?.totalCost && !booking?.returnTime ? (
+                          <label
+                            htmlFor="calculate-modal"
+                            onClick={() => {
+                              setBookingToCalculate(booking);
+                            }}
+                            className="btn btn-sm btn-warning cursor-pointer w-[100px]"
+                          >
+                            Calculate
+                          </label>
+                        ) : booking?.totalCost &&
+                          booking?.returnTime &&
+                          booking?.status !== "paid" ? (
+                          <div className="w-[100px] text-warning text-base font-vietnam-bold">
+                            Calculated
                           </div>
-                        )
-                      )}
-                    </div>
-                  </td>
-                </tr>
-              ))}
-          </tbody>
-        </table>
+                        ) : (
+                          booking?.totalCost &&
+                          booking?.returnTime &&
+                          booking?.status === "paid" && (
+                            <div className="w-[100px] text-success text-base font-vietnam-bold">
+                              Paid
+                            </div>
+                          )
+                        )}
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+            </tbody>
+          </table>
+        ) : (
+          <NoDataFound />
+        )}
       </div>
       <div className="space-x-3 mt-4 flex justify-center">
         {totalPagesArray?.length > 1 &&

@@ -24,6 +24,7 @@ const Navbar = ({ toggleTheme }: any) => {
     dispatch(logout());
     toast.success("Logged out successfully", { duration: 4000 });
   };
+  console.log(user?.role);
 
   return (
     <div className="custom-padding navbar bg-white dark:bg-primary font-semibold h-14 xl:h-28 sticky top-0 z-20 text-black dark:text-white shadow-md">
@@ -46,16 +47,18 @@ const Navbar = ({ toggleTheme }: any) => {
           >
             <Link to={"/about"}>ABOUT US</Link>
           </li>
-          <li
-            className={`font-bold ${
-              buttonName === "dashboard"
-                ? "text-accent"
-                : "hover:scale-110 duration-300"
-            }`}
-            onClick={() => setButtonName("dashboard")}
-          >
-            <Link to={"/dashboard"}>DASHBOARD</Link>
-          </li>
+          {user?.role && (
+            <li
+              className={`font-bold ${
+                buttonName === "dashboard"
+                  ? "text-accent"
+                  : "hover:scale-110 duration-300"
+              }`}
+              onClick={() => setButtonName("dashboard")}
+            >
+              <Link to={"/dashboard"}>DASHBOARD</Link>
+            </li>
+          )}
         </ul>
       </div>
       <div className="navbar-end xl:space-x-4">
@@ -96,13 +99,15 @@ const Navbar = ({ toggleTheme }: any) => {
             >
               <Link to={"/about"}>ABOUT US</Link>
             </li>
-            <li
-              className={`font-semibold ${
-                buttonName === "dashboard" && "text-accent"
-              }`}
-            >
-              <Link to={"/dashboard"}>DASHBOARD</Link>
-            </li>
+            {user?.role && (
+              <li
+                className={`font-semibold ${
+                  buttonName === "dashboard" && "text-accent"
+                }`}
+              >
+                <Link to={"/dashboard"}>DASHBOARD</Link>
+              </li>
+            )}
           </ul>
         </div>
       </div>

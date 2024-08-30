@@ -9,7 +9,6 @@ const HomeBikes = () => {
 
   const { data: bikeData, isLoading } = useGetBikesQuery(queryObj);
   const bikes: TBike[] = bikeData?.data?.result;
-  console.log(bikeData);
 
   if (isLoading) {
     return <Loading />;

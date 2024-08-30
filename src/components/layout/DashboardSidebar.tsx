@@ -176,7 +176,7 @@ const DashboardSidebar = () => {
                       <li>
                         <button
                           onClick={toggleDropdown}
-                          className={`text-sm font-medium flex items-center justify-between p-2 hover:bg-accent text-primary dark:text-white`}
+                          className={`text-sm font-medium flex items-center justify-between p-2 hover:bg-accent text-primary dark:text-white m-0`}
                         >
                           <div className="flex gap-3 item-center items-center">
                             <TbCoinTaka className="text-xl" />

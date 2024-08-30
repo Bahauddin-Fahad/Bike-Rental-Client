@@ -3,7 +3,7 @@ import { TBike } from "../../types";
 import { useGetSingleBikeQuery } from "../../redux/features/bike/bikeApi";
 import { useEffect, useState } from "react";
 import CompareBikeModal from "../../components/modals/CompareBikeModal";
-import BookingModal from "../../components/modals/bookingModal";
+import BookingModal from "../../components/modals/BookingModal";
 
 const BikeDetails = () => {
   useEffect(() => {

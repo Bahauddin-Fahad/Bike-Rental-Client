@@ -27,14 +27,16 @@ const CompareBikeModal = ({ bikesToCompare, setBikesToCompare }: any) => {
             </button>
           </label>
 
-          <h3 className="font-bold text-3xl text-center">Compare your Bikes</h3>
+          <h3 className="font-bold text-3xl text-center text-primary">
+            Compare your Bikes
+          </h3>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 justify-center items-center">
             {bikesToCompare?.map((bike: TBike, index: string) => (
               <>
                 <div
                   key={index}
-                  className="max-w-sm rounded overflow-hidden shadow-lg glass hover:shadow-xl flex flex-col transition-shadow duration-300 bg-accent h-full text-primary"
+                  className="max-w-sm rounded overflow-hidden shadow-lg glass hover:shadow-xl flex flex-col transition-shadow duration-300 bg-secondary h-full text-primary"
                 >
                   <div className="p-4">
                     <img

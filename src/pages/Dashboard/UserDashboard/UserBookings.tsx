@@ -57,14 +57,14 @@ const UserBookings = () => {
             <thead className="text-primary dark:text-white text-lg">
               <tr>
                 <th>No.</th>
-
                 <th>User</th>
                 <th>Bike</th>
-                <th>Star Time</th>
+                <th className="text-center">Price/hr</th>
+                <th>Start Time</th>
                 <th>Return Time</th>
-                <th>Total Cost</th>
-                <th>Status</th>
-                <th>Action</th>
+                <th className="text-center">Total Cost</th>
+                <th className="text-center">Status</th>
+                <th className="text-center">Action</th>
               </tr>
             </thead>
             <tbody>
@@ -74,6 +74,9 @@ const UserBookings = () => {
                     <th>{index + 1 + (currentPage - 1) * dataPerPage}</th>
                     <td className="">{booking?.user?.name}</td>
                     <td className="">{booking?.bike?.name}</td>
+                    <td className="text-center">
+                      {booking?.bike?.pricePerHour} ৳
+                    </td>
                     <td className="">
                       {moment(booking?.startTime).format("DD/MM/YYYY hh:mm")}
                     </td>
@@ -82,14 +85,30 @@ const UserBookings = () => {
                         ? moment(booking?.returnTime).format("DD/MM/YYYY hh:mm")
                         : "Not Returned Yet"}
                     </td>
-                    <td className="">{booking?.totalCost}</td>
-                    <td className="uppercase">{booking?.status}</td>
+                    <td className="text-center">{booking?.totalCost} ৳</td>
+                    <td className={`uppercase `}>
+                      <div
+                        className={`text-center font-bold ${
+                          booking?.status === "booked"
+                            ? "text-warning"
+                            : booking?.status === "paid" && "text-accent"
+                        }`}
+                      >
+                        {booking?.status}
+                      </div>
+                    </td>
 
                     <td>
-                      <div className="flex gap-2 items-center">
-                        {booking?.totalCost &&
-                        booking?.returnTime &&
-                        booking?.status !== "paid" ? (
+                      <div className="flex gap-2 items-center text-center justify-center">
+                        {!booking?.totalCost &&
+                        !booking?.returnTime &&
+                        booking?.status === "booked" ? (
+                          <div className="w-[100px] bg-warning text-xs font-vietnam-bold rounded-md p-1 text-white">
+                            Yet to Return
+                          </div>
+                        ) : booking?.totalCost &&
+                          booking?.returnTime &&
+                          booking?.status === "booked" ? (
                           <label
                             htmlFor="pay-booking-modal"
                             onClick={() => {
@@ -103,8 +122,8 @@ const UserBookings = () => {
                           booking?.totalCost &&
                           booking?.returnTime &&
                           booking?.status === "paid" && (
-                            <div className="w-[100px] text-success text-base font-vietnam-bold">
-                              Paid
+                            <div className="w-[100px] bg-success text-xs font-vietnam-bold rounded-md p-1 text-white">
+                              Payment Completed
                             </div>
                           )
                         )}

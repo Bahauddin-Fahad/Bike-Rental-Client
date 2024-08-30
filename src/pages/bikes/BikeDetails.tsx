@@ -6,16 +6,15 @@ import BookingModal from "../../components/modals/bookingModal";
 import CompareBikeModal from "../../components/modals/CompareBikeModal";
 
 const BikeDetails = () => {
-  useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-  }, []);
+  // useEffect(() => {
+  //   window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  // }, []);
 
   const [bikesToCompare, setBikesToCompare] = useState<TBike[]>([]);
   const [modalType, setModalType] = useState<string>("");
   const { id } = useParams();
   const { data } = useGetSingleBikeQuery(id);
   const bikeDetails: TBike = data?.data;
-  console.log(bikesToCompare);
 
   return (
     <div className="custom-padding mx-auto my-10">
@@ -100,16 +99,16 @@ const BikeDetails = () => {
             </div>
           </div>
         </div>
-        <div className="card-actions">
+        <div className="card-actions flex justify-end">
           <label
             htmlFor="booking-modal"
             onClick={() => {
               setModalType("book");
             }}
-            className={`btn h-[30px] xs:h-[70px] w-8/12 mx-auto rounded-lg xs:rounded-xl text-sm xs:text-lg font-semibold font-vietnam-bold ${
+            className={`btn h-[30px] xs:h-[50px] rounded-lg text-sm xs:text-base font-semibold font-vietnam-bold border-none ${
               bikeDetails?.isAvailable
                 ? "hover:scale-105 duration-500 bg-accent hover:bg-accent text-white"
-                : "bg-secondary text-primary"
+                : "bg-secondary text-primary cursor-not-allowed opacity-30"
             }`}
           >
             {bikeDetails?.isAvailable ? "Book Now" : "Unavailable"}
@@ -119,11 +118,7 @@ const BikeDetails = () => {
             onClick={() => {
               setBikesToCompare([...bikesToCompare, bikeDetails]);
             }}
-            className={`btn h-[30px] xs:h-[70px] w-8/12 mx-auto rounded-lg xs:rounded-xl text-sm xs:text-lg font-semibold font-vietnam-bold ${
-              bikeDetails?.isAvailable
-                ? "hover:scale-105 duration-500 bg-accent hover:bg-accent text-white"
-                : "bg-secondary text-primary"
-            }`}
+            className={`btn h-[30px] xs:h-[50px] rounded-lg text-sm xs:text-base font-semibold font-vietnam-bold hover:scale-105 duration-500 bg-neutral hover:bg-neutral text-white border-none`}
           >
             Compare
           </label>

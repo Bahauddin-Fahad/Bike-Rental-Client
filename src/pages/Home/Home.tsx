@@ -4,6 +4,7 @@ import ContactUs from "./ContactUs";
 import HomeBikes from "./HomeBikes";
 import Testimonial from "./Testimonial";
 import WhyChooseUs from "./WhyChooseUs";
+import Coupon from "./Coupon";
 
 const Home = () => {
   useEffect(() => {
@@ -17,6 +18,7 @@ const Home = () => {
       <Testimonial />
       <ContactUs />
       <WhyChooseUs />
+      <Coupon />
     </div>
   );
 };

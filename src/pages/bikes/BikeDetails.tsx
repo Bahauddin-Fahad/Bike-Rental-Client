@@ -2,8 +2,8 @@ import { useParams } from "react-router-dom";
 import { TBike } from "../../types";
 import { useGetSingleBikeQuery } from "../../redux/features/bike/bikeApi";
 import { useEffect, useState } from "react";
-import BookingModal from "../../components/modals/bookingModal";
 import CompareBikeModal from "../../components/modals/CompareBikeModal";
+import BookingModal from "../../components/modals/bookingModal";
 
 const BikeDetails = () => {
   useEffect(() => {

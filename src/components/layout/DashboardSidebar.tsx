@@ -1,19 +1,10 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import {
-  MdOutlineLogout,
-  MdPaid,
-  MdCarRental,
-  MdOutlineElectricBike,
-} from "react-icons/md";
+import { MdOutlineLogout, MdOutlineElectricBike } from "react-icons/md";
 import { CgProfile } from "react-icons/cg";
-import {
-  FaMotorcycle,
-  FaHandHoldingUsd,
-  FaChevronDown,
-  FaUsersCog,
-} from "react-icons/fa";
-import { TbLayoutSidebarLeftExpandFilled } from "react-icons/tb";
+import { PiCoins, PiHandCoinsDuotone } from "react-icons/pi";
+import { TbLayoutSidebarLeftExpandFilled, TbCoinTaka } from "react-icons/tb";
+import { FaMotorcycle, FaChevronDown, FaUsersCog } from "react-icons/fa";
 import { useAppDispatch } from "../../redux/hooks";
 import { logout } from "../../redux/features/auth/authSlice";
 import useUserDetails from "../../customHooks/useUserDetails";
@@ -159,7 +150,7 @@ const DashboardSidebar = () => {
                           to="/dashboard/admin/rentals"
                           className={`text-sm font-medium flex gap-3 item-center p-2 hover:bg-accent text-primary dark:text-white`}
                         >
-                          <MdOutlineElectricBike className="text-xl" />
+                          <TbCoinTaka className="text-xl" />
                           <span className="">Rental Management</span>
                         </Link>
                       </li>
@@ -188,7 +179,7 @@ const DashboardSidebar = () => {
                           className={`text-sm font-medium flex items-center justify-between p-2 hover:bg-accent text-primary dark:text-white`}
                         >
                           <div className="flex gap-3 item-center items-center">
-                            <MdCarRental className="text-xl" />
+                            <TbCoinTaka className="text-xl" />
                             <span className="">Rental Management</span>
                           </div>
                           <FaChevronDown
@@ -214,7 +205,7 @@ const DashboardSidebar = () => {
                               to="/dashboard/user/rentals/unpaid"
                               className={`text-sm font-medium flex gap-3 item-center p-2 hover:bg-accent text-primary dark:text-white`}
                             >
-                              <FaHandHoldingUsd className="text-xl" />
+                              <PiHandCoinsDuotone className="text-xl" />
                               <span className="">Unpaid Rentals</span>
                             </Link>
                           </li>
@@ -232,7 +223,7 @@ const DashboardSidebar = () => {
                               to="/dashboard/user/rentals/paid"
                               className={`text-sm font-medium flex gap-3 item-center p-2 hover:bg-accent text-primary dark:text-white`}
                             >
-                              <MdPaid className="text-xl" />
+                              <PiCoins className="text-xl" />
                               <span className="">Paid Rentals</span>
                             </Link>
                           </li>

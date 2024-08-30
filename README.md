@@ -8,38 +8,39 @@
 
 ## Client Live Link
 
-Click here to see the Client Side Live Link: [https://sporting-goods-client.vercel.app](https://sporting-goods-client.vercel.app)
+Click here to see the Client Side Live Link: [https://rideon-rental-client.vercel.app](https://rideon-rental-client.vercel.app)
 
 ## Server Live Link
 
-Click here to see the Server Side Live Link: [https://sporting-goods-server-beige.vercel.app](https://sporting-goods-server-beige.vercel.app)
+Click here to see the Server Side Live Link: [https://bike-rental-service-lilac.vercel.app](https://bike-rental-service-lilac.vercel.app)
 
 ## Server Repository Link
 
-Click here to see the Server Side Repository Link: [https://github.com/Bahauddin-Fahad/Sporting-Goods-Server](https://github.com/Bahauddin-Fahad/Sporting-Goods-Server)
+Click here to see the Server Side Repository Link: [https://github.com/Bahauddin-Fahad/Bike-Rental-Server](https://github.com/Bahauddin-Fahad/Bike-Rental-Server)
 
 ## Project Features
 
-1. **Home Section:** Home Section where Banner, Categories, Products, Contact Form and Footer is Implemented
-2. **All Products:** All Products section where filter is implemented based on name,category,price. And also user can sort the products based on price on ascending or descending order.
-3. **Manage Product:** Manage Products section where User can add a product,update and also delete a product.
-4. **Product Details:** Product Details Section where user can see the details of a product and can add to cart the product.
-5. **Cart:** In Cart, User can see their cart products and can fill the form and order the product.
+1. **Signup:** Both User and Admin Signup facility is Implemented.
+1. **Login:** Both User and Admin Login facility is Implemented.
+1. **Home Section:** Home Section where Banner, Bikes, Testimonial, Contact Form,Why choose us and Footer is Implemented
+1. **Dashboard:** User can check All bikes, Own paid and unpaid rentals via AamarPay, while Admin can check all User, Bikes, Rentals and add and update Accordingly.
+   _1.User:_ User can check availabe bikes, and book the bike by paying advance, User can check his bookings in paid and unpaid section.
+   _2.Admin:_ Admin can check add update or Delete Bikes. Admin can check all the users, can make a user admin or remove from admin. Admin can also delete the user. In Rental Section, Admin can check the rentals, can calculate the payment by clicking in the Calculate button. After Clicking, The user will be able to pay the rest of the amount.
 
 ## Technologies
 
 - TypeScript
 - react-dom
 - react-hook-form
+- jwt
 - react-icons
-- react-photo-view
-- react-rating
 - react-redux
 - react-slick
-- react-slider
 - react-spinners
 - react-toastify
+- redux-persist
 - slick-carousel
+- AamarPay
 - vercel
 
 ## :link: How to run the application locally

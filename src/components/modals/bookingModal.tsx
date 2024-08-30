@@ -9,7 +9,7 @@ const BookingModal = ({ bikeDetails, setModalType }: any) => {
   const [createBooking] = useCreateBookingMutation();
   const {
     register,
-    formState: { errors },
+    formState: { errors, isValid },
     handleSubmit,
   } = useForm<FieldValues>({
     defaultValues: {},
@@ -63,6 +63,7 @@ const BookingModal = ({ bikeDetails, setModalType }: any) => {
               <input
                 type="submit"
                 value="Submit"
+                disabled={!isValid}
                 className="btn btn-md btn-accent font-bold"
               />
               <label

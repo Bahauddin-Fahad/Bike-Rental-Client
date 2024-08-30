@@ -1,0 +1,92 @@
+.wheel-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.wheel {
+  width: 300px;
+  height: 300px;
+  border: 10px solid #333;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden; /* Ensures the segments stay within the wheel */
+  transition: transform 4s ease-out;
+  background: #333;
+}
+@media screen and (max-width: 460px) {
+  .wheel {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+@media (min-width: 461px) and (max-width: 767px) {
+  .wheel {
+    width: 200px;
+    height: 200px;
+  }
+}
+.spinning {
+  transition: transform 4s ease-out;
+}
+
+.segment {
+  width: 50%;
+  height: 50%;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform-origin: 0% 100%;
+  border-right: 2px solid #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: #fff;
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 100%,
+    0 100%
+  ); /* Clip each segment into a pie shape */
+}
+
+/* Apply different background colors to each segment */
+.segment:nth-child(1) {
+  transform: rotate(0deg);
+  background-color: #ff6666;
+}
+
+.segment:nth-child(2) {
+  transform: rotate(60deg);
+  background-color: #ffcc66;
+}
+
+.segment:nth-child(3) {
+  transform: rotate(120deg);
+  background-color: #66ff66;
+}
+
+.segment:nth-child(4) {
+  transform: rotate(180deg);
+  background-color: #66ccff;
+}
+
+.segment:nth-child(5) {
+  transform: rotate(240deg);
+  background-color: #9966ff;
+}
+
+.segment:nth-child(6) {
+  transform: rotate(300deg);
+  background-color: #ff66cc;
+}
+
+button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}

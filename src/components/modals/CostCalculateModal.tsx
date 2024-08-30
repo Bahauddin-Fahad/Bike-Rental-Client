@@ -11,7 +11,7 @@ const CostCalculateModal = ({
   const [calculateTotalCost] = useCalculateTotalCostMutation();
   const {
     register,
-    formState: { errors },
+    formState: { errors, isValid },
     handleSubmit,
   } = useForm<FieldValues>({
     defaultValues: {
@@ -72,6 +72,7 @@ const CostCalculateModal = ({
               <input
                 type="submit"
                 value="Submit"
+                disabled={!isValid}
                 className="btn btn-md btn-accent font-bold"
               />
               <label

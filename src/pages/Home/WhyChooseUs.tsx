@@ -49,7 +49,7 @@ const WhyChooseUs = () => {
   return (
     <div className="custom-padding flex flex-col space-y-5 lg:space-y-10  text-center">
       <div className="max-w-xl mx-auto">
-        <h1 className="font-vietnam-bold text-[#2E603C] text-[20px] xl:text-[40px] 2xl:text-[55px] text-center tracking-tight ">
+        <h1 className="font-vietnam-bold text-primary dark:text-secondary text-[20px] xl:text-[40px] 2xl:text-[55px] text-center tracking-tight ">
           Why <span className="text-accent">Choose</span> Us
         </h1>
       </div>

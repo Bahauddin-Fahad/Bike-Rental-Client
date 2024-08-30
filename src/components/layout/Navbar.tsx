@@ -29,7 +29,7 @@ const Navbar = ({ toggleTheme }: any) => {
     <div className="custom-padding navbar bg-white dark:bg-primary font-semibold h-14 xl:h-28 sticky top-0 z-20 text-black dark:text-white shadow-md">
       <div className="navbar-start xl:relative">
         <Link to={"/"} className="xl:text-2xl space-x-2">
-          <span className="text-[#27ae60] font-semibold">RideOn</span>
+          <span className="text-accent font-semibold">RideOn</span>
           <span>Rentals</span>
         </Link>
       </div>
@@ -39,7 +39,7 @@ const Navbar = ({ toggleTheme }: any) => {
           <li
             className={`font-bold ${
               buttonName === "about"
-                ? "text-[#27ae60]"
+                ? "text-accent"
                 : "hover:scale-110 duration-300"
             }`}
             onClick={() => setButtonName("about")}
@@ -49,7 +49,7 @@ const Navbar = ({ toggleTheme }: any) => {
           <li
             className={`font-bold ${
               buttonName === "dashboard"
-                ? "text-[#27ae60]"
+                ? "text-accent"
                 : "hover:scale-110 duration-300"
             }`}
             onClick={() => setButtonName("dashboard")}
@@ -62,7 +62,7 @@ const Navbar = ({ toggleTheme }: any) => {
         {user ? (
           <button
             onClick={handleLogOut}
-            className="w-[80px] h-[25px] xl:w-[120px] xl:h-[40px] bg-accent text-white text-[8px] xl:text-[16px] rounded-sm xl:rounded-[5px] font-vietnam-bold"
+            className="w-[80px] h-[25px] xl:w-[120px] xl:h-[40px] bg-[#2E603C] text-white text-[8px] xl:text-[16px] rounded-sm xl:rounded-[5px] font-vietnam-bold"
           >
             Logout
           </button>
@@ -83,7 +83,7 @@ const Navbar = ({ toggleTheme }: any) => {
         />
         <div className="dropdown dropdown-left">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-            <GiHamburgerMenu className="text-accent text-3xl" />
+            <GiHamburgerMenu className="text-[#2E603C] text-3xl" />
           </div>
           <ul
             tabIndex={0}
@@ -91,14 +91,14 @@ const Navbar = ({ toggleTheme }: any) => {
           >
             <li
               className={`font-semibold ${
-                buttonName === "about" && "text-[#27ae60]"
+                buttonName === "about" && "text-accent"
               }`}
             >
               <Link to={"/about"}>ABOUT US</Link>
             </li>
             <li
               className={`font-semibold ${
-                buttonName === "dashboard" && "text-[#27ae60]"
+                buttonName === "dashboard" && "text-accent"
               }`}
             >
               <Link to={"/dashboard"}>DASHBOARD</Link>

@@ -37,7 +37,7 @@ const Banner = () => {
       <div className="absolute inset-0 flex flex-col items-center justify-center bg-black bg-opacity-60 gap-5">
         <div className="relative space-y-4 xl:space-y-[30px] flex flex-col items-center max-w-lg text-center mx-auto">
           <h1 className="font-vietnam text-[20px] xl:text-[50px] tracking-tight leading-[25px] xl:leading-[48px] text-white">
-            Find Your <span className="text-[#27ae60]">Perfect Ride</span>
+            Find Your <span className="text-accent">Perfect Ride</span>
           </h1>
           <p className="font-shatoshi text-xs xl:text-base 2xl:text-xl text-justify text-white">
             Browse through our extensive selection of bikes and discover the

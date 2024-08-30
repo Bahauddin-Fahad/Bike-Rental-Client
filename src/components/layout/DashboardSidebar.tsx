@@ -83,7 +83,7 @@ const DashboardSidebar = () => {
             <div className="space-y-6">
               <div className="mb-5">
                 <Link to={"/"} className="xl:text-2xl space-x-2">
-                  <span className="text-[#27ae60] font-semibold">RideOn</span>
+                  <span className="text-accent font-semibold">RideOn</span>
                   <span>Rentals</span>
                 </Link>
               </div>
@@ -100,7 +100,7 @@ const DashboardSidebar = () => {
                 <div>
                   <h2 className="font-bold md:text-lg text-center font-vietnam-bold">
                     Welcome{" "}
-                    <span className="text-[#27ae60]">{loadedUser?.name}</span>
+                    <span className="text-accent">{loadedUser?.name}</span>
                   </h2>
                 </div>
               </div>
@@ -112,7 +112,7 @@ const DashboardSidebar = () => {
                       <li
                         className={`rounded-md ${
                           buttonName === "/dashboard/admin/users"
-                            ? "bg-[#27ae60]"
+                            ? "bg-accent"
                             : ""
                         }`}
                       >
@@ -121,7 +121,7 @@ const DashboardSidebar = () => {
                             setButtonName("/dashboard/admin/users")
                           }
                           to="/dashboard/admin/users"
-                          className={`text-sm font-medium flex gap-3 item-center p-2 hover:bg-[#27ae60] text-primary dark:text-white`}
+                          className={`text-sm font-medium flex gap-3 item-center p-2 hover:bg-accent text-primary dark:text-white`}
                         >
                           <FaUsersCog className="text-xl" />
                           <span className="">User Management</span>
@@ -130,7 +130,7 @@ const DashboardSidebar = () => {
                       <li
                         className={`rounded-md ${
                           buttonName === "/dashboard/admin/bikes"
-                            ? "bg-[#27ae60]"
+                            ? "bg-accent"
                             : ""
                         }`}
                       >
@@ -139,7 +139,7 @@ const DashboardSidebar = () => {
                             setButtonName("/dashboard/admin/bikes")
                           }
                           to="/dashboard/admin/bikes"
-                          className={`text-sm font-medium flex gap-3 item-center p-2 hover:bg-[#27ae60] text-primary dark:text-white`}
+                          className={`text-sm font-medium flex gap-3 item-center p-2 hover:bg-accent text-primary dark:text-white`}
                         >
                           <MdOutlineElectricBike className="text-xl" />
                           <span className="">Bike Management</span>
@@ -148,7 +148,7 @@ const DashboardSidebar = () => {
                       <li
                         className={`rounded-md ${
                           buttonName === "/dashboard/admin/rentals"
-                            ? "bg-[#27ae60]"
+                            ? "bg-accent"
                             : ""
                         }`}
                       >
@@ -157,7 +157,7 @@ const DashboardSidebar = () => {
                             setButtonName("/dashboard/admin/rentals")
                           }
                           to="/dashboard/admin/rentals"
-                          className={`text-sm font-medium flex gap-3 item-center p-2 hover:bg-[#27ae60] text-primary dark:text-white`}
+                          className={`text-sm font-medium flex gap-3 item-center p-2 hover:bg-accent text-primary dark:text-white`}
                         >
                           <MdOutlineElectricBike className="text-xl" />
                           <span className="">Rental Management</span>
@@ -169,14 +169,14 @@ const DashboardSidebar = () => {
                       <li
                         className={`rounded-md ${
                           buttonName === "/dashboard/user/bikes"
-                            ? "bg-[#27ae60]"
+                            ? "bg-accent"
                             : ""
                         }`}
                       >
                         <Link
                           onClick={() => setButtonName("/dashboard/user/bikes")}
                           to="/dashboard/user/bikes"
-                          className={`text-sm font-medium flex gap-3 item-center p-2 hover:bg-[#27ae60] text-primary dark:text-white`}
+                          className={`text-sm font-medium flex gap-3 item-center p-2 hover:bg-accent text-primary dark:text-white`}
                         >
                           <FaMotorcycle className="text-xl mr-1" />
                           <span className="">All Bikes</span>
@@ -185,7 +185,7 @@ const DashboardSidebar = () => {
                       <li>
                         <button
                           onClick={toggleDropdown}
-                          className={`text-sm font-medium flex items-center justify-between p-2 hover:bg-[#27ae60] text-primary dark:text-white`}
+                          className={`text-sm font-medium flex items-center justify-between p-2 hover:bg-accent text-primary dark:text-white`}
                         >
                           <div className="flex gap-3 item-center items-center">
                             <MdCarRental className="text-xl" />
@@ -203,7 +203,7 @@ const DashboardSidebar = () => {
                           <li
                             className={`rounded-md ${
                               buttonName === "/dashboard/user/rentals/unpaid"
-                                ? "bg-[#27ae60]"
+                                ? "bg-accent"
                                 : ""
                             }`}
                           >
@@ -212,7 +212,7 @@ const DashboardSidebar = () => {
                                 setButtonName("/dashboard/user/rentals/unpaid")
                               }
                               to="/dashboard/user/rentals/unpaid"
-                              className={`text-sm font-medium flex gap-3 item-center p-2 hover:bg-[#27ae60] text-primary dark:text-white`}
+                              className={`text-sm font-medium flex gap-3 item-center p-2 hover:bg-accent text-primary dark:text-white`}
                             >
                               <FaHandHoldingUsd className="text-xl" />
                               <span className="">Unpaid Rentals</span>
@@ -221,7 +221,7 @@ const DashboardSidebar = () => {
                           <li
                             className={`rounded-md ${
                               buttonName === "/dashboard/user/rentals/paid"
-                                ? "bg-[#27ae60]"
+                                ? "bg-accent"
                                 : ""
                             }`}
                           >
@@ -230,7 +230,7 @@ const DashboardSidebar = () => {
                                 setButtonName("/dashboard/user/rentals/paid")
                               }
                               to="/dashboard/user/rentals/paid"
-                              className={`text-sm font-medium flex gap-3 item-center p-2 hover:bg-[#27ae60] text-primary dark:text-white`}
+                              className={`text-sm font-medium flex gap-3 item-center p-2 hover:bg-accent text-primary dark:text-white`}
                             >
                               <MdPaid className="text-xl" />
                               <span className="">Paid Rentals</span>
@@ -245,13 +245,13 @@ const DashboardSidebar = () => {
                 <div className="space-y-2">
                   <li
                     className={`rounded-md ${
-                      buttonName === "/dashboard" ? "bg-[#27ae60]" : ""
+                      buttonName === "/dashboard" ? "bg-accent" : ""
                     }`}
                   >
                     <Link
                       onClick={() => setButtonName("/dashboard")}
                       to="/dashboard"
-                      className={`text-sm font-medium flex gap-3 item-center p-2 hover:bg-[#27ae60] text-primary dark:text-white`}
+                      className={`text-sm font-medium flex gap-3 item-center p-2 hover:bg-accent text-primary dark:text-white`}
                     >
                       <CgProfile className="text-xl" />
                       <span className="">Profile</span>
@@ -260,7 +260,7 @@ const DashboardSidebar = () => {
                   <li className="">
                     <a
                       onClick={handleLogOut}
-                      className={`text-sm font-medium flex gap-3 item-center p-2 hover:bg-[#27ae60] text-primary dark:text-white`}
+                      className={`text-sm font-medium flex gap-3 item-center p-2 hover:bg-accent text-primary dark:text-white`}
                     >
                       <MdOutlineLogout className="text-lg" />{" "}
                       <span className="">Logout</span>

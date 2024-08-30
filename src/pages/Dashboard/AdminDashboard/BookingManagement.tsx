@@ -54,7 +54,7 @@ const BookingManagement = () => {
           <span className="font-normal tracking-wide text-black dark:text-[#bdbdbd9e]">
             All
           </span>
-          <span className="text-[#27ae60]">Bookings</span>
+          <span className="text-accent">Bookings</span>
         </p>
       </div>
 

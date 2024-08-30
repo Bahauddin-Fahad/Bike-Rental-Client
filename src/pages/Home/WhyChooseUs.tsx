@@ -49,8 +49,8 @@ const WhyChooseUs = () => {
   return (
     <div className="custom-padding flex flex-col space-y-5 lg:space-y-10  text-center">
       <div className="max-w-xl mx-auto">
-        <h1 className="font-vietnam-bold text-accent text-[20px] xl:text-[40px] 2xl:text-[55px] text-center tracking-tight ">
-          Why <span className="text-[#27ae60]">Choose</span> Us
+        <h1 className="font-vietnam-bold text-[#2E603C] text-[20px] xl:text-[40px] 2xl:text-[55px] text-center tracking-tight ">
+          Why <span className="text-accent">Choose</span> Us
         </h1>
       </div>
       <div className="flex flex-wrap justify-center gap-5">
@@ -59,7 +59,7 @@ const WhyChooseUs = () => {
             key={index}
             className="rounded-xl shadow p-5 w-[250px] transition-transform duration-300 ease-in-out hover:translate-y-[-5px] bg-secondary dark:bg-primary space-y-4"
           >
-            <div className="text-[40px] text-[#27ae60]">{point.icon}</div>
+            <div className="text-[40px] text-accent">{point.icon}</div>
             <h3 className="text-xl">{point.title}</h3>
             <p className="text-sm">{point.description}</p>
           </div>

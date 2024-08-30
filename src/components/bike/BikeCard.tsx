@@ -24,7 +24,7 @@ const BikeCard = ({ bike }: Props) => {
         <div className="card-actions justify-end items-end my-2">
           <button
             onClick={() => navigate(`/bikes/${bike._id}`)}
-            className="btn bg-[#27ae60] text-white w-full font-bold hover:scale-105 duration-500 font-vietnam-bold hover:bg-[#27ae60] border-0"
+            className="btn bg-accent text-white w-full font-bold hover:scale-105 duration-500 font-vietnam-bold hover:bg-accent border-0"
           >
             View Details
           </button>

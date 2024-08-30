@@ -44,7 +44,7 @@ const AllBikes = () => {
           <span className="font-normal tracking-wide text-back dark:text-[#bdbdbd9e]">
             Explore Our
           </span>
-          <span className="text-[#27ae60]">Premium Bikes</span>
+          <span className="text-accent">Premium Bikes</span>
         </p>
       </div>
       <div className="flex p-5 justify-center gap-5">
@@ -55,7 +55,7 @@ const AllBikes = () => {
           onChange={(e) => setSearchTerm(e.target.value)}
         />
         <select
-          className="select select-bordered max-w-md bg-[#27ae60]"
+          className="select select-bordered max-w-md bg-accent"
           value={brand}
           onChange={(e) => setBrand(e.target.value)}
         >

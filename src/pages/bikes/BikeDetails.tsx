@@ -27,7 +27,7 @@ const BikeDetails = () => {
           <span className="font-normal tracking-wide dark:text-[#bdbdbd9e]">
             {bikeDetails?.name.split(" ")[0]}
           </span>
-          <span className="text-[#27ae60]">
+          <span className="text-accent">
             {bikeDetails?.name.split(" ").slice(1).join(" ")}
           </span>
         </p>
@@ -108,7 +108,7 @@ const BikeDetails = () => {
             }}
             className={`btn h-[30px] xs:h-[70px] w-8/12 mx-auto rounded-lg xs:rounded-xl text-sm xs:text-lg font-semibold font-vietnam-bold ${
               bikeDetails?.isAvailable
-                ? "hover:scale-105 duration-500 bg-[#27ae60] hover:bg-[#27ae60] text-white"
+                ? "hover:scale-105 duration-500 bg-accent hover:bg-accent text-white"
                 : "bg-secondary text-primary"
             }`}
           >
@@ -121,7 +121,7 @@ const BikeDetails = () => {
             }}
             className={`btn h-[30px] xs:h-[70px] w-8/12 mx-auto rounded-lg xs:rounded-xl text-sm xs:text-lg font-semibold font-vietnam-bold ${
               bikeDetails?.isAvailable
-                ? "hover:scale-105 duration-500 bg-[#27ae60] hover:bg-[#27ae60] text-white"
+                ? "hover:scale-105 duration-500 bg-accent hover:bg-accent text-white"
                 : "bg-secondary text-primary"
             }`}
           >

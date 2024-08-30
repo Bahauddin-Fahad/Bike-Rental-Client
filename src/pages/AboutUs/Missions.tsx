@@ -11,15 +11,15 @@ const Missions = () => {
   return (
     <div className="space-y-5">
       <div className="max-w-xl mx-auto">
-        <h1 className="font-vietnam-bold text-accent text-[20px] xl:text-[40px] 2xl:text-[55px] text-center tracking-tight ">
-          Our <span className="text-[#27ae60]">Mission</span> &{" "}
-          <span className="text-[#27ae60]">Vision</span>
+        <h1 className="font-vietnam-bold text-[#2E603C] text-[20px] xl:text-[40px] 2xl:text-[55px] text-center tracking-tight ">
+          Our <span className="text-accent">Mission</span> &{" "}
+          <span className="text-accent">Vision</span>
         </h1>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 grow-[2] w-full">
         <div className="h-[230px] border border-[#27ae60] dark:border-white flex gap-y-3 flex-col justify-center items-center bg-secondary dark:bg-transparent">
-          <FaMotorcycle className="text-5xl text-[#27ae60]" />
+          <FaMotorcycle className="text-5xl text-accent" />
           <div className="space-y-2">
             <p className="text-center font-bold">Empower Every Ride</p>
             <p className="text-center text-sm max-w-xs">
@@ -29,7 +29,7 @@ const Missions = () => {
           </div>
         </div>
         <div className="h-[230px] border border-[#27ae60] dark:border-white flex gap-y-3 flex-col justify-center items-center bg-secondary dark:bg-transparent">
-          <GiFullMotorcycleHelmet className="text-5xl text-[#27ae60]" />
+          <GiFullMotorcycleHelmet className="text-5xl text-accent" />
           <div className="space-y-2">
             <p className="text-center font-bold">Sustainable Mobility</p>
             <p className="text-center text-sm max-w-xs">
@@ -40,7 +40,7 @@ const Missions = () => {
           </div>
         </div>
         <div className="h-[230px] border border-[#27ae60] dark:border-white flex gap-y-3 flex-col justify-center items-center bg-secondary dark:bg-transparent">
-          <FaThumbsUp className="text-5xl text-[#27ae60]" />
+          <FaThumbsUp className="text-5xl text-accent" />
           <div className="space-y-2">
             <p className="text-center font-bold">Customer-Centric Service</p>
             <p className="text-center text-sm max-w-xs">
@@ -50,7 +50,7 @@ const Missions = () => {
           </div>
         </div>
         <div className="h-[230px] border border-[#27ae60] dark:border-white flex gap-y-3 flex-col justify-center items-center bg-secondary dark:bg-transparent">
-          <FaUserFriends className="text-5xl text-[#27ae60]" />
+          <FaUserFriends className="text-5xl text-accent" />
           <div className="space-y-2">
             <p className="text-center font-bold">Leader in Bike Rentals</p>
             <p className="text-center text-sm max-w-xs">
@@ -60,7 +60,7 @@ const Missions = () => {
           </div>
         </div>
         <div className="h-[230px] border border-[#27ae60] dark:border-white flex gap-y-3 flex-col justify-center items-center bg-secondary dark:bg-transparent">
-          <FaLeaf className="text-5xl text-[#27ae60]" />
+          <FaLeaf className="text-5xl text-accent" />
           <div className="space-y-2">
             <p className="text-center font-bold">Eco-Friendly Impact</p>
             <p className="text-center text-sm max-w-xs">
@@ -71,7 +71,7 @@ const Missions = () => {
           </div>
         </div>
         <div className="h-[230px] border border-[#27ae60] dark:border-white flex gap-y-3 flex-col justify-center items-center bg-secondary dark:bg-transparent">
-          <BiKey className="text-5xl text-[#27ae60]" />
+          <BiKey className="text-5xl text-accent" />
           <div className="space-y-2">
             <p className="text-center font-bold">Top-Notch Experience</p>
             <p className="text-center text-sm max-w-xs">

@@ -5,9 +5,9 @@ const Header = () => {
       <h1 className="uppercase my-5 xl:text-[20px] tracking-[10px]">
         We are RideOn Rentals
       </h1>
-      <h1 className="font-vietnam-bold text-accent text-[20px] xl:text-4xl my-4">
+      <h1 className="font-vietnam-bold text-[#2E603C] text-[20px] xl:text-4xl my-4">
         A Platform For <br />
-        <span className="text-[#27ae60]">Bike Rentals</span>
+        <span className="text-accent">Bike Rentals</span>
       </h1>
       <h1 className="">
         <br />

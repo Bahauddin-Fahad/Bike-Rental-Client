@@ -29,7 +29,7 @@ const SearchedBike = ({ searchBike }: { searchBike: string }) => {
                 navigate(`/bikes/${bike?._id}`);
               }}
               key={index}
-              className="flex items-center gap-2 bg-[#27ae60] p-3 rounded-lg cursor-pointer"
+              className="flex items-center gap-2 bg-accent p-3 rounded-lg cursor-pointer"
             >
               <img
                 src={bike.image}

@@ -42,10 +42,10 @@ const Signup = () => {
 
   return (
     <div className="grid grid-cols-1 xs:grid-cols-2 bg-white h-screen">
-      <div className="order-2 text-white font-vietnam-bold text-[6.27vw] hidden xs:flex justify-center items-center w-full bg-accent p-5 md:p-10">
+      <div className="order-2 text-white font-vietnam-bold text-[6.27vw] hidden xs:flex justify-center items-center w-full bg-[#2E603C] p-5 md:p-10">
         RideOn
       </div>
-      <div className="order-1 bg-white h-full text-accent text-xl font-font-satoshi flex justify-center items-center">
+      <div className="order-1 bg-white h-full text-[#2E603C] text-xl font-font-satoshi flex justify-center items-center">
         <div className="w-full xs:w-1/2 max-w-lg space-y-4">
           <p className="font-vietnam-bold">Sign up with</p>
           <form onSubmit={handleSubmit(onSubmit)}>
@@ -182,7 +182,7 @@ const Signup = () => {
           <div className="flex gap-2 justify-center text-sm md:text-lg">
             <p>Already have an account?</p>
             <Link
-              className="decoration-transparent text-accent font-semibold"
+              className="decoration-transparent text-[#2E603C] font-semibold"
               to="/login"
             >
               Login

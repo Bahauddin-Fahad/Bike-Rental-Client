@@ -6,7 +6,7 @@ const Footer = () => {
     <footer className="footer p-4 sm:p-8 md:px-16 bg-secondary dark:bg-primary text-black dark:text-white text-xs sm:text-base grid grid-cols-12">
       <div className="my-auto col-span-12 sm:col-span-3">
         <Link to={"/"} className="text-2xl space-x-2">
-          <span className="text-[#27ae60] font-semibold">RideOn</span>
+          <span className="text-accent font-semibold">RideOn</span>
           <span>Rentals</span>
         </Link>
         <p className="text-center sm:text-start">

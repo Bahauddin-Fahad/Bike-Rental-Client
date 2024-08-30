@@ -53,7 +53,7 @@ const BikeManagement = () => {
           <span className="font-normal tracking-wide text-back dark:text-[#bdbdbd9e]">
             Manage
           </span>
-          <span className="text-[#27ae60]">Bikes</span>
+          <span className="text-accent">Bikes</span>
         </p>
       </div>
       <div className="flex flex-col lg:flex-row gap-3 p-5 justify-between">
@@ -65,7 +65,7 @@ const BikeManagement = () => {
             onChange={(e) => setSearchTerm(e.target.value)}
           />
           <select
-            className="select select-bordered max-w-md bg-[#27ae60] text-white"
+            className="select select-bordered max-w-md bg-accent text-white"
             value={brand}
             onChange={(e) => setBrand(e.target.value)}
           >
@@ -81,7 +81,7 @@ const BikeManagement = () => {
             setModalType("add");
             setBike({});
           }}
-          className="btn btn-accent bg-[#27ae60] text-white font-bold order-1 lg:order-2 border-none"
+          className="btn btn-accent bg-accent text-white font-bold order-1 lg:order-2 border-none"
         >
           Add Bike
         </label>
@@ -157,7 +157,7 @@ const BikeManagement = () => {
             </tbody>
           </table>
         ) : (
-          <div className="h-32 xl:h-60 mx-auto bg-secondary text-[#27ae60] text-2xl xl:text-4xl text-center flex justify-center items-center rounded-lg shadow-lg font-vietnam-bold">
+          <div className="h-32 xl:h-60 mx-auto bg-secondary text-accent text-2xl xl:text-4xl text-center flex justify-center items-center rounded-lg shadow-lg font-vietnam-bold">
             <p> No Data Found</p>
           </div>
         )}

@@ -15,7 +15,7 @@ const CompareBikeModal = ({ bikesToCompare, setBikesToCompare }: any) => {
     <div>
       <input type="checkbox" id="compare-modal" className="modal-toggle" />
       <div className="modal">
-        <div className="modal-box max-w-2xl !important space-y-4 text-[#27ae60] bg-white">
+        <div className="modal-box max-w-2xl !important space-y-4 text-accent bg-white">
           <label htmlFor="compare-modal">
             <button
               onClick={() => {
@@ -34,7 +34,7 @@ const CompareBikeModal = ({ bikesToCompare, setBikesToCompare }: any) => {
               <>
                 <div
                   key={index}
-                  className="max-w-sm rounded overflow-hidden shadow-lg glass hover:shadow-xl flex flex-col transition-shadow duration-300 bg-[#27ae60] h-full text-primary"
+                  className="max-w-sm rounded overflow-hidden shadow-lg glass hover:shadow-xl flex flex-col transition-shadow duration-300 bg-accent h-full text-primary"
                 >
                   <div className="p-4">
                     <img
@@ -80,7 +80,7 @@ const CompareBikeModal = ({ bikesToCompare, setBikesToCompare }: any) => {
                             setBikesToCompare([...bikesToCompare, bike]);
                           }}
                           key={index}
-                          className="flex items-center gap-2 bg-[#27ae60] p-3 rounded-lg cursor-pointer"
+                          className="flex items-center gap-2 bg-accent p-3 rounded-lg cursor-pointer"
                         >
                           <img
                             src={bike.image}

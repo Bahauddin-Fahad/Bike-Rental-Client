@@ -84,7 +84,7 @@ const UserList = () => {
           <span className="font-normal tracking-wide text-[#bdbdbd9e]">
             All
           </span>
-          <span className="text-[#27ae60]">Users</span>
+          <span className="text-accent">Users</span>
         </p>
       </div>
 

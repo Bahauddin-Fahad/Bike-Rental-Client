@@ -45,7 +45,7 @@ const UserBookings = () => {
           <span className="font-normal tracking-wide text-black dark:text-[#bdbdbd9e]">
             {routeName}
           </span>
-          <span className="text-[#27ae60]">Booking</span>
+          <span className="text-accent">Booking</span>
         </p>
       </div>
 

@@ -17,7 +17,7 @@ const SearchedBike = ({ searchBike }: { searchBike: string }) => {
   }
 
   return (
-    <div className="bg-secondary w-full shadow-xl mt-2 p-2 relative">
+    <div className="bg-secondary w-full max-w-xs lg:max-w-lg shadow-xl mt-2 p-2 relative mx-auto">
       {bikes?.length > 0 ? (
         <div
           id="searched-item-div"

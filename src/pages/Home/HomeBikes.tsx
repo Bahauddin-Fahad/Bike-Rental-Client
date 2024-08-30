@@ -15,8 +15,8 @@ const HomeBikes = () => {
   }
   return (
     <div className="custom-padding flex flex-col space-y-5 lg:space-y-10">
-      <div className="max-w-lg mx-auto">
-        <h1 className="font-vietnam text-[#2E603C] text-[20px] xl:text-[40px] 2xl:text-[55px] text-center tracking-tight ">
+      <div className="max-w-xs lg:max-w-lg mx-auto">
+        <h1 className="font-vietnam text-[#2E603C] text-[20px] xl:text-[40px] 2xl:text-[55px] text-center tracking-tight">
           Explore Our <span className="text-accent">Premium Bikes</span> for
           Every Adventure
         </h1>

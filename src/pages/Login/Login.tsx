@@ -10,6 +10,7 @@ import { useState } from "react";
 import { RiEyeFill, RiEyeCloseFill } from "react-icons/ri";
 import toast from "react-hot-toast";
 import { TErrorResponse } from "../../types";
+import Loading from "../../components/ui/Loading";
 
 const Login = () => {
   const dispatch = useAppDispatch();
@@ -25,7 +26,7 @@ const Login = () => {
     defaultValues,
   });
 
-  const [login] = useLoginMutation();
+  const [login, { isLoading }] = useLoginMutation();
 
   const onSubmit = async (data: any) => {
     try {
@@ -44,7 +45,9 @@ const Login = () => {
       toast.error((error as TErrorResponse)?.data?.message, { duration: 4000 });
     }
   };
-
+  if (isLoading) {
+    return <Loading />;
+  }
   return (
     <div className="grid grid-cols-1 xs:grid-cols-2 bg-white h-screen">
       <h1 className="text-white font-vietnam-bold text-[6.27vw] hidden xs:flex justify-center items-center w-full bg-[#2E603C] p-5 md:p-10">

@@ -24,7 +24,6 @@ const Navbar = ({ toggleTheme }: any) => {
     dispatch(logout());
     toast.success("Logged out successfully", { duration: 4000 });
   };
-  console.log(user?.role);
 
   return (
     <div className="custom-padding navbar bg-white dark:bg-primary font-semibold h-14 xl:h-28 sticky top-0 z-20 text-black dark:text-white shadow-md">

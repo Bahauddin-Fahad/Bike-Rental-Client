@@ -22,7 +22,7 @@ const Missions = () => {
           <FaMotorcycle className="text-5xl text-accent" />
           <div className="space-y-2">
             <p className="text-center font-bold">Empower Every Ride</p>
-            <p className="text-center text-sm max-w-xs">
+            <p className="text-center text-sm max-w-xs px-5 lg:px-0">
               To provide our customers with high-quality bikes and exceptional
               service, ensuring every journey is safe, enjoyable, and memorable
             </p>
@@ -32,7 +32,7 @@ const Missions = () => {
           <GiFullMotorcycleHelmet className="text-5xl text-accent" />
           <div className="space-y-2">
             <p className="text-center font-bold">Sustainable Mobility</p>
-            <p className="text-center text-sm max-w-xs">
+            <p className="text-center text-sm max-w-xs px-5 lg:px-0">
               To promote eco-friendly transportation by offering a diverse range
               of bikes that cater to all types of riders, encouraging a greener
               and healthier lifestyle.
@@ -43,7 +43,7 @@ const Missions = () => {
           <FaThumbsUp className="text-5xl text-accent" />
           <div className="space-y-2">
             <p className="text-center font-bold">Customer-Centric Service</p>
-            <p className="text-center text-sm max-w-xs">
+            <p className="text-center text-sm max-w-xs px-5 lg:px-0">
               To prioritize our customers' needs by delivering personalized
               service, expert advice, and reliable bikes for every adventure.
             </p>
@@ -53,7 +53,7 @@ const Missions = () => {
           <FaUserFriends className="text-5xl text-accent" />
           <div className="space-y-2">
             <p className="text-center font-bold">Leader in Bike Rentals</p>
-            <p className="text-center text-sm max-w-xs">
+            <p className="text-center text-sm max-w-xs px-5 lg:px-0">
               To become the leading bike rental company known for exceptional
               service, quality bikes, and customer satisfaction.
             </p>
@@ -63,7 +63,7 @@ const Missions = () => {
           <FaLeaf className="text-5xl text-accent" />
           <div className="space-y-2">
             <p className="text-center font-bold">Eco-Friendly Impact</p>
-            <p className="text-center text-sm max-w-xs">
+            <p className="text-center text-sm max-w-xs px-5 lg:px-0">
               To inspire a global movement towards sustainable transportation by
               offering eco-friendly bike rental options that reduce carbon
               footprints.
@@ -74,7 +74,7 @@ const Missions = () => {
           <BiKey className="text-5xl text-accent" />
           <div className="space-y-2">
             <p className="text-center font-bold">Top-Notch Experience</p>
-            <p className="text-center text-sm max-w-xs">
+            <p className="text-center text-sm max-w-xs px-5 lg:px-0">
               To be recognized as the go-to destination for bike rentals, where
               customers can expect top-notch bikes, seamless service, and
               unforgettable rides.

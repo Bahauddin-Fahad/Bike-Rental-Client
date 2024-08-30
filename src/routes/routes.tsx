@@ -5,7 +5,6 @@ import Signup from "../pages/Signup/Signup";
 import Home from "../pages/Home/Home";
 import BikeDetails from "../pages/Bikes/BikeDetails";
 import AboutUs from "../pages/AboutUs/AboutUs";
-import CompareBikes from "../pages/CompareBikes/CompareBikes";
 import Dashboard from "../pages/Dashboard/Dashboard";
 import Profile from "../pages/Dashboard/Profile";
 import AllBikes from "../pages/Bikes/AllBikes";
@@ -32,10 +31,6 @@ const router = createBrowserRouter([
         element: <AboutUs />,
       },
 
-      {
-        path: "compare",
-        element: <CompareBikes />,
-      },
       {
         path: "bikes/:id",
         element: (

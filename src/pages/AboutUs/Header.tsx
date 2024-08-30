@@ -12,7 +12,7 @@ const Header = () => {
       <h1 className="">
         <br />
       </h1>
-      <p className="text-sm xl:text-lg">
+      <p className="text-sm xl:text-lg text-justify">
         RideOn Rentals is your ultimate platform for high-quality bike rentals,
         catering to riders of all levels. Whether you're planning a leisurely
         ride, an adventurous trail, or a daily commute, RideOn Rentals offers a

@@ -26,14 +26,14 @@ const JourneyAchievements = () => {
             {journeyMilestones.map((milestone, index) => (
               <div
                 key={index}
-                className="flex gap-3 items-center bg-white dark:bg-secondary p-3 rounded-lg"
+                className="flex gap-2 lg:gap-3 items-center bg-white dark:bg-secondary p-3 rounded-lg"
               >
-                <FaCheckCircle className="text-2xl text-accent" />
+                <FaCheckCircle className="size-5 lg:size-6 text-accent" />
                 <div className="flex flex-col">
-                  <h3 className="text-sm xl:text-xl text-[#2E603C] font-vietnam">
+                  <h3 className="text-sm lg:text-xl text-[#2E603C] font-vietnam">
                     {milestone.year}
                   </h3>
-                  <p className="text-xs xl:text-sm text-black font-satoshi">
+                  <p className="text-xs lg:text-sm text-black font-satoshi">
                     {milestone.event}
                   </p>
                 </div>
@@ -49,14 +49,14 @@ const JourneyAchievements = () => {
             {achievementsList.map((achievement, index) => (
               <div
                 key={index}
-                className="flex gap-3 items-center bg-white dark:bg-secondary p-3 rounded-lg"
+                className="flex gap-2 lg:gap-3 items-center bg-white dark:bg-secondary p-3 rounded-lg"
               >
-                <FaTrophy className="text-2xl text-accent" />
+                <FaTrophy className="size-5 lg:size-6 text-accent" />
                 <div className="flex flex-col">
-                  <h3 className="text-sm xl:text-xl text-[#2E603C] font-vietnam">
+                  <h3 className="text-sm lg:text-xl text-[#2E603C] font-vietnam">
                     {achievement.title}
                   </h3>
-                  <p className="text-xs xl:text-sm text-black font-satoshi">
+                  <p className="text-xs lg:text-sm text-black font-satoshi">
                     {achievement.description}
                   </p>
                 </div>

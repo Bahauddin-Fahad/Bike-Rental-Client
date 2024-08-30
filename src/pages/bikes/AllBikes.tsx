@@ -47,15 +47,15 @@ const AllBikes = () => {
           <span className="text-accent">Premium Bikes</span>
         </p>
       </div>
-      <div className="flex p-5 justify-center gap-5">
+      <div className="flex flex-col lg:flex-row gap-3 w-full">
         <input
           type="text"
           placeholder="Search Bike or Model"
-          className="input input-bordered w-5/12 max-w-lg text-primary"
+          className="input input-bordered w-full lg:w-5/12 max-w-lg text-primary"
           onChange={(e) => setSearchTerm(e.target.value)}
         />
         <select
-          className="select select-bordered max-w-md bg-accent"
+          className="select select-bordered max-w-md bg-accent text-white"
           value={brand}
           onChange={(e) => setBrand(e.target.value)}
         >

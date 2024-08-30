@@ -7,12 +7,13 @@ import { useSignUpMutation } from "../../redux/features/auth/authApi";
 
 import toast from "react-hot-toast";
 import { TErrorResponse } from "../../types";
+import Loading from "../../components/ui/Loading";
 
 const Signup = () => {
   const [seePassowrd, setSeePassword] = useState(false);
   const navigate = useNavigate();
 
-  const [signUp] = useSignUpMutation();
+  const [signUp, { isLoading }] = useSignUpMutation();
 
   const {
     register,
@@ -39,7 +40,9 @@ const Signup = () => {
       toast.error((error as TErrorResponse)?.data?.message, { duration: 4000 });
     }
   };
-
+  if (isLoading) {
+    return <Loading />;
+  }
   return (
     <div className="grid grid-cols-1 xs:grid-cols-2 bg-white h-screen">
       <div className="order-2 text-white font-vietnam-bold text-[6.27vw] hidden xs:flex justify-center items-center w-full bg-[#2E603C] p-5 md:p-10">

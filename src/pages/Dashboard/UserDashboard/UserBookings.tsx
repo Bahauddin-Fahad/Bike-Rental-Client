@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useGetUserBookingsQuery } from "../../../redux/features/booking/bookingApi";
 import Loading from "../../../components/ui/Loading";
 import { TBooking } from "../../../types";
@@ -32,6 +32,10 @@ const UserBookings = () => {
     await setCurrentPage(page + 1);
     await refetch();
   };
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  }, [data]);
 
   if (isLoading) {
     return <Loading />;

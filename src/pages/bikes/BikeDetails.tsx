@@ -6,9 +6,9 @@ import BookingModal from "../../components/modals/bookingModal";
 import CompareBikeModal from "../../components/modals/CompareBikeModal";
 
 const BikeDetails = () => {
-  // useEffect(() => {
-  //   window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-  // }, []);
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  }, []);
 
   const [bikesToCompare, setBikesToCompare] = useState<TBike[]>([]);
   const [modalType, setModalType] = useState<string>("");
@@ -17,9 +17,9 @@ const BikeDetails = () => {
   const bikeDetails: TBike = data?.data;
 
   return (
-    <div className="custom-padding mx-auto my-10">
+    <div className="custom-margin mx-auto py-10">
       <div
-        className="h-[200px] flex flex-col justify-center items-center"
+        className="h-[100px] lg:h-[200px] flex flex-col justify-center items-center"
         data-aos="zoom-in"
       >
         <p className="text-4xl text-center font-bold my-3 space-x-5 uppercase">
@@ -31,7 +31,7 @@ const BikeDetails = () => {
           </span>
         </p>
       </div>
-      <div className="card shadow-xl mt-6 bg-secondary dark:bg-primary p-10 space-y-10 max-w-4xl mx-auto">
+      <div className="card shadow-xl mt-3 lg:mt-6 bg-secondary dark:bg-primary p-5 lg:p-10 space-y-5 lg:space-y-10 max-w-4xl mx-auto">
         <div className="relative glass bg-[#272727]">
           <div className="max-w-xl mx-auto h-[200px] sm:h-[250px] md:h-[365px] cursor-pointer">
             <img
@@ -41,7 +41,7 @@ const BikeDetails = () => {
             />
           </div>
         </div>
-        <div className="card-body p-0 space-y-2">
+        <div className="card-body p-0 lg:space-y-2">
           <h2 className="text-base xs:text-2xl font-semibold">
             {bikeDetails?.name}
           </h2>
@@ -56,7 +56,7 @@ const BikeDetails = () => {
               {bikeDetails?.description}
             </p>
           </div>
-          <div className="flex justify-between mt-10">
+          <div className="flex justify-between mt-3 lg:mt-10">
             <div>
               <span className="text-[10px] xs:text-xs sm:text-lg text-[#8A8A8A]">
                 CC
@@ -105,7 +105,7 @@ const BikeDetails = () => {
             onClick={() => {
               setModalType("book");
             }}
-            className={`btn h-[30px] xs:h-[50px] rounded-lg text-sm xs:text-base font-semibold font-vietnam-bold border-none ${
+            className={`btn h-[20px] sm:h-[50px] rounded-lg text-xs lg:text-sm xs:text-base font-semibold font-vietnam-bold border-none ${
               bikeDetails?.isAvailable
                 ? "hover:scale-105 duration-500 bg-accent hover:bg-accent text-white"
                 : "bg-secondary text-primary cursor-not-allowed opacity-30"
@@ -118,7 +118,7 @@ const BikeDetails = () => {
             onClick={() => {
               setBikesToCompare([...bikesToCompare, bikeDetails]);
             }}
-            className={`btn h-[30px] xs:h-[50px] rounded-lg text-sm xs:text-base font-semibold font-vietnam-bold hover:scale-105 duration-500 bg-neutral hover:bg-neutral text-white border-none`}
+            className={`btn h-[20px] sm:h-[50px] rounded-lg text-xs lg:text-sm xs:text-base font-semibold font-vietnam-bold hover:scale-105 duration-500 bg-neutral hover:bg-neutral text-white border-none`}
           >
             Compare
           </label>

@@ -49,7 +49,7 @@ const Banner = () => {
             <input
               type="text"
               placeholder="Search for a bike..."
-              className="input input-bordered w-full max-w-lg bg-[#F6F6F6] text-black"
+              className="input input-bordered w-full max-w-xs lg:max-w-lg bg-[#F6F6F6] text-black"
               onChange={(e) => setSearchBike(e.target.value)}
             />
             <div className="absolute top-full left-0 right-0 z-10">

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Loading from "../../../components/ui/Loading";
 import {
   useGetAllUsersQuery,
@@ -72,6 +72,10 @@ const UserList = () => {
       error: "Failed to update role",
     });
   };
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  }, [data]);
 
   if (isLoading) {
     return <Loading />;

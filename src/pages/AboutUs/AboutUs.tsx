@@ -11,7 +11,7 @@ const AboutUs = () => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   });
   return (
-    <div className="max-w-6xl px-2 mx-auto space-y-20 my-10">
+    <div className="max-w-xs xl:max-w-6xl px-2 mx-auto space-y-20 my-10">
       <Header />
       <Missions />
       <Staffs />

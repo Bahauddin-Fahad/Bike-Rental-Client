@@ -15,6 +15,7 @@
   transition: transform 4s ease-out;
   background: #333;
 }
+
 @media screen and (max-width: 460px) {
   .wheel {
     width: 200px;
@@ -28,6 +29,7 @@
     height: 200px;
   }
 }
+
 .spinning {
   transition: transform 4s ease-out;
 }
@@ -51,6 +53,11 @@
     100% 100%,
     0 100%
   ); /* Clip each segment into a pie shape */
+  text-align: center;
+  transform: translate(
+    -50%,
+    -50%
+  ); /* Adjusts position to center text perfectly */
 }
 
 /* Apply different background colors to each segment */

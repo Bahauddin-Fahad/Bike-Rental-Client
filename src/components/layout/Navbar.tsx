@@ -60,11 +60,11 @@ const Navbar = ({ toggleTheme }: any) => {
           )}
         </ul>
       </div>
-      <div className="navbar-end xl:space-x-4">
+      <div className="navbar-end xl:space-x-4 flex items-center">
         {user ? (
           <button
             onClick={handleLogOut}
-            className="w-[80px] h-[25px] xl:w-[120px] xl:h-[40px] bg-[#2E603C] text-white text-[8px] xl:text-[16px] rounded-sm xl:rounded-[5px] font-vietnam-bold"
+            className="w-[80px] h-[25px] xl:w-[120px] xl:h-[40px] bg-[#2E603C] text-white text-[8px] xl:text-[16px] rounded-sm xl:rounded-[5px] font-vietnam-bold m-0"
           >
             Logout
           </button>
@@ -76,7 +76,6 @@ const Navbar = ({ toggleTheme }: any) => {
             Login
           </button>
         )}
-
         <input
           onChange={toggleTheme}
           type="checkbox"

@@ -48,6 +48,7 @@ export type TResponse<T> = {
   message: string;
 };
 
+export type TPrize = { code: string; discount: number };
 export type TResponseRedux<T> = TResponse<T> & BaseQueryApi;
 
 export type TErrorSources = {

@@ -68,10 +68,11 @@ const bikeApi = baseApi.injectEndpoints({
       invalidatesTags: ["bookings", "bikes"],
     }),
     payBookingCost: builder.mutation({
-      query: (id) => {
+      query: (options) => {
         return {
-          url: `/rentals/${id}/pay`,
+          url: `/rentals/${options.id}/pay`,
           method: "PUT",
+          body: options.data,
         };
       },
       invalidatesTags: ["bookings", "bikes"],

@@ -45,7 +45,7 @@ const BookingManagement = () => {
     return <Loading />;
   }
   return (
-    <div className=" overflow-y-auto h-screen">
+    <div className="py-10 h-screen overflow-y-auto">
       <div
         className="h-[200px] flex flex-col justify-center items-center"
         data-aos="zoom-in"
@@ -57,7 +57,7 @@ const BookingManagement = () => {
           <span className="text-[#27ae60]">Bookings</span>
         </p>
       </div>
-      <div className="flex justify-between p-5"></div>
+
       <div className="overflow-x-auto m-5 font-satoshi">
         <table className="table table-sm">
           {/* head */}

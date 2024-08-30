@@ -87,7 +87,7 @@ const UserList = () => {
           <span className="text-[#27ae60]">Users</span>
         </p>
       </div>
-      <div className="flex justify-between p-5"></div>
+
       <div className="overflow-x-auto m-5 overflow-y-auto max-h-screen">
         <table className="table table-sm">
           {/* head */}

@@ -44,9 +44,9 @@ const BikeManagement = () => {
   }
 
   return (
-    <div className="py-10 h-screen overflow-y-auto">
+    <div className="px-2 lg:py-10 h-screen overflow-y-auto">
       <div
-        className="h-[200px] flex flex-col justify-center items-center"
+        className="h-[100px] lg:h-[200px] flex flex-col justify-center items-center"
         data-aos="zoom-in"
       >
         <p className="text-4xl text-center font-bold my-3 space-x-5 uppercase">
@@ -56,16 +56,16 @@ const BikeManagement = () => {
           <span className="text-[#27ae60]">Bikes</span>
         </p>
       </div>
-      <div className="flex p-5 justify-between">
-        <div className="flex gap-3 w-full">
+      <div className="flex flex-col lg:flex-row gap-3 p-5 justify-between">
+        <div className="flex flex-col lg:flex-row gap-3 w-full order-2 lg:order-1">
           <input
             type="text"
             placeholder="Search Bike or Model"
-            className="input input-bordered w-5/12 max-w-lg text-primary"
+            className="input input-bordered w-full lg:w-5/12 max-w-lg text-primary"
             onChange={(e) => setSearchTerm(e.target.value)}
           />
           <select
-            className="select select-bordered max-w-md bg-[#27ae60]"
+            className="select select-bordered max-w-md bg-[#27ae60] text-white"
             value={brand}
             onChange={(e) => setBrand(e.target.value)}
           >
@@ -75,87 +75,92 @@ const BikeManagement = () => {
             ))}
           </select>
         </div>
-
         <label
           htmlFor="bike-modal"
           onClick={() => {
             setModalType("add");
             setBike({});
           }}
-          className="btn btn-accent bg-[#27ae60] text-white font-bold"
+          className="btn btn-accent bg-[#27ae60] text-white font-bold order-1 lg:order-2 border-none"
         >
           Add Bike
         </label>
       </div>
 
       <div className="overflow-x-auto m-5 font-satoshi">
-        <table className="table table-sm">
-          {/* head */}
-          <thead className="text-black dark:text-white text-lg">
-            <tr>
-              <th>No.</th>
-              <th>Image</th>
-              <th>Name</th>
-              <th>Price/hr</th>
-              <th>Model</th>
-              <th>Brand</th>
-              <th>isAvailable</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {bikes &&
-              bikes?.map((bike, index) => (
-                <tr key={index} className="rounded-lg">
-                  <th>{index + 1 + (currentPage - 1) * dataPerPage}</th>
-                  <td>
-                    <div className="w-20 p-2 rounded-md glass bg-black cursor-pointer">
-                      <img src={bike.image} alt="Post" className="" />
-                    </div>
-                  </td>
-                  <td className="">{bike?.name}</td>
-                  <td className="">{bike?.pricePerHour}</td>
-                  <td className="">{bike?.model}</td>
-                  <td className="">{bike?.brand}</td>
-                  <td className="">
-                    {bike?.isAvailable ? (
-                      <div className="bg-success p-1 w-6/12 rounded-md text-center text-white">
-                        True
+        {bikes?.length > 0 ? (
+          <table className="table table-sm">
+            {/* head */}
+            <thead className="text-black dark:text-white text-lg">
+              <tr>
+                <th>No.</th>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Price/hr</th>
+                <th>Model</th>
+                <th>Brand</th>
+                <th>isAvailable</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {bikes &&
+                bikes?.map((bike, index) => (
+                  <tr key={index} className="rounded-lg">
+                    <th>{index + 1 + (currentPage - 1) * dataPerPage}</th>
+                    <td>
+                      <div className="w-20 p-2 rounded-md glass bg-black cursor-pointer">
+                        <img src={bike.image} alt="Post" className="" />
                       </div>
-                    ) : (
-                      <div className="bg-error p-1 w-6/12 rounded-md text-center text-white">
-                        False
-                      </div>
-                    )}
-                  </td>
-                  <td>
-                    <div className="flex gap-2 items-center">
-                      <label
-                        htmlFor="bike-modal"
-                        onClick={() => {
-                          setModalType("edit");
-                          setBike(bike);
-                        }}
-                        className="btn btn-sm btn-accent cursor-pointer"
-                      >
-                        Edit
-                      </label>
+                    </td>
+                    <td className="">{bike?.name}</td>
+                    <td className="">{bike?.pricePerHour}</td>
+                    <td className="">{bike?.model}</td>
+                    <td className="">{bike?.brand}</td>
+                    <td className="">
+                      {bike?.isAvailable ? (
+                        <div className="bg-success p-1 w-6/12 rounded-md text-center text-white">
+                          True
+                        </div>
+                      ) : (
+                        <div className="bg-error p-1 w-6/12 rounded-md text-center text-white">
+                          False
+                        </div>
+                      )}
+                    </td>
+                    <td>
+                      <div className="flex gap-2 items-center">
+                        <label
+                          htmlFor="bike-modal"
+                          onClick={() => {
+                            setModalType("edit");
+                            setBike(bike);
+                          }}
+                          className="btn btn-sm btn-accent cursor-pointer"
+                        >
+                          Edit
+                        </label>
 
-                      <label
-                        htmlFor="delete-modal"
-                        onClick={() => {
-                          setBikeToDelete(bike);
-                        }}
-                        className="btn btn-sm btn-error cursor-pointer"
-                      >
-                        Delete
-                      </label>
-                    </div>
-                  </td>
-                </tr>
-              ))}
-          </tbody>
-        </table>
+                        <label
+                          htmlFor="delete-modal"
+                          onClick={() => {
+                            setBikeToDelete(bike);
+                          }}
+                          className="btn btn-sm btn-error cursor-pointer"
+                        >
+                          Delete
+                        </label>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+            </tbody>
+          </table>
+        ) : (
+          <div className="h-32 xl:h-60 mx-auto bg-secondary text-[#27ae60] text-2xl xl:text-4xl text-center flex justify-center items-center rounded-lg shadow-lg font-vietnam-bold">
+            <p> No Data Found</p>
+          </div>
+        )}
       </div>
       <div className="space-x-3 mt-4 flex justify-center">
         {totalPagesArray?.length > 1 &&

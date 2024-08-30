@@ -6,7 +6,7 @@ const Profile = () => {
   const { loadedUser } = useUserDetails();
 
   return (
-    <div className="grid grid-cols-1 xl:grid-cols-2 gap-10 p-10">
+    <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 lg:gap-10 p-4 lg:p-10">
       <ViewProfile loadedUser={loadedUser} />
       <UpdateProfile loadedUser={loadedUser} />
     </div>

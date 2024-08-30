@@ -22,7 +22,6 @@ const UserBookings = () => {
   };
 
   const { data, isLoading, refetch } = useGetUserBookingsQuery(queryObj);
-  console.log(data);
 
   const bookings = data?.data?.result as TBooking[];
   const meta = data?.data?.meta;
@@ -37,7 +36,7 @@ const UserBookings = () => {
     return <Loading />;
   }
   return (
-    <div className=" overflow-y-auto h-screen">
+    <div className="py-10 h-screen overflow-y-auto">
       <div
         className="h-[200px] flex flex-col justify-center items-center"
         data-aos="zoom-in"
@@ -49,11 +48,11 @@ const UserBookings = () => {
           <span className="text-[#27ae60]">Booking</span>
         </p>
       </div>
-      <div className="flex justify-between p-5"></div>
+
       <div className="overflow-x-auto m-5 font-satoshi">
         <table className="table table-sm">
           {/* head */}
-          <thead className="text-white text-lg">
+          <thead className="text-primary dark:text-white text-lg">
             <tr>
               <th>No.</th>
 

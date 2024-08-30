@@ -1,19 +1,21 @@
 import { useParams } from "react-router-dom";
 import { TBike } from "../../types";
 import { useGetSingleBikeQuery } from "../../redux/features/bike/bikeApi";
-
 import { useEffect, useState } from "react";
 import BookingModal from "../../components/modals/bookingModal";
+import CompareBikeModal from "../../components/modals/CompareBikeModal";
 
 const BikeDetails = () => {
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   }, []);
 
+  const [bikesToCompare, setBikesToCompare] = useState<TBike[]>([]);
   const [modalType, setModalType] = useState<string>("");
   const { id } = useParams();
   const { data } = useGetSingleBikeQuery(id);
   const bikeDetails: TBike = data?.data;
+  console.log(bikesToCompare);
 
   return (
     <div className="custom-padding mx-auto my-10">
@@ -109,15 +111,32 @@ const BikeDetails = () => {
                 ? "hover:scale-105 duration-500 bg-[#27ae60] hover:bg-[#27ae60] text-white"
                 : "bg-secondary text-primary"
             }`}
-            // disabled={productDetails?.stockQuantity <= 0 ? true : false}
-            // disabled={bikeDetails?.isAvailable ? false : true}
           >
             {bikeDetails?.isAvailable ? "Book Now" : "Unavailable"}
+          </label>
+          <label
+            htmlFor="compare-modal"
+            onClick={() => {
+              setBikesToCompare([...bikesToCompare, bikeDetails]);
+            }}
+            className={`btn h-[30px] xs:h-[70px] w-8/12 mx-auto rounded-lg xs:rounded-xl text-sm xs:text-lg font-semibold font-vietnam-bold ${
+              bikeDetails?.isAvailable
+                ? "hover:scale-105 duration-500 bg-[#27ae60] hover:bg-[#27ae60] text-white"
+                : "bg-secondary text-primary"
+            }`}
+          >
+            Compare
           </label>
         </div>
       </div>
       {modalType && bikeDetails?.isAvailable && (
         <BookingModal bikeDetails={bikeDetails} setModalType={setModalType} />
+      )}
+      {bikesToCompare?.length > 0 && (
+        <CompareBikeModal
+          bikesToCompare={bikesToCompare}
+          setBikesToCompare={setBikesToCompare}
+        />
       )}
     </div>
   );

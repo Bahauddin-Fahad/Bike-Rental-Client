@@ -14,25 +14,25 @@ const Contact = () => {
           feedback, or inquiries, and we will be happy to assist you.
         </p>
         <div className="grid grid-cols-1 xs:grid-cols-2 gap-2 xl:gap-5 text-white">
-          <div className="flex flex-col items-center gap-2 p-3 xl:p-5 rounded-xl xl:rounded-2xl bg-[#2E603C] border-2 border-white xl:rounded-tl-[35px] xl:rounded-br-[35px] xl:rounded-tr-[10px] xl:rounded-bl-[10px]">
+          <div className="flex flex-col items-center gap-2 p-3 xl:p-5 rounded-xl xl:rounded-2xl bg-accent border-2 border-white xl:rounded-tl-[35px] xl:rounded-br-[35px] xl:rounded-tr-[10px] xl:rounded-bl-[10px]">
             <BsFillPersonFill className="size-5 xl:size-8" />
             <h2 className="font-satoshi font-semibold text-xs xl:text-md">
               RideOn Rentals
             </h2>
           </div>
-          <div className="flex flex-col items-center gap-2 p-3 xl:p-5 rounded-xl xl:rounded-2xl bg-[#2E603C] xl:bg-accent border-2 border-white xl:rounded-tl-[35px] xl:rounded-br-[35px] xl:rounded-tr-[10px] xl:rounded-bl-[10px]">
+          <div className="flex flex-col items-center gap-2 p-3 xl:p-5 rounded-xl xl:rounded-2xl bg-accent lg:bg-[#2E603C] border-2 border-white xl:rounded-tl-[35px] xl:rounded-br-[35px] xl:rounded-tr-[10px] xl:rounded-bl-[10px]">
             <BsTelephoneFill className="size-5 xl:size-8" />
             <h2 className="font-satoshi font-semibold text-xs xl:text-md">
               +880 1812345678
             </h2>
           </div>
-          <div className="flex flex-col items-center gap-2 p-3 xl:p-5 rounded-xl xl:rounded-2xl bg-[#2E603C] xl:bg-accent border-2 border-white xl:rounded-tl-[35px] xl:rounded-br-[35px] xl:rounded-tr-[10px] xl:rounded-bl-[10px]">
+          <div className="flex flex-col items-center gap-2 p-3 xl:p-5 rounded-xl xl:rounded-2xl bg-accent lg:bg-[#2E603C] border-2 border-white xl:rounded-tl-[35px] xl:rounded-br-[35px] xl:rounded-tr-[10px] xl:rounded-bl-[10px]">
             <MdEmail className="size-5 xl:size-8" />
             <h2 className="font-satoshi font-semibold text-xs xl:text-md">
               rideon.rentals@gmail.com
             </h2>
           </div>
-          <div className="flex flex-col justify-center items-center gap-2 p-3 xl:p-5 rounded-xl xl:rounded-2xl bg-[#2E603C] border-2 border-white xl:rounded-tl-[35px] xl:rounded-br-[35px] xl:rounded-tr-[10px] xl:rounded-bl-[10px]">
+          <div className="flex flex-col justify-center items-center gap-2 p-3 xl:p-5 rounded-xl xl:rounded-2xl bg-accent border-2 border-white xl:rounded-tl-[35px] xl:rounded-br-[35px] xl:rounded-tr-[10px] xl:rounded-bl-[10px]">
             <MdLocationPin className="size-5 xl:size-8" />
             <h2 className="font-satoshi font-semibold text-xs xl:text-md text-center">
               Chattogram, BD

@@ -17,7 +17,7 @@ const JourneyAchievements = () => {
           <span className="text-accent">Achievements</span>
         </h1>
       </div>
-      <div className="grid grid-cols-1 xl:grid-cols-2 justify-center">
+      <div className="grid grid-cols-1 xl:grid-cols-2 justify-center gap-5 lg:gap-0">
         <div className="rounded-xl shadow mx-5 p-5 bg-secondary dark:bg-primary">
           <h2 className="text-2xl font-vietnam-bold text-accent mb-5 text-center">
             Our Journey

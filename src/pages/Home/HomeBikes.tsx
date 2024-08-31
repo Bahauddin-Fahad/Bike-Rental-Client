@@ -22,7 +22,7 @@ const HomeBikes = () => {
         </h1>
       </div>
 
-      <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
+      <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-10">
         {bikes?.slice(0, 8).map((bike: TBike, index: number) => (
           <div key={index}>
             <BikeCard bike={bike} />

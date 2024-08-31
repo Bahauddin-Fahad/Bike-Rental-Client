@@ -60,7 +60,7 @@ const Navbar = ({ toggleTheme }: any) => {
           )}
         </ul>
       </div>
-      <div className="navbar-end xl:space-x-4 flex items-center">
+      <div className="navbar-end xl:space-x-4 flex items-center gap-2">
         {user ? (
           <button
             onClick={handleLogOut}

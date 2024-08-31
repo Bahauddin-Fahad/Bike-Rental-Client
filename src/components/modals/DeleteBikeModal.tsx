@@ -11,8 +11,6 @@ const DeleteBikeModal = ({ bikeToDelete, setBikeToDelete }: any) => {
       loading: "Deleting Bike...",
       success: (res) => {
         if (res.success) {
-          console.log(res);
-
           return "Bike deleted successfully";
         } else {
           throw new Error(res.message);

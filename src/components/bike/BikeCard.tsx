@@ -9,12 +9,12 @@ type Props = {
 const BikeCard = ({ bike }: Props) => {
   const navigate = useNavigate();
   return (
-    <div className="card bg-secondary dark:bg-primary shadow-md border dark:border-black dark:shadow-black rounded-xl h-full w-10/12 lg:w-full mx-auto">
+    <div className="card bg-secondary dark:bg-primary shadow-md border dark:border-black dark:shadow-black rounded-xl h-full w-10/12 xs:w-full mx-auto">
       <figure className="m-4">
         <img
           src={bike.image}
           alt="bike"
-          className="h-48 w-auto object-contain hover:scale-110 duration-500 rounded-lg"
+          className="md:h-48 w-auto object-contain hover:scale-110 duration-500 rounded-lg"
         />
       </figure>
       <div className="card-body px-4 py-2">

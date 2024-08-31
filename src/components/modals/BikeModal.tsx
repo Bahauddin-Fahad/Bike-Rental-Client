@@ -13,13 +13,9 @@ import { RxCrossCircled } from "react-icons/rx";
 import axios from "axios";
 import Loading from "../ui/Loading";
 
-const image_hosting_api = `https://api.imgbb.com/1/upload?key=${
-  import.meta.env.VITE_IMAGE_HOSTING_KEY
-}`;
-
 const BikeModal = ({ bike, setBike, setModalType }: any) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [bikeImgFile, setBikeImgFile] = useState<File | null | undefined>(null);
+  const [bikeImgFile, setBikeImgFile] = useState<File | null>(null);
   const [bikeImgTempURL, setBikeImgTempURL] = useState<string | null>(
     bike.image || null
   );
@@ -62,23 +58,28 @@ const BikeModal = ({ bike, setBike, setModalType }: any) => {
       year: Number(data?.year),
       cc: Number(data?.cc),
     };
-    const imageFile = { image: bikeImgFile };
-    const res = await axios.post(image_hosting_api, imageFile, {
-      headers: {
-        "content-type": "multipart/form-data",
-      },
-    });
 
-    const image = res?.data?.data?.display_url || bike?.image;
-    console.log(image);
+    const formdata = new FormData();
+    if (bikeImgFile) {
+      formdata.append("file", bikeImgFile);
+    } else {
+      console.error("Profile image file is not set.");
+    }
+
+    const imageURL = await axios
+      .post(`https://vip.bharatcalendars.in:3002/api/upload`, formdata, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then((data) => data.data.files[0].url);
+    const image = imageURL || bike?.image;
 
     Object.keys(bike).length <= 0
       ? await handleAddBike({ ...details, image })
       : await handleEditBike({ ...details, image });
   };
   const handleAddBike = async (details: Partial<TBike>) => {
-    console.log(details);
-
     try {
       setIsLoading(true);
       const addBikeResponse = await addBike(details).unwrap();
@@ -333,9 +334,8 @@ const BikeModal = ({ bike, setBike, setModalType }: any) => {
                       accept="image/*"
                       style={{ display: "none" }}
                       onChange={(e) => {
-                        setBikeImgFile(e.target.files?.[0]);
+                        setBikeImgFile(e.target.files?.[0] as File);
                       }}
-                      required
                     />
                   </label>
                 )}

@@ -10,9 +10,9 @@ const ViewProfile = ({ loadedUser }: Tprops) => {
     <div
       data-aos="fade-right"
       data-aos-duration="500"
-      className="max-w-md w-full"
+      className="md:max-w-md w-full mx-auto"
     >
-      <div className="card h-full border-2 w-full max-w-lg shadow-2xl bg-secondary dark:bg-primary">
+      <div className="card h-full border-2 w-full max-w-lg shadow-2xl bg-secondary dark:bg-primary mx-auto">
         <h2 className="text-2xl font-bold text-center underline mt-8">
           My Profile
         </h2>

@@ -7,7 +7,7 @@ const ContactUs = () => {
       id="contact"
       className="custom-margin grid grid-cols-1 xl:grid-cols-2 items-center justify-between gap-5 xl:gap-12 bg-secondary dark:bg-primary rounded-2xl xl:rounded-[40px] p-8 xl:p-[80px] shadow"
     >
-      <div className="space-y-4 xl:space-y-[20px] max-w-md">
+      <div className="space-y-4 xl:space-y-[20px] w-full xl:max-w-md">
         <h1 className="font-vietnam text-[20px] xl:text-[30px] 2xl:text-[40px] xl:leading-[48px] tracking-tight">
           <span className="text-accent">Contact Us</span> for any kind of Query
         </h1>
@@ -15,7 +15,7 @@ const ContactUs = () => {
           We&apos;d love to hear from you! Reach out to us with any questions,
           feedback, or inquiries, and we will be happy to assist you.
         </p>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-2 xl:gap-5 text-white">
+        <div className="grid grid-cols-1 xs:grid-cols-2 gap-2 xl:gap-5 text-white">
           <div className="flex flex-col items-center gap-2 p-3 xl:p-5 rounded-xl xl:rounded-2xl bg-[#2E603C] border-2 border-white xl:rounded-tl-[35px] xl:rounded-br-[35px] xl:rounded-tr-[10px] xl:rounded-bl-[10px]">
             <BsFillPersonFill className="size-5 xl:size-8" />
             <h2 className="font-satoshi font-semibold text-xs xl:text-md">

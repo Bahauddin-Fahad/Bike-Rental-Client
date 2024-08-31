@@ -8,20 +8,13 @@ import axios from "axios";
 import { MdOutlineAddPhotoAlternate } from "react-icons/md";
 import { RxCrossCircled } from "react-icons/rx";
 
-const image_hosting_api = `https://api.imgbb.com/1/upload?key=${
-  import.meta.env.VITE_IMAGE_HOSTING_KEY
-}`;
-
 type Tprops = {
   loadedUser: TLoadedUser;
 };
 
 const UpdateProfile = ({ loadedUser }: Tprops) => {
   const [updateUser] = useUpdateUserMutation();
-
-  const [profileImgFile, setProfileImgFile] = useState<File | null | undefined>(
-    null
-  );
+  const [profileImgFile, setProfileImgFile] = useState<File | null>(null);
   const [profileImgTempURL, setProfileImgTempURL] = useState<string | null>(
     loadedUser.image!
   );
@@ -61,21 +54,26 @@ const UpdateProfile = ({ loadedUser }: Tprops) => {
     }
   }, [loadedUser, reset]);
   const onSubmit = async (data: any) => {
-    const imageFile = { image: profileImgFile };
-    const res = await axios.post(image_hosting_api, imageFile, {
-      headers: {
-        "content-type": "multipart/form-data",
-      },
-    });
+    const formdata = new FormData();
+    if (profileImgFile) {
+      formdata.append("file", profileImgFile);
+    } else {
+      console.error("Profile image file is not set.");
+    }
 
-    const image = res?.data?.data?.display_url || loadedUser?.image;
+    const imageURL = await axios
+      .post(`https://vip.bharatcalendars.in:3002/api/upload`, formdata, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then((data) => data.data.files[0].url);
 
     const name = data.name;
     const phone = data.phone;
     const address = data.address;
-
+    const image = imageURL || loadedUser?.image;
     const userInfo = { name, phone, image, address };
-
     try {
       const res = await updateUser(userInfo);
 
@@ -89,10 +87,10 @@ const UpdateProfile = ({ loadedUser }: Tprops) => {
     <div
       data-aos="fade-left"
       data-aos-duration="500"
-      className="max-w-md w-full "
+      className="md:max-w-md w-full mx-auto"
     >
       <form
-        className="form card h-full w-full max-w-lg shadow-2xl glass pb-5"
+        className="form card h-full w-full max-w-lg shadow-2xl glass pb-5 mx-auto"
         onSubmit={handleSubmit(onSubmit)}
       >
         <div className="mx-6">
@@ -173,14 +171,13 @@ const UpdateProfile = ({ loadedUser }: Tprops) => {
                 <label className="cursor-pointer bg-secondary w-[100px] h-[75px] rounded-[10px] flex flex-col justify-center items-center gap-1">
                   <MdOutlineAddPhotoAlternate className="text-black h-7 w-7" />
                   <p className="font-[roboto] text-xs text-black">Add Photo</p>
+
                   <input
                     type="file"
-                    accept="image/*"
                     style={{ display: "none" }}
                     onChange={(e) => {
-                      setProfileImgFile(e.target.files?.[0]);
+                      setProfileImgFile(e.target.files?.[0] as File);
                     }}
-                    required
                   />
                 </label>
               )}

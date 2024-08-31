@@ -76,13 +76,6 @@ const PayRentalModal = ({ rentalToPay, setRentalToPay }: any) => {
                 <p className="w-8/12">Need to Pay:</p>
                 <span className=""> {remainingCost} ৳</span>
               </div>
-
-              {/* <span>
-                Discount :
-                {(Number(rentalToPay?.totalCost) *
-                  Number(retrievedCoupon?.discount)) /
-                  100}
-              </span> */}
             </div>
             <div className="space-y-2">
               <form
@@ -93,9 +86,6 @@ const PayRentalModal = ({ rentalToPay, setRentalToPay }: any) => {
                   <label className="label">
                     <p className="label-text font-semibold">
                       Enter Your Coupon
-                      {/* <span className="text-xs">
-                      (you can pay without coupon)
-                    </span> */}
                     </p>
                   </label>
                   <input

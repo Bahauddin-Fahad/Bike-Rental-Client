@@ -36,7 +36,7 @@ const Form = () => {
       </div>
       <div className="form-control mt-2 relative">
         <button
-          className="flex justify-center items-center gap-1 xl:gap-[10px] bg-accent h-[35px] xl:h-[40px] text-white text-[8px] xl:text-[16px] rounded-md font-vietnam-bold"
+          className="flex justify-center items-center gap-1 xl:gap-[10px] bg-accent h-[40px] text-white text-xs xs:text-[16px] rounded-md font-vietnam-bold"
           type="submit"
           value="submit"
         >

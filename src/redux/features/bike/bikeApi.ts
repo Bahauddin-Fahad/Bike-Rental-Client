@@ -48,7 +48,7 @@ const bikeApi = baseApi.injectEndpoints({
           body: data,
         };
       },
-      invalidatesTags: ["bookings", "bikes"],
+      invalidatesTags: ["rentals", "bikes"],
     }),
     updateBike: builder.mutation({
       query: (options) => ({

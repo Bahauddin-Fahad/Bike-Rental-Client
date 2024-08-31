@@ -5,6 +5,7 @@ import { CgProfile } from "react-icons/cg";
 import { PiCoins, PiHandCoinsDuotone } from "react-icons/pi";
 import { TbLayoutSidebarLeftExpandFilled, TbCoinTaka } from "react-icons/tb";
 import { FaMotorcycle, FaChevronDown, FaUsersCog } from "react-icons/fa";
+import { RiCoupon3Line } from "react-icons/ri";
 import { useAppDispatch } from "../../redux/hooks";
 import { logout } from "../../redux/features/auth/authSlice";
 import useUserDetails from "../../customHooks/useUserDetails";
@@ -152,6 +153,24 @@ const DashboardSidebar = () => {
                         >
                           <TbCoinTaka className="text-xl" />
                           <span className="">Rental Management</span>
+                        </Link>
+                      </li>
+                      <li
+                        className={`rounded-md ${
+                          buttonName === "/dashboard/admin/coupons"
+                            ? "bg-accent"
+                            : ""
+                        }`}
+                      >
+                        <Link
+                          onClick={() =>
+                            setButtonName("/dashboard/admin/coupons")
+                          }
+                          to="/dashboard/admin/coupons"
+                          className={`text-sm font-medium flex gap-3 item-center p-2 hover:bg-accent text-primary dark:text-white`}
+                        >
+                          <RiCoupon3Line className="text-xl" />
+                          <span className="">Coupon Management</span>
                         </Link>
                       </li>
                     </>

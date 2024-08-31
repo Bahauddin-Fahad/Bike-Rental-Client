@@ -4,7 +4,7 @@ import { baseApi } from "../../api/baseApi";
 
 const bikeApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
-    getUserBookings: builder.query({
+    getUserRentals: builder.query({
       query: (queryObj) => {
         const params = new URLSearchParams();
         const { sort, page, limit, status } = queryObj || {};
@@ -27,7 +27,7 @@ const bikeApi = baseApi.injectEndpoints({
       },
       providesTags: ["bikes"],
     }),
-    getAllBookings: builder.query({
+    getAllRentals: builder.query({
       query: (queryObj) => {
         const params = new URLSearchParams();
         const { sort, page, limit } = queryObj || {};
@@ -47,7 +47,7 @@ const bikeApi = baseApi.injectEndpoints({
       },
       providesTags: ["bikes"],
     }),
-    createBooking: builder.mutation({
+    createRental: builder.mutation({
       query: (data) => {
         return {
           url: "/rentals",
@@ -55,7 +55,7 @@ const bikeApi = baseApi.injectEndpoints({
           body: data,
         };
       },
-      invalidatesTags: ["bookings", "bikes"],
+      invalidatesTags: ["rentals", "bikes"],
     }),
     calculateTotalCost: builder.mutation({
       query: (options) => {
@@ -65,9 +65,9 @@ const bikeApi = baseApi.injectEndpoints({
           body: options.data,
         };
       },
-      invalidatesTags: ["bookings", "bikes"],
+      invalidatesTags: ["rentals", "bikes"],
     }),
-    payBookingCost: builder.mutation({
+    payRentalCost: builder.mutation({
       query: (options) => {
         return {
           url: `/rentals/${options.id}/pay`,
@@ -75,15 +75,15 @@ const bikeApi = baseApi.injectEndpoints({
           body: options.data,
         };
       },
-      invalidatesTags: ["bookings", "bikes"],
+      invalidatesTags: ["rentals", "bikes"],
     }),
   }),
 });
 
 export const {
-  useGetUserBookingsQuery,
-  useGetAllBookingsQuery,
-  useCreateBookingMutation,
+  useGetUserRentalsQuery,
+  useGetAllRentalsQuery,
+  useCreateRentalMutation,
   useCalculateTotalCostMutation,
-  usePayBookingCostMutation,
+  usePayRentalCostMutation,
 } = bikeApi;

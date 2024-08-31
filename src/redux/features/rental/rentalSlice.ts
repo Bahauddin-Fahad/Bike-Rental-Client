@@ -10,7 +10,7 @@ const initialState: TCouponState = {
   discount: null,
 };
 
-const bookingSlice = createSlice({
+const rentalSlice = createSlice({
   name: "coupon",
   initialState,
   reducers: {
@@ -22,6 +22,6 @@ const bookingSlice = createSlice({
   },
 });
 
-export const { setCoupon } = bookingSlice.actions;
+export const { setCoupon } = rentalSlice.actions;
 
-export default bookingSlice.reducer;
+export default rentalSlice.reducer;

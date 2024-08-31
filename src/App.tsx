@@ -23,6 +23,7 @@ function App() {
     "/dashboard/admin/users",
     "/dashboard/admin/bikes",
     "/dashboard/admin/rentals",
+    "/dashboard/admin/coupons",
   ];
 
   const toggleTheme = () => {

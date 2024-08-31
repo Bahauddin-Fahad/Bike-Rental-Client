@@ -2,14 +2,39 @@
 import { FieldValues, useForm } from "react-hook-form";
 import { TErrorResponse, TLoadedUser } from "../../types";
 import { useUpdateUserMutation } from "../../redux/features/users/userApi";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import axios from "axios";
+import { MdOutlineAddPhotoAlternate } from "react-icons/md";
+import { RxCrossCircled } from "react-icons/rx";
+
+const image_hosting_api = `https://api.imgbb.com/1/upload?key=${
+  import.meta.env.VITE_IMAGE_HOSTING_KEY
+}`;
+
 type Tprops = {
   loadedUser: TLoadedUser;
 };
 
 const UpdateProfile = ({ loadedUser }: Tprops) => {
   const [updateUser] = useUpdateUserMutation();
+
+  const [profileImgFile, setProfileImgFile] = useState<File | null | undefined>(
+    null
+  );
+  const [profileImgTempURL, setProfileImgTempURL] = useState<string | null>(
+    loadedUser.image!
+  );
+
+  useEffect(() => {
+    if (!profileImgFile) return;
+    const imgTempURL = URL.createObjectURL(profileImgFile);
+    setProfileImgTempURL(imgTempURL);
+    return () => {
+      return URL.revokeObjectURL(imgTempURL);
+    };
+  }, [profileImgFile]);
+
   const {
     register,
     formState: { isValid },
@@ -36,12 +61,19 @@ const UpdateProfile = ({ loadedUser }: Tprops) => {
     }
   }, [loadedUser, reset]);
   const onSubmit = async (data: any) => {
+    const imageFile = { image: profileImgFile };
+    const res = await axios.post(image_hosting_api, imageFile, {
+      headers: {
+        "content-type": "multipart/form-data",
+      },
+    });
+
+    const image = res?.data?.data?.display_url || loadedUser?.image;
+
     const name = data.name;
     const phone = data.phone;
     const address = data.address;
-    const image = data.image
-      ? data.image
-      : "https://i.ibb.co/pvmWXsv/male-placeholder-image.jpg";
+
     const userInfo = { name, phone, image, address };
 
     try {
@@ -52,6 +84,7 @@ const UpdateProfile = ({ loadedUser }: Tprops) => {
       toast.error((error as TErrorResponse)?.data?.message, { duration: 4000 });
     }
   };
+
   return (
     <div
       data-aos="fade-left"
@@ -66,7 +99,6 @@ const UpdateProfile = ({ loadedUser }: Tprops) => {
           <h2 className="text-2xl font-bold underline mt-8 text-center">
             Update Profile
           </h2>
-
           <div className="grid grid-cols-2 gap-2">
             <div className="form-control">
               <label className="label font-semibold">
@@ -93,7 +125,6 @@ const UpdateProfile = ({ loadedUser }: Tprops) => {
               />
             </div>
           </div>
-
           <div className="form-control">
             <label className="label font-semibold">
               <span className="label-text text-primary dark:text-secondary">
@@ -106,7 +137,6 @@ const UpdateProfile = ({ loadedUser }: Tprops) => {
               {...register("address")}
             />
           </div>
-
           <div className="form-control">
             <label className="label font-semibold">
               <span className="label-text text-primary dark:text-secondary">
@@ -123,16 +153,39 @@ const UpdateProfile = ({ loadedUser }: Tprops) => {
           <div className="form-control">
             <label className="label font-semibold">
               <span className="label-text text-primary dark:text-secondary">
-                Image URL
+                Upload Image
               </span>
             </label>
-            <input
-              className="input input-bordered font-semibold text-primary"
-              placeholder="Image URL here"
-              type="text"
-              {...register("image")}
-            />
-          </div>
+            <div className="">
+              {profileImgTempURL ? (
+                <div className="relative w-fit">
+                  <img
+                    src={profileImgTempURL || loadedUser?.image}
+                    alt=" "
+                    className="w-[100px] h-[75px] rounded-[10px] object-cover relative"
+                  />
+                  <RxCrossCircled
+                    onClick={() => setProfileImgTempURL(null)}
+                    className="absolute -top-2 -right-2 cursor-pointer text-red-600 font-bold w-6 h-6"
+                  />
+                </div>
+              ) : (
+                <label className="cursor-pointer bg-secondary w-[100px] h-[75px] rounded-[10px] flex flex-col justify-center items-center gap-1">
+                  <MdOutlineAddPhotoAlternate className="text-black h-7 w-7" />
+                  <p className="font-[roboto] text-xs text-black">Add Photo</p>
+                  <input
+                    type="file"
+                    accept="image/*"
+                    style={{ display: "none" }}
+                    onChange={(e) => {
+                      setProfileImgFile(e.target.files?.[0]);
+                    }}
+                    required
+                  />
+                </label>
+              )}
+            </div>
+          </div>{" "}
           <div className="form-control mt-6">
             <button
               type="submit"

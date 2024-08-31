@@ -17,7 +17,7 @@ const ViewProfile = ({ loadedUser }: Tprops) => {
           My Profile
         </h2>
         <div className="flex justify-center mt-8">
-          <div className="flex justify-center items-center w-36 h-36 bg-secondary rounded-full ring-white ring-2 shadow-xl">
+          <div className="flex justify-center items-center w-36 h-36 bg-accent rounded-full ring-white ring-2 shadow-xl">
             <img
               className="rounded-full w-32 h-32 object-cover"
               src={

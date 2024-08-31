@@ -34,7 +34,7 @@ const Testimonial = () => {
   };
   return (
     <div className="bg-secondary dark:bg-primary">
-      <div className="py-[50px] lg:py-[120px] space-y-4 xl:space-y-[70px]">
+      <div className="py-[50px] lg:py-[120px] space-y-6 xl:space-y-[70px]">
         <div className="space-y-4 xl:space-y-[30px] flex flex-col items-center max-w-xs lg:max-w-2xl text-center mx-auto px-2">
           <h1 className="font-vietnam text-[20px] xl:text-[40px] tracking-tight leading-[25px] xl:leading-[48px]">
             Hear What Our Clients Have to Say{" "}
@@ -50,7 +50,7 @@ const Testimonial = () => {
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="flex flex-col items-center justify-between lg:space-y-10"
+              className="flex flex-col items-center justify-between space-y-2 lg:space-y-10"
             >
               <p className="flex justify-center">
                 <FaQuoteRight className="text-xl lg:text-6xl text-accent" />

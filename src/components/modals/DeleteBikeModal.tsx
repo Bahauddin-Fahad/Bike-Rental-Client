@@ -5,8 +5,6 @@ import { useDeleteBikeMutation } from "../../redux/features/bike/bikeApi";
 import Loading from "../ui/Loading";
 
 const DeleteBikeModal = ({ bikeToDelete, setBikeToDelete }: any) => {
-  console.log(bikeToDelete);
-
   const [deleteBike, { isLoading }] = useDeleteBikeMutation();
   const handleDeleteBike = async (id: string) => {
     await toast.promise(deleteBike(id).unwrap(), {
@@ -29,10 +27,10 @@ const DeleteBikeModal = ({ bikeToDelete, setBikeToDelete }: any) => {
   }
   return (
     <div>
-      <input type="checkbox" id="delete-modal" className="modal-toggle" />
+      <input type="checkbox" id="delete-bike-modal" className="modal-toggle" />
       <div className="modal">
         <div className="modal-box bg-white">
-          <h3 className="font-bold text-lg text-primary">{`Are you sure You Want to Delete ${bikeToDelete?.name}`}</h3>
+          <h3 className="font-bold text-lg text-primary">{`Are you sure You Want to Delete ${bikeToDelete?.name}?`}</h3>
           <div className="modal-action">
             <button
               onClick={() => handleDeleteBike(bikeToDelete?._id)}
@@ -42,7 +40,7 @@ const DeleteBikeModal = ({ bikeToDelete, setBikeToDelete }: any) => {
             </button>
             <label
               onClick={() => setBikeToDelete(null)}
-              htmlFor="delete-modal"
+              htmlFor="delete-bike-modal"
               className="btn btn-sm"
             >
               Cancel

@@ -6,10 +6,12 @@ import BikeModal from "../../../components/modals/BikeModal";
 import DeleteBikeModal from "../../../components/modals/DeleteBikeModal";
 import { getBrandNames } from "../../../assets/jsons/brand";
 import NoDataFound from "../../../components/ui/NoDataFound";
+import { useNavigate } from "react-router-dom";
 
 type TBikeState = TBike | object | null;
 
 const BikeManagement = () => {
+  const navigate = useNavigate();
   const brandNames = getBrandNames();
   const [bike, setBike] = useState<TBikeState>({});
   const [bikeToDelete, setBikeToDelete] = useState<TBikeState>(null);
@@ -17,7 +19,7 @@ const BikeManagement = () => {
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [brand, setBrand] = useState<string>("");
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const dataPerPage = 10;
+  const dataPerPage = 8;
   const queryObj = {
     searchTerm: searchTerm,
     brand: brand,
@@ -97,7 +99,7 @@ const BikeManagement = () => {
                 <th>No.</th>
                 <th>Image</th>
                 <th>Name</th>
-                <th>Price/hr</th>
+                <th className="text-center">Price/hr</th>
                 <th>Model</th>
                 <th>Brand</th>
                 <th>isAvailable</th>
@@ -114,20 +116,20 @@ const BikeManagement = () => {
                         <img src={bike.image} alt="Post" className="" />
                       </div>
                     </td>
-                    <td className="">{bike?.name}</td>
-                    <td className="">{bike?.pricePerHour}</td>
+                    <td>
+                      <button onClick={() => navigate(`/bikes/${bike?._id}`)}>
+                        {bike?.name}
+                      </button>
+                    </td>
+                    <td className="text-center">{bike?.pricePerHour} ৳</td>
                     <td className="">{bike?.model}</td>
                     <td className="">{bike?.brand}</td>
-                    <td className="">
-                      {bike?.isAvailable ? (
-                        <div className="bg-success p-1 w-6/12 rounded-md text-center text-white">
-                          True
-                        </div>
-                      ) : (
-                        <div className="bg-error p-1 w-6/12 rounded-md text-center text-white">
-                          False
-                        </div>
-                      )}
+                    <td
+                      className={`text-center font-bold uppercase ${
+                        bike?.isAvailable ? "text-accent" : "text-error"
+                      }`}
+                    >
+                      {bike?.isAvailable.toString()}
                     </td>
                     <td>
                       <div className="flex gap-2 items-center">
@@ -143,7 +145,7 @@ const BikeManagement = () => {
                         </label>
 
                         <label
-                          htmlFor="delete-modal"
+                          htmlFor="delete-bike-modal"
                           onClick={() => {
                             setBikeToDelete(bike);
                           }}

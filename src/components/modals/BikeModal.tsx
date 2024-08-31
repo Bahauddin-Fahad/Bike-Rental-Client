@@ -7,8 +7,22 @@ import {
 } from "../../redux/features/bike/bikeApi";
 import { TBike, TErrorResponse } from "../../types";
 import toast from "react-hot-toast";
+import { useEffect, useState } from "react";
+import { MdOutlineAddPhotoAlternate } from "react-icons/md";
+import { RxCrossCircled } from "react-icons/rx";
+import axios from "axios";
+import Loading from "../ui/Loading";
+
+const image_hosting_api = `https://api.imgbb.com/1/upload?key=${
+  import.meta.env.VITE_IMAGE_HOSTING_KEY
+}`;
 
 const BikeModal = ({ bike, setBike, setModalType }: any) => {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [bikeImgFile, setBikeImgFile] = useState<File | null | undefined>(null);
+  const [bikeImgTempURL, setBikeImgTempURL] = useState<string | null>(
+    bike.image || null
+  );
   const [addBike] = useAddBikeMutation();
   const [updateBike] = useUpdateBikeMutation();
 
@@ -29,10 +43,18 @@ const BikeModal = ({ bike, setBike, setModalType }: any) => {
     },
   });
 
+  useEffect(() => {
+    if (!bikeImgFile) return;
+    const imgTempURL = URL.createObjectURL(bikeImgFile);
+    setBikeImgTempURL(imgTempURL);
+    return () => {
+      return URL.revokeObjectURL(imgTempURL);
+    };
+  }, [bikeImgFile]);
+
   const onSubmit = async (data: any) => {
     const details = {
       name: data?.name,
-      image: data?.image,
       description: data?.description,
       pricePerHour: Number(data?.pricePerHour),
       brand: data?.brand,
@@ -40,14 +62,25 @@ const BikeModal = ({ bike, setBike, setModalType }: any) => {
       year: Number(data?.year),
       cc: Number(data?.cc),
     };
+    const imageFile = { image: bikeImgFile };
+    const res = await axios.post(image_hosting_api, imageFile, {
+      headers: {
+        "content-type": "multipart/form-data",
+      },
+    });
+
+    const image = res?.data?.data?.display_url || bike?.image;
+    console.log(image);
 
     Object.keys(bike).length <= 0
-      ? handleAddBike(details)
-      : handleEditBike(details);
+      ? await handleAddBike({ ...details, image })
+      : await handleEditBike({ ...details, image });
   };
   const handleAddBike = async (details: Partial<TBike>) => {
     console.log(details);
+
     try {
+      setIsLoading(true);
       const addBikeResponse = await addBike(details).unwrap();
       if (addBikeResponse?.statusCode === 200) {
         toast.success("Bike Added Successfully", {
@@ -58,6 +91,8 @@ const BikeModal = ({ bike, setBike, setModalType }: any) => {
       }
     } catch (error) {
       toast.error((error as TErrorResponse)?.data?.message, { duration: 4000 });
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -67,8 +102,9 @@ const BikeModal = ({ bike, setBike, setModalType }: any) => {
       data: details,
     };
     try {
+      setIsLoading(true);
       const editBikeResponse = await updateBike(options).unwrap();
-      console.log(editBikeResponse);
+
       if (editBikeResponse?.statusCode === 200) {
         toast.success("Bike Edited Successfully", {
           duration: 4000,
@@ -78,9 +114,13 @@ const BikeModal = ({ bike, setBike, setModalType }: any) => {
       }
     } catch (error) {
       toast.error((error as TErrorResponse)?.data?.message, { duration: 4000 });
+    } finally {
+      setIsLoading(false);
     }
   };
-
+  if (isLoading) {
+    return <Loading />;
+  }
   return (
     <div>
       <input type="checkbox" id="bike-modal" className="modal-toggle" />
@@ -91,7 +131,7 @@ const BikeModal = ({ bike, setBike, setModalType }: any) => {
           } Bike`}</h3>
           <form
             onSubmit={handleSubmit(onSubmit)}
-            className="grid grid-cols-12 gap-x-5"
+            className="grid grid-cols-12 gap-x-5 gap-y-2"
           >
             <div className="form-control w-full col-span-12 sm:col-span-6">
               <label className="label">
@@ -265,29 +305,41 @@ const BikeModal = ({ bike, setBike, setModalType }: any) => {
                 )}
               </label>
             </div>
-            <div className="form-control w-full col-span-12">
-              <label className="label">
-                <span className="label-text font-semibold">Image *</span>
+            <div className="form-control w-full col-span-12 mb-2 lg:mb-5">
+              <label className="label font-semibold">
+                <span className="label-text text-primary">Upload Image</span>
               </label>
-              <input
-                placeholder={bike?.image || `Image`}
-                defaultValue={bike?.image && bike?.image}
-                type="text"
-                className="input input-bordered bg-secondary text-primary"
-                {...register("image", {
-                  required: {
-                    value: true,
-                    message: "Image is required",
-                  },
-                })}
-              />
-              <label className="label">
-                {errors.image?.type === "required" && (
-                  <span className="label-text-alt text-red-600 text-sm">
-                    {(errors.image as FieldError).message}
-                  </span>
+              <div className="">
+                {bikeImgTempURL ? (
+                  <div className="relative w-fit">
+                    <img
+                      src={bikeImgTempURL ? bikeImgTempURL : bike?.image}
+                      alt=" "
+                      className="w-[100px] h-[75px] rounded-[10px] object-cover relative"
+                    />
+                    <RxCrossCircled
+                      onClick={() => setBikeImgTempURL(null)}
+                      className="absolute -top-2 -right-2 cursor-pointer text-red-600 font-bold w-6 h-6"
+                    />
+                  </div>
+                ) : (
+                  <label className="cursor-pointer bg-secondary w-[100px] h-[75px] rounded-[10px] flex flex-col justify-center items-center gap-1">
+                    <MdOutlineAddPhotoAlternate className="text-black h-7 w-7" />
+                    <p className="font-[roboto] text-xs text-black">
+                      Add Photo
+                    </p>
+                    <input
+                      type="file"
+                      accept="image/*"
+                      style={{ display: "none" }}
+                      onChange={(e) => {
+                        setBikeImgFile(e.target.files?.[0]);
+                      }}
+                      required
+                    />
+                  </label>
                 )}
-              </label>
+              </div>
             </div>
             <input
               type="submit"

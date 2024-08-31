@@ -8,13 +8,14 @@ import AboutUs from "../pages/AboutUs/AboutUs";
 import Dashboard from "../pages/Dashboard/Dashboard";
 import Profile from "../pages/Dashboard/Profile";
 import AllBikes from "../pages/Bikes/AllBikes";
-import UserBookings from "../pages/Dashboard/UserDashboard/UserBookings";
+import UserRentals from "../pages/Dashboard/UserDashboard/UserRentals";
 import UserManagement from "../pages/Dashboard/AdminDashboard/UserManagement";
 import AdminRoute from "./AdminRoute";
 import ProtectedRoute from "./ProtectedRoute";
 import ErrorPage from "../pages/Error/ErrorPage";
 import BikeManagement from "../pages/Dashboard/AdminDashboard/BikeManagement";
-import BookingManagement from "../pages/Dashboard/AdminDashboard/BookingManagement";
+import RentalManagement from "../pages/Dashboard/AdminDashboard/RentalManagement";
+import CouponManagement from "../pages/Dashboard/AdminDashboard/CouponManagement";
 
 const router = createBrowserRouter([
   {
@@ -61,7 +62,7 @@ const router = createBrowserRouter([
             path: "user/rentals/unpaid",
             element: (
               <ProtectedRoute>
-                <UserBookings />
+                <UserRentals />
               </ProtectedRoute>
             ),
           },
@@ -69,7 +70,7 @@ const router = createBrowserRouter([
             path: "user/rentals/paid",
             element: (
               <ProtectedRoute>
-                <UserBookings />
+                <UserRentals />
               </ProtectedRoute>
             ),
           },
@@ -93,7 +94,15 @@ const router = createBrowserRouter([
             path: "admin/rentals",
             element: (
               <ProtectedRoute>
-                <BookingManagement />
+                <RentalManagement />
+              </ProtectedRoute>
+            ),
+          },
+          {
+            path: "admin/coupons",
+            element: (
+              <ProtectedRoute>
+                <CouponManagement />
               </ProtectedRoute>
             ),
           },

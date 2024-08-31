@@ -9,7 +9,7 @@ const Footer = () => {
           <span className="text-accent font-semibold">RideOn</span>
           <span>Rentals</span>
         </Link>
-        <p className="text-center sm:text-start">
+        <p className="text-start">
           An ultimate destination for high-quality bike rentals, catering to
           riders of all levels.
         </p>

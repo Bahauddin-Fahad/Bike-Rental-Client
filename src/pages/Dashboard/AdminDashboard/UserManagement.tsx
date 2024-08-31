@@ -44,8 +44,6 @@ const UserList = () => {
       loading: "Updating user role...",
       success: (res) => {
         if (res.success) {
-          console.log(res);
-
           return "User Role updated successfully";
         } else {
           throw new Error(res.message);

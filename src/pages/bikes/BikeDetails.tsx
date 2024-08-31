@@ -3,7 +3,7 @@ import { TBike } from "../../types";
 import { useGetSingleBikeQuery } from "../../redux/features/bike/bikeApi";
 import { useEffect, useState } from "react";
 import CompareBikeModal from "../../components/modals/CompareBikeModal";
-import BookingModal from "../../components/modals/BookingModal";
+import RentalModal from "../../components/modals/RentalModal";
 
 const BikeDetails = () => {
   useEffect(() => {
@@ -101,7 +101,7 @@ const BikeDetails = () => {
         </div>
         <div className="card-actions flex justify-end">
           <label
-            htmlFor="booking-modal"
+            htmlFor="rental-modal"
             onClick={() => {
               setModalType("book");
             }}
@@ -125,7 +125,7 @@ const BikeDetails = () => {
         </div>
       </div>
       {modalType && bikeDetails?.isAvailable && (
-        <BookingModal bikeDetails={bikeDetails} setModalType={setModalType} />
+        <RentalModal bikeDetails={bikeDetails} setModalType={setModalType} />
       )}
       {bikesToCompare?.length > 0 && (
         <CompareBikeModal

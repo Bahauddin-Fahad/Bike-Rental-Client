@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { FieldError, FieldValues, useForm } from "react-hook-form";
-import { useCalculateTotalCostMutation } from "../../redux/features/booking/bookingApi";
+import { useCalculateTotalCostMutation } from "../../redux/features/rental/rentalApi";
 import toast from "react-hot-toast";
 
 const CostCalculateModal = ({
-  bookingToCalculate,
-  setBookingToCalculate,
+  rentalToCalculate,
+  setRentalToCalculate,
 }: any) => {
   const [calculateTotalCost] = useCalculateTotalCostMutation();
   const {
@@ -21,7 +21,7 @@ const CostCalculateModal = ({
 
   const handleCalculateCost = async (details: any) => {
     const options = {
-      id: bookingToCalculate?._id,
+      id: rentalToCalculate?._id,
       data: { returnTime: details?.returnTime },
     };
 
@@ -29,7 +29,7 @@ const CostCalculateModal = ({
       loading: "Calculating Cost...",
       success: (res) => {
         if (res.success) {
-          setBookingToCalculate(null);
+          setRentalToCalculate(null);
           return "Cost Calculated successfully";
         } else {
           throw new Error(res.message);
@@ -78,7 +78,7 @@ const CostCalculateModal = ({
               <label
                 htmlFor="calculate-modal"
                 onClick={() => {
-                  setBookingToCalculate(null);
+                  setRentalToCalculate(null);
                 }}
                 className="btn btn-md font-bold"
               >

@@ -30,13 +30,16 @@ export type TLoadedUser = {
   createdAt: string;
   updatedAt: string;
 };
-export type TBooking = {
+export type TRental = {
   _id: string;
   user: TLoadedUser;
   bike: TBike;
   startTime: string;
   returnTime: string;
   totalCost: number;
+  advancePaid: number;
+  discount: number | null;
+  costAfterDiscount: number | null;
   status: string;
   transactionId: string;
 };
@@ -48,7 +51,13 @@ export type TResponse<T> = {
   message: string;
 };
 
-export type TPrize = { code: string; discount: number };
+export type TCoupon = {
+  code: string;
+  discount: number;
+  createdAt: string;
+  updatedAt: string;
+};
+
 export type TResponseRedux<T> = TResponse<T> & BaseQueryApi;
 
 export type TErrorSources = {

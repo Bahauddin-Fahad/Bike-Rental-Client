@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { FieldError, FieldValues, useForm } from "react-hook-form";
-import { useCreateBookingMutation } from "../../redux/features/booking/bookingApi";
+import { useCreateRentalMutation } from "../../redux/features/rental/rentalApi";
 import toast from "react-hot-toast";
 import { TErrorResponse } from "../../types";
 
-const BookingModal = ({ bikeDetails, setModalType }: any) => {
-  const [createBooking] = useCreateBookingMutation();
+const RentalModal = ({ bikeDetails, setModalType }: any) => {
+  const [createRental] = useCreateRentalMutation();
   const {
     register,
     formState: { errors, isValid },
@@ -15,10 +15,10 @@ const BookingModal = ({ bikeDetails, setModalType }: any) => {
     defaultValues: {},
   });
 
-  const handleCreateBooking = async (data: any) => {
+  const handleCreateRental = async (data: any) => {
     const details = { bike: bikeDetails?._id, startTime: data?.startTime };
     try {
-      const response = await createBooking(details).unwrap();
+      const response = await createRental(details).unwrap();
 
       if (response?.statusCode === 200) {
         toast.success(response?.message, { duration: 3000 });
@@ -32,11 +32,11 @@ const BookingModal = ({ bikeDetails, setModalType }: any) => {
 
   return (
     <div>
-      <input type="checkbox" id="booking-modal" className="modal-toggle" />
+      <input type="checkbox" id="rental-modal" className="modal-toggle" />
       <div className="modal">
         <div className="modal-box max-w-lg !important space-y-4">
           <h3 className="font-bold text-lg xl:text-xl text-center text-primary">{`Would You Like to Book ${bikeDetails?.name}?`}</h3>
-          <form onSubmit={handleSubmit(handleCreateBooking)} className="">
+          <form onSubmit={handleSubmit(handleCreateRental)} className="">
             <div className="form-control max-w-xs mx-auto">
               <label className="label">
                 <span className="label-text font-semibold">Start Time *</span>
@@ -70,7 +70,7 @@ const BookingModal = ({ bikeDetails, setModalType }: any) => {
                 onClick={() => {
                   setModalType("");
                 }}
-                htmlFor="booking-modal"
+                htmlFor="rental-modal"
                 className="btn btn-md font-bold"
               >
                 Cancel
@@ -83,4 +83,4 @@ const BookingModal = ({ bikeDetails, setModalType }: any) => {
   );
 };
 
-export default BookingModal;
+export default RentalModal;

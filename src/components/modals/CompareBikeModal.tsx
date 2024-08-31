@@ -9,7 +9,6 @@ const CompareBikeModal = ({ bikesToCompare, setBikesToCompare }: any) => {
   };
   const { data } = useGetBikesQuery(queryObj);
   const Allbikes: TBike[] = data?.data?.result;
-  console.log(bikesToCompare);
 
   return (
     <div>

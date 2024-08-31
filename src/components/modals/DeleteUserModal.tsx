@@ -16,8 +16,6 @@ const DeleteUserModal = ({ userToDelete, setUserToDelete }: any) => {
       loading: "Deleting User...",
       success: (res) => {
         if (res.success) {
-          console.log(res);
-
           return "User deleted successfully";
         } else {
           throw new Error(res.message);

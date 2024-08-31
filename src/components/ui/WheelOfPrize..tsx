@@ -71,7 +71,7 @@ const WheelOfPrize = () => {
       <button
         onClick={spinWheel}
         disabled={isSpinning || copied}
-        className="btn btn-accent spin-button"
+        className="btn btn-accent spin-button text-white"
       >
         {isSpinning ? "Spinning..." : "Spin the Wheel"}
       </button>

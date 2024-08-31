@@ -53,7 +53,7 @@ const Login = () => {
       <h1 className="text-white font-vietnam-bold text-[6.27vw] hidden xs:flex justify-center items-center w-full bg-[#2E603C] p-5 md:p-10">
         RideOn
       </h1>
-      <div className="bg-white h-full text-[#2E603C] font-satoshi text-xl font-[roboto] flex justify-center items-center px-3 py-5 md:px-10 md:py-9">
+      <div className="bg-white h-full text-[#2E603C] font-satoshi text-xl flex justify-center items-center px-3 py-5 md:px-10 md:py-9">
         <div className="w-full sm:w-2/3 md:w-1/2 max-w-lg space-y-4">
           <p className="font-vietnam-bold">Sign in with</p>
           <form onSubmit={handleSubmit(onSubmit)}>

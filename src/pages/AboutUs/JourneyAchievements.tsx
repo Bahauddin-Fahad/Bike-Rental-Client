@@ -12,7 +12,7 @@ const JourneyAchievements = () => {
   return (
     <div className="space-y-5">
       <div className="max-w-xl mx-auto">
-        <h1 className="font-vietnam-bold text-[#2E603C] text-[20px] xl:text-[40px] 2xl:text-[55px] text-center tracking-tight ">
+        <h1 className="font-vietnam-bold text-primary dark:text-secondary text-[20px] xl:text-[40px] 2xl:text-[55px] text-center tracking-tight ">
           Our <span className="text-accent">Journey</span> &{" "}
           <span className="text-accent">Achievements</span>
         </h1>

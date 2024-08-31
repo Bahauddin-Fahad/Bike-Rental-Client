@@ -71,15 +71,14 @@ const DashboardSidebar = () => {
             aria-label="close sidebar"
             className="drawer-overlay"
           ></label>
-          <div className="menu p-4 w-52 md:w-72 min-h-full bg-secondary dark:bg-primary">
-            <div className="space-y-6">
+          <div className="menu p-4 :w-60 md:w-72 min-h-full bg-secondary dark:bg-primary">
+            <div className="space-y-2 lg:space-y-6">
               <div className="mb-5">
                 <Link to={"/"} className="xl:text-2xl space-x-2">
                   <span className="text-accent font-semibold">RideOn</span>
                   <span>Rentals</span>
                 </Link>
               </div>
-
               <div id="profile" className="space-y-3">
                 <img
                   src={

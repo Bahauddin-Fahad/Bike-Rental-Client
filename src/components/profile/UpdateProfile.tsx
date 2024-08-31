@@ -170,7 +170,7 @@ const UpdateProfile = ({ loadedUser }: Tprops) => {
               ) : (
                 <label className="cursor-pointer bg-secondary w-[100px] h-[75px] rounded-[10px] flex flex-col justify-center items-center gap-1">
                   <MdOutlineAddPhotoAlternate className="text-black h-7 w-7" />
-                  <p className="font-[roboto] text-xs text-black">Add Photo</p>
+                  <p className="text-xs text-black">Add Photo</p>
 
                   <input
                     type="file"

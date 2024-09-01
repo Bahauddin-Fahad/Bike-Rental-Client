@@ -4,9 +4,10 @@ import { FieldError, FieldValues, useForm } from "react-hook-form";
 import { useCreateRentalMutation } from "../../redux/features/rental/rentalApi";
 import toast from "react-hot-toast";
 import { TErrorResponse } from "../../types";
+import Loading from "../ui/Loading";
 
 const RentalModal = ({ bikeDetails, setModalType }: any) => {
-  const [createRental] = useCreateRentalMutation();
+  const [createRental, { isLoading }] = useCreateRentalMutation();
   const {
     register,
     formState: { errors, isValid },
@@ -30,6 +31,9 @@ const RentalModal = ({ bikeDetails, setModalType }: any) => {
     }
   };
 
+  if (isLoading) {
+    return <Loading />;
+  }
   return (
     <div>
       <input type="checkbox" id="rental-modal" className="modal-toggle" />

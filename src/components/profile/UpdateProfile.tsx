@@ -14,7 +14,7 @@ type Tprops = {
 };
 
 const UpdateProfile = ({ loadedUser }: Tprops) => {
-  const [updateUser, { isLoading }] = useUpdateUserMutation();
+  const [updateUser, { isLoading: isUpdateLoading }] = useUpdateUserMutation();
   const [profileImgFile, setProfileImgFile] = useState<File | null>(null);
   const [profileImgTempURL, setProfileImgTempURL] = useState<string | null>(
     loadedUser.image!
@@ -31,7 +31,7 @@ const UpdateProfile = ({ loadedUser }: Tprops) => {
 
   const {
     register,
-    formState: { isValid },
+    formState: { isValid, isLoading: isSubmitLoading },
     handleSubmit,
     reset,
   } = useForm<FieldValues>({
@@ -91,9 +91,10 @@ const UpdateProfile = ({ loadedUser }: Tprops) => {
     } catch (error) {
       toast.error((error as TErrorResponse)?.data?.message, { duration: 4000 });
     }
-    if (isLoading) {
+    if (isSubmitLoading || isUpdateLoading) {
       return <Loading />;
     }
+
     // const imageURL = await axios
     //   .post(``, formdata, {
     //     headers: {

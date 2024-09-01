@@ -8,9 +8,10 @@ import { useAppSelector } from "../../redux/hooks";
 
 import { useState } from "react";
 import { useGetSingleCouponQuery } from "../../redux/features/coupon/couponApi";
+import Loading from "../ui/Loading";
 
 const PayRentalModal = ({ rentalToPay, setRentalToPay }: any) => {
-  const [payRental] = usePayRentalCostMutation();
+  const [payRental, { isLoading }] = usePayRentalCostMutation();
   const { code } = useAppSelector((state) => state.coupon as TCoupon);
   const [couponCode, setCouponCode] = useState<string>("");
   const { register, handleSubmit } = useForm<FieldValues>({
@@ -48,7 +49,9 @@ const PayRentalModal = ({ rentalToPay, setRentalToPay }: any) => {
       toast.error((error as TErrorResponse)?.data?.message);
     }
   };
-
+  if (isLoading) {
+    return <Loading />;
+  }
   return (
     <div>
       <input type="checkbox" id="pay-rental-modal" className="modal-toggle" />

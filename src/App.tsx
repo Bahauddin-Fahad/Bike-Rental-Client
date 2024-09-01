@@ -12,7 +12,7 @@ import "aos/dist/aos.css";
 import { useAppSelector } from "./redux/hooks";
 
 function App() {
-  const theme = useAppSelector((state) => state!.theme!.theme as string); // Get theme from Redux store
+  const theme = useAppSelector((state) => state!.theme!.theme as string);
   const location = useLocation();
   const pathnames = [
     "/login",

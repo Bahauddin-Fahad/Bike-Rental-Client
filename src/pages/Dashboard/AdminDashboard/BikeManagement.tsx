@@ -102,6 +102,8 @@ const BikeManagement = () => {
                 <th className="text-center">Price/hr</th>
                 <th>Model</th>
                 <th>Brand</th>
+                <th>Year</th>
+                <th>CC</th>
                 <th>isAvailable</th>
                 <th>Action</th>
               </tr>
@@ -124,6 +126,8 @@ const BikeManagement = () => {
                     <td className="text-center">{bike?.pricePerHour} ৳</td>
                     <td className="">{bike?.model}</td>
                     <td className="">{bike?.brand}</td>
+                    <td className="">{bike?.year}</td>
+                    <td className="">{bike?.cc}</td>
                     <td
                       className={`text-center font-bold uppercase ${
                         bike?.isAvailable ? "text-accent" : "text-error"

@@ -7,13 +7,14 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import { MdOutlineAddPhotoAlternate } from "react-icons/md";
 import { RxCrossCircled } from "react-icons/rx";
+import Loading from "../ui/Loading";
 
 type Tprops = {
   loadedUser: TLoadedUser;
 };
 
 const UpdateProfile = ({ loadedUser }: Tprops) => {
-  const [updateUser] = useUpdateUserMutation();
+  const [updateUser, { isLoading }] = useUpdateUserMutation();
   const [profileImgFile, setProfileImgFile] = useState<File | null>(null);
   const [profileImgTempURL, setProfileImgTempURL] = useState<string | null>(
     loadedUser.image!
@@ -54,33 +55,52 @@ const UpdateProfile = ({ loadedUser }: Tprops) => {
     }
   }, [loadedUser, reset]);
   const onSubmit = async (data: any) => {
+    const cloudName = import.meta.env.VITE_CLOUD_NAME;
+    const uploadPreset = import.meta.env.VITE_CLOUD_PRESET;
+
     const formdata = new FormData();
     if (profileImgFile) {
       formdata.append("file", profileImgFile);
+      formdata.append("upload_preset", uploadPreset);
     } else {
       console.error("Profile image file is not set.");
     }
 
-    const imageURL = await axios
-      .post(`https://vip.bharatcalendars.in:3002/api/upload`, formdata, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      })
-      .then((data) => data.data.files[0].url);
+    const imageURL = profileImgFile
+      ? await axios
+          .post(
+            `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
+            formdata,
+            {
+              headers: {
+                "Content-Type": "multipart/form-data",
+              },
+            }
+          )
+          .then((data) => data.data.secure_url)
+      : loadedUser?.image;
 
     const name = data.name;
     const phone = data.phone;
     const address = data.address;
-    const image = imageURL || loadedUser?.image;
+    const image = imageURL;
     const userInfo = { name, phone, image, address };
     try {
       const res = await updateUser(userInfo);
-
       toast.success(res?.data?.message, { duration: 4000 });
     } catch (error) {
       toast.error((error as TErrorResponse)?.data?.message, { duration: 4000 });
     }
+    if (isLoading) {
+      return <Loading />;
+    }
+    // const imageURL = await axios
+    //   .post(``, formdata, {
+    //     headers: {
+    //       "Content-Type": "multipart/form-data",
+    //     },
+    //   })
+    //   .then((data) => data.data.files[0].url);
   };
 
   return (

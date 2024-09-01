@@ -59,21 +59,32 @@ const BikeModal = ({ bike, setBike, setModalType }: any) => {
       cc: Number(data?.cc),
     };
 
+    const cloudName = import.meta.env.VITE_CLOUD_NAME;
+    const uploadPreset = import.meta.env.VITE_CLOUD_PRESET;
+
     const formdata = new FormData();
     if (bikeImgFile) {
       formdata.append("file", bikeImgFile);
+      formdata.append("upload_preset", uploadPreset);
     } else {
-      console.error("Profile image file is not set.");
+      console.error("Bike Image file is not set.");
     }
 
-    const imageURL = await axios
-      .post(`https://vip.bharatcalendars.in:3002/api/upload`, formdata, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      })
-      .then((data) => data.data.files[0].url);
-    const image = imageURL || bike?.image;
+    const imageURL = bikeImgFile
+      ? await axios
+          .post(
+            `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
+            formdata,
+            {
+              headers: {
+                "Content-Type": "multipart/form-data",
+              },
+            }
+          )
+          .then((data) => data.data.secure_url)
+      : bike?.image;
+
+    const image = imageURL;
 
     Object.keys(bike).length <= 0
       ? await handleAddBike({ ...details, image })
@@ -334,6 +345,7 @@ const BikeModal = ({ bike, setBike, setModalType }: any) => {
                       onChange={(e) => {
                         setBikeImgFile(e.target.files?.[0] as File);
                       }}
+                      required
                     />
                   </label>
                 )}

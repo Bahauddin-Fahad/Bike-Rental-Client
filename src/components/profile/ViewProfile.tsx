@@ -13,7 +13,7 @@ const ViewProfile = ({ loadedUser }: Tprops) => {
       className="md:max-w-md w-full mx-auto"
     >
       <div className="card h-full border-2 w-full max-w-lg shadow-2xl bg-secondary dark:bg-primary mx-auto">
-        <h2 className="text-2xl font-bold text-center underline mt-8">
+        <h2 className="text-2xl text-center underline mt-8 font-vietnam-bold">
           My Profile
         </h2>
         <div className="flex justify-center mt-8">

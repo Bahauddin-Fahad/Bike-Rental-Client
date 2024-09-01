@@ -2,6 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import { baseApi } from "./api/baseApi";
 import authReducer from "../redux/features/auth/authSlice";
 import rentalReducer from "./features/rental/rentalSlice";
+import themeReducer from "./features/theme/themeSlice";
 
 import {
   persistStore,
@@ -28,6 +29,7 @@ export const store = configureStore({
 
     auth: persistedReducer,
     coupon: rentalReducer,
+    theme: themeReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

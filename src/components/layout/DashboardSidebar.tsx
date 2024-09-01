@@ -6,11 +6,12 @@ import { PiCoins, PiHandCoinsDuotone } from "react-icons/pi";
 import { TbLayoutSidebarLeftExpandFilled, TbCoinTaka } from "react-icons/tb";
 import { FaMotorcycle, FaChevronDown, FaUsersCog } from "react-icons/fa";
 import { RiCoupon3Line } from "react-icons/ri";
-import { useAppDispatch } from "../../redux/hooks";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { logout } from "../../redux/features/auth/authSlice";
 import useUserDetails from "../../customHooks/useUserDetails";
 import Loading from "../ui/Loading";
 import { useState } from "react";
+import { toggleTheme } from "../../redux/features/theme/themeSlice";
 type TButtonName = string;
 
 const DashboardSidebar = () => {
@@ -19,18 +20,21 @@ const DashboardSidebar = () => {
   const [buttonName, setButtonName] = useState<TButtonName>(pathname);
   const [isOpen, setIsOpen] = useState(false);
   const dispatch = useAppDispatch();
-
+  const theme = useAppSelector((state) => state!.theme!.theme as string);
   const { loadedUser, isLoading } = useUserDetails();
+
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
+  const handleToggleTheme = () => {
+    dispatch(toggleTheme());
+  };
 
   const handleLogOut = () => {
     dispatch(logout());
     toast.success("Logged out successfully", { duration: 3000 });
     navigate("/");
   };
-  const toggleDropdown = () => {
-    setIsOpen(!isOpen);
-  };
-
   if (isLoading) {
     return <Loading />;
   }
@@ -73,11 +77,17 @@ const DashboardSidebar = () => {
           ></label>
           <div className="menu p-4 :w-60 md:w-72 min-h-full bg-secondary dark:bg-primary">
             <div className="space-y-2 lg:space-y-6">
-              <div className="mb-5">
+              <div className="mb-5 flex justify-between items-center">
                 <Link to={"/"} className="xl:text-2xl space-x-2">
                   <span className="text-accent font-semibold">RideOn</span>
                   <span>Rentals</span>
                 </Link>
+                <input
+                  onChange={handleToggleTheme}
+                  type="checkbox"
+                  className="toggle toggle-xs xs:toggle-sm md:toggle-md toggle-accent"
+                  checked={theme === "light" ? false : true}
+                />
               </div>
               <div id="profile" className="space-y-3">
                 <img

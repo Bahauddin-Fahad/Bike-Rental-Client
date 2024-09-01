@@ -1,7 +1,7 @@
 import Footer from "./components/layout/Footer";
 import MainLayout from "./components/layout/MainLayout";
 import Navbar from "./components/layout/Navbar";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import "../src/styles/stylesheet.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -9,9 +9,10 @@ import { Toaster } from "react-hot-toast";
 import { useLocation } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { useAppSelector } from "./redux/hooks";
 
 function App() {
-  const [theme, setTheme] = useState(localStorage.getItem("theme") || "dark");
+  const theme = useAppSelector((state) => state!.theme!.theme as string); // Get theme from Redux store
   const location = useLocation();
   const pathnames = [
     "/login",
@@ -26,19 +27,9 @@ function App() {
     "/dashboard/admin/coupons",
   ];
 
-  const toggleTheme = () => {
-    if (theme === "light") {
-      setTheme("dark");
-      localStorage.setItem("theme", "dark");
-    } else {
-      setTheme("light");
-      localStorage.setItem("theme", "light");
-    }
-  };
   useEffect(() => {
     document.body.className = theme;
   }, [theme]);
-
   useEffect(() => {
     AOS.init({
       duration: 1200, // Animation duration
@@ -46,9 +37,7 @@ function App() {
   }, []);
   return (
     <>
-      {!pathnames.includes(location.pathname) && (
-        <Navbar toggleTheme={toggleTheme} />
-      )}
+      {!pathnames.includes(location.pathname) && <Navbar />}
       <MainLayout />
       {!pathnames.includes(location.pathname) && <Footer />}
       <Toaster />

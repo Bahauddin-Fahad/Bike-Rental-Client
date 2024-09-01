@@ -6,19 +6,25 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { logout, useCurrentUser } from "../../redux/features/auth/authSlice";
 import toast from "react-hot-toast";
+import { toggleTheme } from "../../redux/features/theme/themeSlice";
 
 type TButtonName = "about" | "dashboard" | string;
 
-const Navbar = ({ toggleTheme }: any) => {
+const Navbar = () => {
   const params = useLocation().pathname;
   const [buttonName, setButtonName] = useState<TButtonName>(params.slice(1));
-  const dispatch = useAppDispatch();
-  const user = useAppSelector(useCurrentUser);
   const navigate = useNavigate();
+  const user = useAppSelector(useCurrentUser);
+  const dispatch = useAppDispatch();
+  const theme = useAppSelector((state) => state!.theme!.theme as string);
 
   useEffect(() => {
     setButtonName(params.slice(1));
   }, [params]);
+
+  const handleToggleTheme = () => {
+    dispatch(toggleTheme());
+  };
 
   const handleLogOut = () => {
     dispatch(logout());
@@ -71,24 +77,28 @@ const Navbar = ({ toggleTheme }: any) => {
         ) : (
           <button
             onClick={() => navigate("/login")}
-            className="font-vietnam-bold"
+            className="font-vietnam-bold text-accent"
           >
             Login
           </button>
         )}
         <input
-          onChange={toggleTheme}
+          onChange={handleToggleTheme}
           type="checkbox"
-          className="toggle toggle-xs xs:toggle-sm md:toggle-md toggle-accent hidden sm:block"
-          checked={localStorage.getItem("theme") === "light" ? false : true}
+          className="toggle toggle-xs xs:toggle-sm md:toggle-md toggle-accent "
+          checked={theme === "light" ? false : true}
         />
-        <div className="dropdown dropdown-left">
-          <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+        <div className="dropdown dropdown-end dropdown-bottom">
+          <div
+            tabIndex={0}
+            role="button"
+            className="btn btn-ghost p-0 lg:hidden"
+          >
             <GiHamburgerMenu className="text-[#2E603C] text-3xl" />
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content bg-base-100 rounded-md z-[1] mt-3 w-52 p-2 shadow text-black"
+            className="menu menu-xs dropdown-content bg-white dark:bg-primary z-[1] mt-3 w-52 p-2 shadow text-black dark:text-white"
           >
             <li
               className={`font-semibold ${

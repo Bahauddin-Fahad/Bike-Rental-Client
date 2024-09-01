@@ -94,7 +94,7 @@ const UpdateProfile = ({ loadedUser }: Tprops) => {
         onSubmit={handleSubmit(onSubmit)}
       >
         <div className="mx-6">
-          <h2 className="text-2xl font-bold underline mt-8 text-center">
+          <h2 className="text-2xl underline mt-8 text-center font-vietnam-bold">
             Update Profile
           </h2>
           <div className="grid grid-cols-2 gap-2">
@@ -182,7 +182,7 @@ const UpdateProfile = ({ loadedUser }: Tprops) => {
                 </label>
               )}
             </div>
-          </div>{" "}
+          </div>
           <div className="form-control mt-6">
             <button
               type="submit"
